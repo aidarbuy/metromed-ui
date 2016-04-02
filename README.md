@@ -1,12 +1,12 @@
-# [Material-UI](http://callemall.github.io/material-ui/) - Example Project
+# [Metromed-UI](http://aidarbuy.github.io/metromed-ui/) - Urgent Care Web Project
 
-This is an example project that uses [Material-UI](http://callemall.github.io/material-ui/).
+An urgent care web app project that uses [Material-UI](http://callemall.github.io/material-ui/).
 
 ## Installation
 
 After cloning the repository, install dependencies:
 ```sh
-cd <project folder>/material-ui/examples/browserify-gulp-example
+cd <project folder>/metromed-ui/
 npm install
 ```
 

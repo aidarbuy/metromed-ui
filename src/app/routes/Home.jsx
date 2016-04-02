@@ -1,14 +1,20 @@
 import React from 'react'
 import LayerSlider from '../components/LayerSlider'
-import TopSidebar from '../components/TopSidebar'
+import TopBar from '../components/TopBar'
+import CallToAction from '../components/CallToAction'
+import CustomServices from '../components/CustomServices'
 
 export default class Home extends React.Component {
   render() {
     return (
-    	<div>
+      <div>
+        {/*
         <LayerSlider />
-        <TopSidebar />
-    	</div>
+        <TopBar />
+        <CallToAction />
+        */}
+        <CustomServices />
+      </div>
     );
   }
 }

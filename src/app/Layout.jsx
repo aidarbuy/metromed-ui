@@ -7,9 +7,8 @@ import AppBar from './containers/AppBar';
 import AppLeftNav from './containers/AppLeftNav';
 import AppTabsIcon from './components/AppTabsIcon'
 import AppTabs from './components/AppTabs'
-// import AppTabsIconText from './components/AppTabsIconText'
 
-const styles = {
+const style = {
   container: {
     textAlign: 'center',
     paddingTop: 0,
@@ -29,11 +28,13 @@ class Layout extends React.Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={styles.container}>
+        <div style={style.container}>
+          {/*
           <AppBar />
           <AppLeftNav />
-          <AppTabsIcon />
           <AppTabs />
+          <AppTabsIcon />
+          */}
           {this.props.children}
         </div>
       </MuiThemeProvider>

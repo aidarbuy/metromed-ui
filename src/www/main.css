@@ -18,6 +18,11 @@ body {
 	margin: 0;
   font-size: 16px;
   line-height: 20px;
+  font-weight: 300;
+}
+
+h1, h2 {
+  font-weight: 300;
 }
 
 .flex-container {
@@ -30,7 +35,7 @@ body {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
 }
 .flex-item {
@@ -74,6 +79,8 @@ body {
 @media (min-width: 840px) {
   .app-tabs {
     display: block;
+    /*padding-left: 100px;*/
+    /*max-width: 1280px;*/
   }
 }
 
