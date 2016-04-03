@@ -7,16 +7,15 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 import Divider from 'material-ui/lib/divider';
-import HouseOfOperation from '../components/HouseOfOperation'
+import HoursOfOperation from '../home/HoursOfOperation'
+import { white } from 'material-ui/lib/styles/colors'
 
 const style = {
   cellA: {
     background: '#56cce1',
-    // background: 'green',
   },
   cellB: {
     background: '#2cbfd9',
-    // background: 'green',
   },
   cellC: {
     background: '#2ca6d9',
@@ -27,8 +26,7 @@ const style = {
   title: {
     fontWeight: 400,
     paddingBottom: 0,
-    color: 'white',
-    // background: 'blue',
+    color: white,
   },
   text: {
     fontSize: 19,
@@ -36,11 +34,10 @@ const style = {
     lineHeight: 1.4,
     verticalAlign: 'middle',
     display: 'inline-block',
-    color: 'white',
-    // background: 'red',
+    color: white,
   },
   link: {
-    color: 'white',
+    color: white,
     textDecoration: 'none',
   },
 }
@@ -88,7 +85,7 @@ const TopSidebar = () => (
             style={style.title} 
           />
           <CardText style={style.text}>
-            <HouseOfOperation />
+            <HoursOfOperation />
           </CardText>
         </Card>
       </div>

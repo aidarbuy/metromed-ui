@@ -5,13 +5,6 @@ import NavigationMenu from 'material-ui/lib/svg-icons/navigation/menu';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
-import AppTabs from '../components/AppTabs'
-
-const styles = {
-  menu: {
-    color: 'red',
-  }
-}
 
 const AppBarIconMenu = (props, { store }) => (
   <AppBar

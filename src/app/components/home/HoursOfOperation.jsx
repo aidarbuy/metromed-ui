@@ -5,8 +5,9 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
+import { white, cyan200 } from 'material-ui/lib/styles/colors'
 
-const style = {
+const styles = {
   table: {
     background: 'inherit',
   },
@@ -14,7 +15,7 @@ const style = {
   },
   left: {
     padding: 0,
-    color: 'white',
+    color: white,
     fontSize: 'inherit',
     fontWeight: 'inherit',
     textAlign: 'right',
@@ -26,11 +27,11 @@ const style = {
     fontWeight: 'inherit',
     width: '5%',
     textAlign: 'center',
-    color: '#ddd',
+    color: cyan200,
   },
   right: {
     padding: 0,
-    color: 'white',
+    color: white,
     fontSize: 'inherit',
     fontWeight: 'inherit',
     width: '45%',
@@ -39,22 +40,22 @@ const style = {
 }
 
 module.exports = () => (
-  <Table style={style.table}>
+  <Table style={styles.table}>
     <TableBody displayRowCheckbox={false}>
-      <TableRow style={style.row}>
-        <TableHeaderColumn style={style.left}>Sunday</TableHeaderColumn>
-        <TableHeaderColumn style={style.center}>:</TableHeaderColumn>
-        <TableHeaderColumn style={style.right}>closed</TableHeaderColumn>
+      <TableRow style={styles.row}>
+        <TableHeaderColumn style={styles.left}>Sunday</TableHeaderColumn>
+        <TableHeaderColumn style={styles.center}>:</TableHeaderColumn>
+        <TableHeaderColumn style={styles.right}>closed</TableHeaderColumn>
       </TableRow>
-      <TableRow style={style.row}>
-        <TableRowColumn style={style.left}>Monday &ndash; Friday</TableRowColumn>
-        <TableRowColumn style={style.center}>:</TableRowColumn>
-        <TableRowColumn style={style.right}>10 am to 8 pm</TableRowColumn>
+      <TableRow style={styles.row}>
+        <TableRowColumn style={styles.left}>Monday &ndash; Friday</TableRowColumn>
+        <TableRowColumn style={styles.center}>:</TableRowColumn>
+        <TableRowColumn style={styles.right}>10 am to 8 pm</TableRowColumn>
       </TableRow>
       <TableRow style={{backgroundImage: 'linear-gradient(to right, black, rgba(0, 0, 0, 0)) 1 100%'}}>
-        <TableHeaderColumn style={style.left}>Saturday</TableHeaderColumn>
-        <TableHeaderColumn style={style.center}>:</TableHeaderColumn>
-        <TableHeaderColumn style={style.right}>closed</TableHeaderColumn>
+        <TableHeaderColumn style={styles.left}>Saturday</TableHeaderColumn>
+        <TableHeaderColumn style={styles.center}>:</TableHeaderColumn>
+        <TableHeaderColumn style={styles.right}>closed</TableHeaderColumn>
       </TableRow>
     </TableBody>
   </Table>

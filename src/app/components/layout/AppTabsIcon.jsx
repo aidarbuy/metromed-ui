@@ -11,7 +11,7 @@ import PrimaryCareIcon from 'material-ui/lib/svg-icons/action/description'
 import MapIcon from 'material-ui/lib/svg-icons/action/explore'
 import VirtualIcon from 'material-ui/lib/svg-icons/action/three-d-rotation'
 
-const TabsIcons = () => (
+module.exports = () => (
   <Tabs className="app-tabs-icon">
     <Tab icon={<HomeIcon />} />
     <Tab icon={<AboutIcon />} />
@@ -22,5 +22,3 @@ const TabsIcons = () => (
     <Tab icon={<VirtualIcon />} />
   </Tabs>
 );
-
-export default TabsIcons;

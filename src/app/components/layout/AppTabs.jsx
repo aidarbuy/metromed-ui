@@ -35,7 +35,8 @@ module.exports = () => (
       <Tab label="About Us" style={styles.tab} 
         route="/about" 
       />
-      <Tab label="Services" style={styles.tab} onActive={handleActive} 
+      <Tab label="Services" style={styles.tab} 
+        onActive={handleActive} 
         route="/services" 
       />
       <Tab label="Doctors" style={styles.tab} 

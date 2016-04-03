@@ -11,10 +11,8 @@ import MapIcon from 'material-ui/lib/svg-icons/action/explore'
 import VirtualIcon from 'material-ui/lib/svg-icons/action/three-d-rotation'
 import ActionFlightTakeoff from 'material-ui/lib/svg-icons/action/flight-takeoff'
 
-const style = {
+const styles = {
   tab: {
-    background: 'red',
-    // paddingLeft: 10,
     marginRight: 'auto',
   },
   icon: {
@@ -22,17 +20,17 @@ const style = {
   }
 }
 
-const AppTabsIconText = () => (
+module.exports = () => (
   <Tabs>
-    <Tab style={style.tab}
-      icon={<HomeIcon style={style.icon} />}
+    <Tab style={styles.tab}
+      icon={<HomeIcon style={styles.icon} />}
       label="Home"
     />
-    <Tab style={style.tab}
+    <Tab style={styles.tab}
       icon={<AboutIcon />}
       label="About"
     />
-    <Tab style={style.tab}
+    <Tab style={styles.tab}
       icon={<ServicesIcon />}
       label="Services"
     />
@@ -50,5 +48,3 @@ const AppTabsIconText = () => (
     />
   </Tabs>
 );
-
-export default AppTabsIconText;
