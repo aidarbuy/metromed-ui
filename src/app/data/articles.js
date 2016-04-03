@@ -1,5 +1,5 @@
 module.exports = [{
-  header: "The Pre-Diagnoses",
+  title: "The Pre-Diagnoses",
   date: 'January 31, 2016',
   teaser: 'Used to be we had hypertension, diabetes and many other. But now we also have pre&#8209;hypertension, pre&#8209;diabetes, etc. What is a pre&#8209;diagnosis?',
   twitter: 'Used to be we had hypertension, diabetes and many other. But now we also have pre-hypertension, pre-diabetes, etc. What is a pre-diagnosis?',
@@ -24,7 +24,7 @@ module.exports = [{
 },
 
 {
-  header: "How to Save Money on Prescriptions",
+  title: "How to Save Money on Prescriptions",
   date: 'December 6, 2015',
   teaser: 'Here are some tips on how to not spend exorbitant amounts on medications unnecessarily.',
   twitter: 'Here are some tips on how to not spend exorbitant amounts on medications unnecessarily:',
@@ -45,7 +45,7 @@ module.exports = [{
 },
 
 {
-  header: "Depression and Anxiety",
+  title: "Depression and Anxiety",
   date: 'November 1, 2015',
   teaser: 'Depression and Anxiety are a couple of the <strong>most unpleasant medical conditions​</strong> to endure. Paradoxically, they are also a couple of the <strong>e​asiest to treat</strong>.',
   text: [
@@ -67,7 +67,7 @@ module.exports = [{
 },
 
 {
-  header: "High Blood Pressure",
+  title: "High Blood Pressure",
   date: 'October 6, 2015',
   teaser: 'The small blood vessels in the brain get thicker in order to handle the pressure. But this thickness reduces the size of the opening through which the blood can flow, leading to a stroke.',
   text: [
@@ -85,7 +85,7 @@ module.exports = [{
 },
 
 {
-  header: "Knee Pain",
+  title: "Knee Pain",
   date: 'September 25, 2015',
   teaser: 'If you have pain in one or both of your knees, there are many possible causes for it. Here are 2 of the more common causes of knee pain.',
   text: [
@@ -102,7 +102,7 @@ module.exports = [{
 },
 
 {
-  header: 'Is it a sinus infection or allergies?',
+  title: 'Is it a sinus infection or allergies?',
   date: 'August 30, 2015',
   teaser: 'Often patients with nasal symptoms wonder if they have a sinus infection or allergies.',
   text: [
@@ -125,7 +125,7 @@ module.exports = [{
 },
 
 {
-  header: 'Upper Respiratory Infection: An Often Misused Term',
+  title: 'Upper Respiratory Infection: An Often Misused Term',
   date: 'August 09, 2015',
   teaser: 'Patients will often be given a diagnosis of Upper Respiratory Infection, also known as a URI, when in fact what they have is a Lower Respiratory Infection.',
   text: [
@@ -144,7 +144,7 @@ module.exports = [{
 },
 
 {
-  header: 'I have a cough - is it bronchitis?',
+  title: 'I have a cough - is it bronchitis?',
   date: 'July 20, 2015',
   teaser: 'If a cough is due to an infection, then there are 2 common possibilities:  bronchitis and pneumonia.',
   text: [
@@ -165,7 +165,7 @@ module.exports = [{
 },
 
 {
-  header: 'Now is the season for berries!',
+  title: 'Now is the season for berries!',
   date: 'May 27, 2015',
   teaser: 'Berries including strawberries, raspberries, blackberries and blueberries are known for their anti-inlammatory, anti-oxidant, anti-cancer activities.',
   text: [
@@ -179,7 +179,7 @@ module.exports = [{
 },
 
 {
-  header: 'Meningitis',
+  title: 'Meningitis',
   date: 'April 26, 2015',
   teaser: 'The most feared bacteria that causes meningitis is Neisseria meningitidis. It frequentrly colonizes the human nasal passages without causing an infection.',
   text: [
@@ -199,7 +199,7 @@ module.exports = [{
 },
 
 {
-  header: 'Nutritional Education and News',
+  title: 'Nutritional Education and News',
   date: 'March 25, 2015',
   teaser: 'Food for brain: broccoli, berries, salmon, mackerel, herring, lake trout, sardines and albacore tuna, spinach, nuts, curcumin.',
   text: [

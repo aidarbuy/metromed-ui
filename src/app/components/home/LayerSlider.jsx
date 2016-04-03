@@ -237,4 +237,4 @@ const LayerSlider = React.createClass({
   }
 })
 
-export default LayerSlider
+export default LayerSlider;

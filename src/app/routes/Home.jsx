@@ -1,24 +1,42 @@
-import React from 'react'
-import LayerSlider from '../components/home/LayerSlider'
-import TopBar from '../components/home/TopBar'
-import CallToAction from '../components/home/CallToAction'
-import CustomServices from '../components/home/CustomServices'
-import Articles from '../containers/Articles'
-import ArticlesGridList from '../containers/ArticlesGridList'
+import React 
+  from 'React';
+import LayerSlider 
+  from '../components/home/LayerSlider';
+import TopBar 
+  from '../components/home/TopBar';
+import CallToAction 
+  from '../components/home/CallToAction';
+import CustomServices 
+  from '../components/home/CustomServices';
+import Articles 
+  from '../containers/ArticlesGrid';
+import Testimonials 
+  from '../containers/Testimonials';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   render() {
     return (
       <div>
         {/*
-        <LayerSlider />
-        <TopBar />
-        <CallToAction />
-        <CustomServices />
-        <Articles />
+        <TopBar/>
+        <LayerSlider/>
+        <CallToAction/>
+        <CustomServices/>
         */}
-        <ArticlesGridList />
+        <div className='flexcontainer'
+          style={{
+            marginTop:20,
+          }}>
+          <div className='flexitem'>
+            <Articles/>
+          </div>
+          <div className='flexitem'>
+            <Testimonials/>
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+export default Home;
