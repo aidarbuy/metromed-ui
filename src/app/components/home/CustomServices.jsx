@@ -15,34 +15,33 @@ import { pink500 } from 'material-ui/lib/styles/colors'
 
 const styles = {
   card: {
-    margin: 4,
-    padding: 20,
-    minHeight: 350,
+    margin:4,
+    padding:20,
+    minHeight:350,
   },
   media: {},
   icon: {
-    color: pink500,
-    hover: 'green',
-    display: 'inline-block',
-    width: 70,
-    height: 70,
+    color:pink500,
+    hover:'green',
+    display:'inline-block',
+    width:70,
+    height:70,
   },
   title: {
-    margin: 0,
-    padding: 0,
+    margin:0,
+    padding:0,
   },
   text: {
-    fontSize: 17,
-    fontWeight: 300,
-    lineHeight: 1.4,
-    margin: 0,
-    padding: 0,
+    fontSize:17,
+    fontWeight:300,
+    lineHeight:1.4,
+    margin:0,
+    padding:0,
   },
   p: {
-    marginTop: 0,
-    padding: 0,
+    marginTop:0,
+    padding:0,
   },
-  button: {},
 }
 
 module.exports = () => (

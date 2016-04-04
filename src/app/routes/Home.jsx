@@ -18,11 +18,10 @@ class Home extends React.Component {
     return (
       <div>
         {/*
-        <TopBar/>
         <LayerSlider/>
+        <TopBar/>
         <CallToAction/>
         <CustomServices/>
-        */}
         <div className='flexcontainer'
           style={{
             marginTop:20,
@@ -34,6 +33,7 @@ class Home extends React.Component {
             <Testimonials/>
           </div>
         </div>
+        */}
       </div>
     );
   }
