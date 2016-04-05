@@ -20,24 +20,19 @@ import socialData
   from '../../data/social';
 
 const social = socialData.slice(0, 3);
-const styles = {
-  icon: {
-    color:'red',
-    hover:'green',
-  }
-};
 
 module.exports = () => (
-  <Toolbar style={{marginTop:160}}>
+  <Toolbar style={{marginTop:10}}>
     <ToolbarGroup float="left" firstChild={true}>
       {social.map((item, index) => (
-        <a key={item.name}
-          href={item.href}>
+        <a key={item.name} href={item.href}>
           <IconButton tooltip={item.desc} 
             touch={true} 
             tooltipPosition="top-right"
-            style={{height:56}}>
-              <IconComponent iconName={item.icon} styles={styles.icon} />
+            style={{height:56}}
+          >
+              <IconComponent iconName={item.icon} 
+                styles={{color:'red',hover:'green'}} />
           </IconButton>
         </a>
       ))}

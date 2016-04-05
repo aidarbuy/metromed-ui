@@ -8,7 +8,7 @@ export default React.createClass({
     return (
     	<div>
 
-      	<h1>About</h1>
+      	<h1>Map</h1>
 
       </div>
     )

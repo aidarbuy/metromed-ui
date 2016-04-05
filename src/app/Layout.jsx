@@ -43,12 +43,14 @@ class Layout extends React.Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={style.container}>
           {/*
+          */}
           <AppBar />
           <AppLeftNav />
           <AppTabs />
           <AppTabsIcon />
-          {this.props.children}
-          */}
+          <div style={{marginTop:20}}>
+            {this.props.children}
+          </div>
           <AppFooter />
         </div>
       </MuiThemeProvider>

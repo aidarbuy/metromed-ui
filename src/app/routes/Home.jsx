@@ -18,6 +18,7 @@ class Home extends React.Component {
     return (
       <div>
         {/*
+        */}
         <LayerSlider/>
         <TopBar/>
         <CallToAction/>
@@ -33,7 +34,6 @@ class Home extends React.Component {
             <Testimonials/>
           </div>
         </div>
-        */}
       </div>
     );
   }
