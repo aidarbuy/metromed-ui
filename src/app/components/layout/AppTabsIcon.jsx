@@ -26,6 +26,25 @@ import NavLink
   from 'react-router';
 
 export default React.createClass({
+  getInitialState() {
+    var tabIndex;
+    if (this.context.router.isActive('/about')) {
+      tabIndex = 1
+    } else if (this.context.router.isActive('/services')) {
+      tabIndex = 2
+    } else if (this.context.router.isActive('/doctors')) {
+      tabIndex = 3
+    } else if (this.context.router.isActive('/primary')) {
+      tabIndex = 4
+    } else if (this.context.router.isActive('/map')) {
+      tabIndex = 5
+    } else if (this.context.router.isActive('/virtual')) {
+      tabIndex = 6
+    } else {
+      tabIndex = 0
+    }
+    return { initIndex:tabIndex };
+  },
 
   // ask for `router` from context
   contextTypes: {
@@ -34,13 +53,16 @@ export default React.createClass({
 
   handleActive(event) {
     const route = event.props.route
-    console.info("route property:", route)
+    // console.info("route property:", route)
     this.context.router.push(route)
   },
 
   render() {
+    const index = this.state.initIndex
     return (
-      <Tabs>
+      <Tabs className="app-tabs-icon"
+        initialSelectedIndex={index}
+      >
         <Tab 
           icon={<HomeIcon />} 
           route="/"
