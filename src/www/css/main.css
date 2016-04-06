@@ -28,3 +28,7 @@ a:hover {
 strong {
   font-weight: 400;
 }
+
+.active {
+  color:green;
+}
