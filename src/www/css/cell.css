@@ -1,0 +1,13 @@
+.cell {
+  height: 275px;
+  line-height: 200px;
+  opacity: 0.9;
+  transition: opacity 0.4s ease-out 0s;
+  -webkit-transition: opacity 0.4s ease-out 0s;
+  -moz-transition: opacity 0.4s ease-out 0s;
+  -o-transition: opacity 0.4s ease-out 0s;
+  -ms-transition: opacity 0.4s ease-out 0s;
+}
+.cell:hover {
+  opacity: 1;
+}

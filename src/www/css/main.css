@@ -1,5 +1,7 @@
 @import "icons.css";
 @import "flex.css";
+@import "app-tabs.css";
+@import "cell.css";
 
 html {
   font-family: 'Roboto', sans-serif;

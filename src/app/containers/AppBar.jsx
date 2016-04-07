@@ -1,20 +1,30 @@
-import React from 'react';
-import AppBar from 'material-ui/lib/app-bar';
-import IconButton from 'material-ui/lib/icon-button';
-import NavigationMenu from 'material-ui/lib/svg-icons/navigation/menu';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import MenuItem from 'material-ui/lib/menus/menu-item';
+import React from 
+  'react'
+import AppBar from 
+  'material-ui/lib/app-bar'
+import IconButton from 
+  'material-ui/lib/icon-button'
+import NavigationMenu from 
+  'material-ui/lib/svg-icons/navigation/menu'
+import IconMenu from 
+  'material-ui/lib/menus/icon-menu'
+import MoreVertIcon from 
+  'material-ui/lib/svg-icons/navigation/more-vert'
+import MenuItem from 
+  'material-ui/lib/menus/menu-item'
 
 const AppBarIconMenu = (props, { store }) => (
   <AppBar
     iconElementLeft={
       <IconButton onTouchTap={() => 
-        store.dispatch({ type: 'TOGGLE_LEFTNAV' })}>
+        store.dispatch({ 
+          type:'TOGGLE_LEFTNAV'
+        })
+      }>
         <NavigationMenu/>
       </IconButton>
     }
-    title="Urgent Care web application"
+    title="Metromed Urgent Care"
     iconElementRight={
       <IconMenu 
         iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}

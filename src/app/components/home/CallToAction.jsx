@@ -1,12 +1,16 @@
-import React from 'react';
-import Paper from 'material-ui/lib/paper';
-import CallToActionButton from '../home/CallToActionButton'
-import {pink500} from 'material-ui/lib/styles/colors'
+import React from 
+  'react';
+import Paper from 
+  'material-ui/lib/paper';
+import {pink500} from 
+  'material-ui/lib/styles/colors'
+import CallToActionButton from 
+  '../home/CallToActionButton'
 
 const styles = {
   paper: {
     marginTop:10,
-    height:200,
+    minHeight:200,
     background:pink500,
   },
   content: {
@@ -14,7 +18,7 @@ const styles = {
     lineHeight:1.4,
     // verticalAlign: 'middle',
     // display: 'inline-block',
-    padding:10,
+    padding:20,
   }
 };
 

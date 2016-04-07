@@ -1,17 +1,31 @@
-import React from 'react';
-import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardMedia from 'material-ui/lib/card/card-media';
-import CardTitle from 'material-ui/lib/card/card-title';
-import RaisedButton from 'material-ui/lib/raised-button';
-import CardText from 'material-ui/lib/card/card-text';
-import HoursOfOperation from '../home/HoursOfOperation'
-import IconHeart from '../icons/IconHeart'
-import IconAidKit from '../icons/IconAidKit'
-import IconImages from '../icons/IconImages'
-import IconHistory from '../icons/IconHistory'
-import { pink500 } from 'material-ui/lib/styles/colors'
+import React from 
+  'react'
+import Card from 
+  'material-ui/lib/card/card'
+import CardActions from 
+  'material-ui/lib/card/card-actions'
+import CardHeader from 
+  'material-ui/lib/card/card-header'
+import CardMedia from 
+  'material-ui/lib/card/card-media'
+import CardTitle from 
+  'material-ui/lib/card/card-title'
+import RaisedButton from 
+  'material-ui/lib/raised-button'
+import CardText from 
+  'material-ui/lib/card/card-text'
+import HoursOfOperation from 
+  '../home/HoursOfOperation'
+import IconHeart from 
+  '../icons/IconHeart'
+import IconAidKit from 
+  '../icons/IconAidKit'
+import IconImages from 
+  '../icons/IconImages'
+import IconHistory from 
+  '../icons/IconHistory'
+import { cyan500 } from 
+  'material-ui/lib/styles/colors'
 
 const styles = {
   card: {
@@ -21,7 +35,7 @@ const styles = {
   },
   media: {},
   icon: {
-    color:pink500,
+    color:cyan500,
     hover:'green',
     display:'inline-block',
     width:70,
@@ -45,7 +59,10 @@ const styles = {
 }
 
 module.exports = () => (
-  <div className="flex-container" style={{marginTop:20}}>
+  <div 
+    className="flex-container" 
+    style={{marginTop:20}}
+  >
     <div className="flex-item">
       <Card style={styles.card}>
         <CardMedia style={styles.media}>
@@ -56,12 +73,18 @@ module.exports = () => (
         />
         <CardText style={styles.text}>
           <p style={styles.p}>
-            Our clinic is equipped with <strong>EKG</strong>, 
-            <strong>X-ray</strong> and <strong>Laboratory</strong>.
+            Our clinic is equipped with{' '}
+            <strong>EKG</strong>,{' '}
+            <strong>X-ray</strong> and{' '}
+            <strong>Laboratory</strong>.
           </p>
         </CardText>
         <CardActions>
-          <RaisedButton label="About our clinic" />
+          <RaisedButton 
+            label="About our clinic" 
+            linkButton={true}
+            href="/about"
+          />
         </CardActions>
       </Card>
     </div>
@@ -76,15 +99,22 @@ module.exports = () => (
         />
         <CardText style={styles.text}>
           <p style={styles.p}>
-            We administer <strong>breathing treatments</strong>, 
-            repair <strong>lacerations</strong>, 
-            dispense <strong>medications</strong> intravenously, 
-            remove <strong>foreign objects</strong> from the eyes, 
-            and more.
+            We administer <strong>breathing{' '}
+            treatments</strong>, repair{' '}
+            <strong>lacerations</strong>,{' '}
+            dispense <strong>medications{' '}
+            </strong> intravenously,{' '}
+            remove <strong>foreign{' '}
+            objects</strong> from the{' '}
+            eyes, and more.
           </p>
         </CardText>
         <CardActions>
-          <RaisedButton label="Check our services" />
+          <RaisedButton 
+            label="Check our services"
+            linkButton={true}
+            href="/services"
+          />
         </CardActions>
       </Card>
     </div>
@@ -94,14 +124,19 @@ module.exports = () => (
         <CardMedia style={styles.media}>
           <IconImages styles={styles.icon} />
         </CardMedia>
-        <CardTitle title="Photo Gallery" 
+        <CardTitle 
+          title="Photo Gallery" 
           titleStyle={styles.title} 
         />
         <CardText style={styles.text}>
-          <p style={styles.p}>Check out our pictures!</p>
+          <p style={styles.p}>
+            Check out our pictures!
+          </p>
         </CardText>
         <CardActions>
-          <RaisedButton label="View photo gallery" />
+          <RaisedButton 
+            label="View photo gallery" 
+          />
         </CardActions>
       </Card>
     </div>
@@ -111,17 +146,23 @@ module.exports = () => (
         <CardMedia style={styles.media}>
           <IconHistory styles={styles.icon} />
         </CardMedia>
-        <CardTitle title="Anti-aging Institute" 
+        <CardTitle 
+          title="Anti-aging Institute" 
           titleStyle={styles.title} 
         />
         <CardText style={styles.text}>
           <p style={styles.p}>
-            We organize regular meetings with clients 
-            who want to be healthy, youthful and energetic.
+            We organize regular meetings{' '}
+            with clients who want to be{' '}
+            healthy, youthful and energetic.
           </p>
         </CardText>
         <CardActions>
-          <RaisedButton label="Visit cognitivemuse.com" />
+          <RaisedButton 
+            label="Visit cognitivemuse.com" 
+            linkButton={true}
+            href="http://www.cognitivemuse.com"
+          />
         </CardActions>
       </Card>
     </div>
