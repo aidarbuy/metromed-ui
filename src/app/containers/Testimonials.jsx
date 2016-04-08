@@ -34,6 +34,8 @@ import {
 
 import testimonials from 
   '../data/testimonials'
+import ListItemDivider from 
+  '../components/ui/ListItemDivider';
 
 const path = "images/testimonials/";
 
@@ -51,7 +53,7 @@ module.exports = () => (
     </Toolbar>
 
     <List className="list">
-      {testimonials.map((item, index) => (
+      {testimonials.map((item, index, arr) => (
         <div key={index}>
           <ListItem className="list-item"
 
@@ -88,8 +90,11 @@ module.exports = () => (
             secondaryTextLines={2}
 
             style={{border:'0px solid grey'}}
-           />
-          <Divider inset={true} />
+          />
+          <ListItemDivider 
+            index={index} 
+            length={arr.length}
+          />
         </div>
       ))}
     </List>

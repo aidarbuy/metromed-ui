@@ -34,3 +34,7 @@ strong {
 .active {
   color:green;
 }
+
+.divider:last-child {
+  display: none;
+}

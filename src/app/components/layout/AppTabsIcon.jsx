@@ -13,13 +13,13 @@ import HomeIcon
 import AboutIcon 
 	from 'material-ui/lib/svg-icons/action/info'
 import ServicesIcon 
-	from 'material-ui/lib/svg-icons/places/spa'
+	from 'material-ui/lib/svg-icons/maps/local-hospital'
 import DoctorsIcon 
 	from 'material-ui/lib/svg-icons/action/face'
 import PrimaryCareIcon 
 	from 'material-ui/lib/svg-icons/action/description'
 import MapIcon 
-	from 'material-ui/lib/svg-icons/action/explore'
+	from 'material-ui/lib/svg-icons/maps/place'
 import VirtualIcon 
 	from 'material-ui/lib/svg-icons/action/three-d-rotation'
 import NavLink

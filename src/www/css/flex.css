@@ -48,6 +48,12 @@
   Flex container half 
 **********************/
 
+.flex-container-half {
+  /*background: #00f;*/
+  padding:20px;
+  box-sizing: border-box;
+}
+
 /* 1920 < xl */
 @media (min-width: 1920px) {
   .flex-container-half {
