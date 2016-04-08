@@ -24,7 +24,10 @@ import IconImages from
   '../icons/IconImages'
 import IconHistory from 
   '../icons/IconHistory'
-import { cyan500 } from 
+import { 
+  cyan500,
+  pink500,
+} from 
   'material-ui/lib/styles/colors'
 
 const styles = {
@@ -36,7 +39,7 @@ const styles = {
   media: {},
   icon: {
     color:cyan500,
-    hover:'green',
+    hover:pink500,
     display:'inline-block',
     width:70,
     height:70,
