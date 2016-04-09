@@ -25,14 +25,23 @@ const styles = {
 module.exports = () => (
   <Paper style={styles.paper} zDepth={2}>
     <div style={styles.content}>
-      <h1 style={{marginBottom:10}}>
+      <h4 style={{
+        marginBottom:10,
+        color:'white'
+      }}>
         If You Feel Sick You Should Not Wait!
-      </h1>
+      </h4>
+
       <CallToActionButton />
-      <h2 style={{marginTop:10}}>
-        We are passionate about caring for your health 
-        and providing exceptional urgent care!
-      </h2>
+
+      <h5 style={{
+        marginTop:10,
+        color:'white'
+      }}>
+        We are passionate about caring 
+        for your health and providing 
+        exceptional urgent care
+      </h5>
     </div>
   </Paper>
 );

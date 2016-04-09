@@ -1,14 +1,19 @@
 
-// About.jsx
+// src/app/routes/Map.jsx
 
-import React from 'react';
+import React from 
+  'react'
+import SimpleMap from 
+  '../components/SimpleMap'
 
 export default React.createClass({
   render() {
     return (
-    	<div>
+      <div>
 
-      	<h1>Map</h1>
+        <h3>Our location</h3>
+
+        <SimpleMap/>
 
       </div>
     )

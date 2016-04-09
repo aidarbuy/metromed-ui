@@ -1,0 +1,27 @@
+/* www/css/colors.css */
+body {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+h1, h2, h3, h4, caption {
+  color: rgba(0, 0, 0, 0.54);
+}
+h5, h6, .subhead, .menu, button {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+a {
+  color: #ff4081;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+strong {
+
+}
+
+.active {
+  color: #e91e63;
+}
