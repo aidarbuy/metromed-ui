@@ -1,5 +1,4 @@
-
-// app/AppRoutes.jsx
+// src/app/AppRoutes.jsx
 
 import React from 'react'
 
@@ -17,7 +16,8 @@ import Services from './routes/Services'
 import Doctors 	from './routes/Doctors'
 import Primary 	from './routes/Primary'
 import Map 			from './routes/Map'
-import Virtual 	from './routes/Virtual'
+import Virtual  from './routes/Virtual'
+import Telemed 	from './routes/Telemed'
 
 /**
  * Routes: https://github.com/rackt/react-router/blob/master/docs/api/components/Route.md
@@ -25,10 +25,11 @@ import Virtual 	from './routes/Virtual'
  * Routes are used to declare your view hierarchy.
  *
  * Say you go to http://material-ui.com/#/components/paper
- * The react router will search for a route named 'paper' and will recursively render its
- * handler and its parent handler like so: Paper > Components > Master
+ * The react router will search for a route named 'paper' 
+ * and will recursively render its handler and its parent 
+ * handler like so: Paper > Components > Master
  */
-const AppRoutes = (
+export default (
   <Route path="/" component={Layout}>
     <IndexRoute component={Home}/>
     <Route path="about" 
@@ -47,9 +48,10 @@ const AppRoutes = (
     	component={Map}
     />
     <Route path="virtual" 
-    	component={Virtual}
+      component={Virtual}
+    />
+    <Route path="telemed" 
+    	component={Telemed}
     />
   </Route>
-);
-
-export default AppRoutes;
+)

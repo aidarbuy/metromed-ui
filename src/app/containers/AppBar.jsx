@@ -12,8 +12,10 @@ import MoreVertIcon from
   'material-ui/lib/svg-icons/navigation/more-vert'
 import MenuItem from 
   'material-ui/lib/menus/menu-item'
+import { Link } from 
+  'react-router'
 
-const AppBarIconMenu = (props, { store }) => (
+export default () => (
   <AppBar
     iconElementLeft={
       <IconButton onTouchTap={() => 
@@ -27,20 +29,19 @@ const AppBarIconMenu = (props, { store }) => (
     title="Metromed Urgent Care"
     iconElementRight={
       <IconMenu 
-        iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
-        <MenuItem primaryText="Refresh" />
+        iconButtonElement={
+          <IconButton><MoreVertIcon /></IconButton>
+        }
+        targetOrigin={{horizontal:'right', vertical:'top'}}
+        anchorOrigin={{horizontal:'right', vertical:'top'}}
+      >
+        <Link to="telemed">
+          <MenuItem primaryText="Telemed" />
+        </Link>
         <MenuItem primaryText="Help" />
         <MenuItem primaryText="Sign out" />
       </IconMenu>
     }
   >
   </AppBar>
-);
-
-AppBarIconMenu.contextTypes = {
-  store: React.PropTypes.object
-}
-
-export default AppBarIconMenu;
+)

@@ -1,13 +1,13 @@
 import React 
-	from 'react';
+	from 'react'
 import Tabs 
-	from 'material-ui/lib/tabs/tabs';
+	from 'material-ui/lib/tabs/tabs'
 import Tab
-	from 'material-ui/lib/tabs/tab';
+	from 'material-ui/lib/tabs/tab'
 import FontIcon 
-	from 'material-ui/lib/font-icon';
+	from 'material-ui/lib/font-icon'
 import ActionFlightTakeoff 
-	from 'material-ui/lib/svg-icons/action/flight-takeoff';
+	from 'material-ui/lib/svg-icons/action/flight-takeoff'
 import HomeIcon 
 	from 'material-ui/lib/svg-icons/action/home'
 import AboutIcon 
@@ -23,7 +23,7 @@ import MapIcon
 import VirtualIcon 
 	from 'material-ui/lib/svg-icons/action/three-d-rotation'
 import NavLink
-  from 'react-router';
+  from 'react-router'
 
 export default React.createClass({
   getInitialState() {
@@ -40,6 +40,8 @@ export default React.createClass({
       tabIndex = 5
     } else if (this.context.router.isActive('/virtual')) {
       tabIndex = 6
+    } else if (this.context.router.isActive('/telemed')) {
+      tabIndex = -1
     } else {
       tabIndex = 0
     }
@@ -52,9 +54,7 @@ export default React.createClass({
   },
 
   handleActive(event) {
-    const route = event.props.route
-    // console.info("route property:", route)
-    this.context.router.push(route)
+    this.context.router.push(event.props.route)
   },
 
   render() {
@@ -63,39 +63,32 @@ export default React.createClass({
       <Tabs className="app-tabs-icon"
         initialSelectedIndex={index}
       >
-        <Tab 
-          icon={<HomeIcon />} 
-          route="/"
+        <Tab route="/"
+          icon={<HomeIcon color='red'/>} 
           onActive={this.handleActive}
         />
-        <Tab 
+        <Tab route="/about"
           icon={<AboutIcon />} 
-          route="/about"
           onActive={this.handleActive}
         />
-        <Tab 
+        <Tab route="/services"
           icon={<ServicesIcon />} 
-          route="/services"
           onActive={this.handleActive}
         />
-        <Tab 
+        <Tab route="/doctors"
           icon={<DoctorsIcon />} 
-          route="/doctors"
           onActive={this.handleActive}
         />
-        <Tab 
+        <Tab route="/primary"
           icon={<PrimaryCareIcon />} 
-          route="/primary"
           onActive={this.handleActive}
         />
-        <Tab 
+        <Tab route="/map"
           icon={<MapIcon />} 
-          route="/map"
           onActive={this.handleActive}
         />
-        <Tab 
+        <Tab route="/virtual"
           icon={<VirtualIcon />} 
-          route="/virtual"
           onActive={this.handleActive}
         />
       </Tabs>
