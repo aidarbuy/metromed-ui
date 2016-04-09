@@ -1,10 +1,10 @@
-
 // src/app/routes/Map.jsx
 
 import React from 
   'react'
-import SimpleMap from 
-  '../components/SimpleMap'
+
+import GoogleMaps from 
+  '../components/GoogleMaps'
 
 export default React.createClass({
   render() {
@@ -13,7 +13,7 @@ export default React.createClass({
 
         <h3>Our location</h3>
 
-        <SimpleMap/>
+        <GoogleMaps/>
 
       </div>
     )

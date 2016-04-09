@@ -1,8 +1,7 @@
-/* 
-  src/app/components/SimpleMap.jsx 
-*/
+// src/app/components/SimpleMap.jsx 
 
 import React from 'react'
+
 import GoogleMapsLoader from 'google-maps'
 
 GoogleMapsLoader.KEY = 'AIzaSyCevAQFOgvKGgw1Rz2xACa7zvsk7hs4W-Q'
@@ -14,6 +13,9 @@ const options = {
   },
   zoom: 11
 }
+
+const scrHeight = window.screen.height
+const height = scrHeight - (scrHeight / 3) - 114
       
 export default React.createClass({
   componentDidMount() {
@@ -29,7 +31,7 @@ export default React.createClass({
   },
   render() {
     return (
-      <section style={{width:'100%',height:400}}>
+      <section style={{width:'100%',height}}>
         <div ref="map" style={{height: "100%"}}></div>
       </section>
     );
