@@ -40,9 +40,9 @@ const styles = {
 
 module.exports = () => (
   <Card>
-    <CardTitle 
-      title="Why MetroMed Urgent Care:" 
-    />
+    <CardTitle title={<h3>
+      Why MetroMed Urgent Care:
+    </h3>}/>
     <CardMedia overlay={
       <CardTitle 
         title="Our X-Ray imaging system" 

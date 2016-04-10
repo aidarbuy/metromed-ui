@@ -21,7 +21,7 @@ h1 {
   font-size: 112px;
   font-weight: 300;
   line-height:128px;
-  letter-spacing: -5px;
+  /*letter-spacing: -5px;*/
 
 }
 /* Display 3 */
@@ -29,7 +29,7 @@ h2 {
   font-size: 56px;
   font-weight: 400;
   line-height: 64px;
-  letter-spacing: -2.5px;
+  /*letter-spacing: -2.5px;*/
 }
 /* Display 2 */
 h3 {
@@ -54,13 +54,13 @@ h6 {
   font-size: 20px;
   font-weight: 600;
   line-height: 44px;
-  letter-spacing: 2.5px;
+  /*letter-spacing: 2.5px;*/
 }
 .subhead {
   font-size: 16px;
   font-weight: 400;
   line-height: 32px;
-  letter-spacing: 5px;
+  /*letter-spacing: 5px;*/
 }
 .menu {
   font-size: 14px;
@@ -72,13 +72,13 @@ button {
   text-transform: uppercase;
   font-weight: 600;
   line-height: 32px;
-  letter-spacing: 5px;
+  /*letter-spacing: 1px;*/
 }
 caption {
   font-size: 12px;
   font-weight: 400;
   line-height: 32px;
-  letter-spacing: 10px;
+  /*letter-spacing: 10px;*/
 }
 strong {
   font-weight: 400;

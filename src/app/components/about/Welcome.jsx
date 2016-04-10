@@ -21,16 +21,12 @@ import Conditions from
 module.exports = () => (
   <Card>
     <CardTitle 
-      title={
-        <h2 className="secondary">
-          Welcome to MetroMed!
-        </h2>
-      }
-      subtitle={
-        <h4>
-          Urgent Care of Leesburg
-        </h4>
-      }
+      title={<h3 className="secondary">
+        Welcome to MetroMed!
+      </h3>}
+      subtitle={<h4>
+        Urgent Care of Leesburg
+      </h4>}
     />
 
     <CardMedia overlay={
@@ -43,11 +39,11 @@ module.exports = () => (
     </CardMedia>
 
     <CardText style={{textAlign:'left'}}>
-      <h2>
+      <h4>
         At MetroMed Urgent Care we treat 
         patients of all ages, with a 
         variety of conditions:
-      </h2>
+      </h4>
 
       <Conditions/>
 
