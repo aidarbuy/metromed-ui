@@ -1,108 +1,318 @@
-// src/app/components/TeleMed.jsx
+/**
+ * src/app/components/TeleMed.jsx
+ */
 
-import React from 'react'
+import React from 'react';
 
 import Card from 
-  'material-ui/lib/card/card'
+  'material-ui/lib/card/card';
 import CardActions from 
-  'material-ui/lib/card/card-actions'
+  'material-ui/lib/card/card-actions';
 import CardHeader from 
-  'material-ui/lib/card/card-header'
+  'material-ui/lib/card/card-header';
 import CardMedia from 
-  'material-ui/lib/card/card-media'
+  'material-ui/lib/card/card-media';
 import CardTitle from 
-  'material-ui/lib/card/card-title'
-import FlatButton from 
-  'material-ui/lib/flat-button'
+  'material-ui/lib/card/card-title';
+import RaisedButton from 
+  'material-ui/lib/raised-button';
 import CardText from 
-  'material-ui/lib/card/card-text'
+  'material-ui/lib/card/card-text';
+import * as Colors from 
+  'material-ui/lib/styles/Colors';
 
 /**
  * Put variables in global scope to make 
  * them available to the browser console.
  */
 
+// Stream constraints
 var constraints = window.constraints = {
   audio: false,
   video: true
 };
+// Global vars
+var startTime;
+var localStream;
+var pc1;
+var pc2;
+var offerOptions = {
+  offerToReceiveAudio: 1,
+  offerToReceiveVideo: 1
+};
+// Global vars for buttons
+var startButton;
+var callButton;
+var hangupButton;
+var stopButton;
+// Global vars for streams
+var localVideo;
+var remoteVideo;
+var videoTracks;
+var audioTracks;
 
-// var errorElement = document.querySelector('#errorMsg');
+// GET STREAM
+function start() {
+  trace('Requesting local stream')
+  this.setState({startButtonDisabled:true})
+  navigator.mediaDevices.getUserMedia({
+    audio: false,
+    video: true
+  })
+  .then((stream) => {
+    trace('Received local stream')
+    localVideo.srcObject = stream
+    localStream = stream
+    this.setState({callButtonDisabled:false})
+    this.setState({stopButtonDisabled:false})
+  })
+  .catch(function(e) {
+    alert('getUserMedia() error: ' + e.name)
+  })
+}
+
+// MAKE A VIDEO CALL
+function call() {
+  this.setState({callButtonDisabled:true})
+  this.setState({hangupButtonDisabled:false})
+  trace('Starting call');
+  startTime = window.performance.now();
+  videoTracks = localStream.getVideoTracks();
+  audioTracks = localStream.getAudioTracks();
+  if (videoTracks.length > 0) {
+    trace('Using video device: ' + videoTracks[0].label);
+  }
+  if (audioTracks.length > 0) {
+    trace('Using audio device: ' + audioTracks[0].label);
+  }
+  var servers = null;
+  pc1 = new RTCPeerConnection(servers);
+  trace('Created local peer connection object pc1');
+  pc1.onicecandidate = function(e) {
+    onIceCandidate(pc1, e);
+  };
+  pc2 = new RTCPeerConnection(servers);
+  trace('Created remote peer connection object pc2');
+  pc2.onicecandidate = function(e) {
+    onIceCandidate(pc2, e);
+  };
+  pc1.oniceconnectionstatechange = function(e) {
+    onIceStateChange(pc1, e);
+  };
+  pc2.oniceconnectionstatechange = function(e) {
+    onIceStateChange(pc2, e);
+  };
+  pc2.onaddstream = gotRemoteStream;
+
+  pc1.addStream(localStream);
+  trace('Added local stream to pc1');
+
+  trace('pc1 createOffer start');
+  pc1.createOffer(onCreateOfferSuccess, 
+    onCreateSessionDescriptionError, offerOptions);
+}
+
+function onCreateOfferSuccess(desc) {
+  trace('Offer from pc1\n' + desc.sdp);
+  trace('pc1 setLocalDescription start');
+  pc1.setLocalDescription(desc, function() {
+    onSetLocalSuccess(pc1);
+  }, onSetSessionDescriptionError);
+  trace('pc2 setRemoteDescription start');
+  pc2.setRemoteDescription(desc, function() {
+    onSetRemoteSuccess(pc2);
+  }, onSetSessionDescriptionError);
+  trace('pc2 createAnswer start');
+  // Since the 'remote' side has no media stream we need
+  // to pass in the right constraints in order for it to
+  // accept the incoming offer of audio and video.
+  pc2.createAnswer(onCreateAnswerSuccess, onCreateSessionDescriptionError);
+}
+
+function onCreateSessionDescriptionError(error) {
+  trace('Failed to create session description: ' + error.toString());
+}
+
+function onSetLocalSuccess(pc) {
+  trace(getName(pc) + ' setLocalDescription complete');
+}
+
+function onSetRemoteSuccess(pc) {
+  trace(getName(pc) + ' setRemoteDescription complete');
+}
+
+function onSetSessionDescriptionError(error) {
+  trace('Failed to set session description: ' + error.toString());
+}
+
+function gotRemoteStream(e) {
+  remoteVideo.srcObject = e.stream;
+  trace('pc2 received remote stream');
+}
+
+function onCreateAnswerSuccess(desc) {
+  trace('Answer from pc2:\n' + desc.sdp);
+  trace('pc2 setLocalDescription start');
+  pc2.setLocalDescription(desc, function() {
+    onSetLocalSuccess(pc2);
+  }, onSetSessionDescriptionError);
+  trace('pc1 setRemoteDescription start');
+  pc1.setRemoteDescription(desc, function() {
+    onSetRemoteSuccess(pc1);
+  }, onSetSessionDescriptionError);
+}
+
+function onIceCandidate(pc, event) {
+  if (event.candidate) {
+    getOtherPc(pc).addIceCandidate(new RTCIceCandidate(event.candidate),
+        function() {
+          onAddIceCandidateSuccess(pc);
+        },
+        function(err) {
+          onAddIceCandidateError(pc, err);
+        }
+    );
+    trace(getName(pc) + ' ICE candidate: \n' + event.candidate.candidate);
+  }
+}
+
+function onAddIceCandidateSuccess(pc) {
+  trace(getName(pc) + ' addIceCandidate success');
+}
+
+function onAddIceCandidateError(pc, error) {
+  trace(getName(pc) + ' failed to add ICE Candidate: ' + error.toString());
+}
+
+function onIceStateChange(pc, event) {
+  if (pc) {
+    trace(getName(pc) + ' ICE state: ' + pc.iceConnectionState);
+    console.log('ICE state change event: ', event);
+  }
+}
+
+function getName(pc) {
+  return (pc === pc1) ? 'pc1' : 'pc2'
+}
+
+function getOtherPc(pc) {
+  return (pc === pc1) ? pc2 : pc1
+}
+
+function hangup() {
+  trace('Ending call');
+  pc1.close();
+  pc2.close();
+  pc1 = null;
+  pc2 = null;
+  hangupButton.disabled = true;
+  callButton.disabled = false;
+}
+
+function stop() {
+  trace('Stopping everything')
+  localVideo.srcObject = null;
+  remoteVideo.srcObject = null;
+  this.setState({startButtonDisabled:false})
+  this.setState({callButtonDisabled:true})
+  this.setState({hangupButtonDisabled:true})
+  this.setState({stopButtonDisabled:true})
+  if (localStream.stop) {
+    localStream.stop() // idk what this does, left here for legacy reasons..?
+  } else {
+    localStream.getTracks().forEach(function(track) { track.stop() })
+  }
+}
+
+const styles = {
+  video : {
+    height:225,
+    margin:'0 0 20px 0',
+    verticalAlign:'top',
+    width:'calc(50% - 12px)',
+  }
+}
 
 export default React.createClass({
+  getInitialState() {
+    return {
+      startButtonDisabled:  false,
+      callButtonDisabled:   true,
+      hangupButtonDisabled: true,
+      stopButtonDisabled:   true,
+    };
+  },
   componentDidMount() {
-    // this.getUserMedia()
-  },
-
-  getUserMedia() {
-    navigator.mediaDevices.getUserMedia(constraints)
-    .then((stream) => {
-      var videoTracks = stream.getVideoTracks()
-      console.info('Got stream:', constraints)
-      console.info('Device:', videoTracks[0].label)
-      stream.onended = () => {
-        console.log('Stream ended')
+    startButton  = this.refs.startButton;
+    callButton   = this.refs.callButton;
+    hangupButton = this.refs.hangupButton;
+    stopButton   = this.refs.stopButton;
+    localVideo   = this.refs.localVideo;
+    remoteVideo  = this.refs.remoteVideo;
+    // localVideo.srcObject = 'https://www.youtube.com/watch?v=u1-MFo7_n-Y';
+    localVideo.addEventListener('loadedmetadata', () => {
+      trace('Local video videoWidth: ' + localVideo.videoWidth +
+        'px, videoHeight: ' + localVideo.videoHeight + 'px')
+    });
+    remoteVideo.addEventListener('loadedmetadata', () => {
+      trace('Remote video videoWidth: ' + remoteVideo.videoWidth +
+        'px,  videoHeight: ' + remoteVideo.videoHeight + 'px')
+    });
+    remoteVideo.onresize = () => {
+      trace('Remote video size changed to ' +
+        remoteVideo.videoWidth + 'x' + 
+        remoteVideo.videoHeight)
+      // We'll use the first onsize callback as an 
+      // indication that video has started playing out.
+      if (startTime) {
+        var elapsedTime = window.performance.now() - startTime
+        trace('Setup time: '+ elapsedTime.toFixed(3) +'ms')
+        startTime = null
       }
-      // make variable available to browser console
-      window.stream = stream;
-      var video = this.refs.video
-      video.srcObject = stream
-    })
-    .catch(this.errorHandler)
+    };
   },
-
-  errorHandler(error) {
-    if (error.name === 'ConstraintNotSatisfiedError') {
-      errorMsg(
-        'The resolution ' + 
-        constraints.video.width.exact + 
-        'x' +
-        constraints.video.width.exact + 
-        ' px is not supported by your device.'
-      );
-    } else if (error.name === 'PermissionDeniedError') {
-      errorMsg(
-        'Permissions have not been granted ' + 
-        'to use your camera and microphone, ' + 
-        'you need to allow the page access ' + 
-        'to your devices in order for the demo to work.'
-      );
-    }
-    errorMsg('getUserMedia error: ' + error.name, error);
-  },
-
-  errorMsg(msg, error) {
-    video.innerHTML += '<p>' + msg + '</p>'
-    if (typeof error !== 'undefined') {
-      console.error(error)
-    }
-  },
-
   render() {
     return (
       <Card> 
-        <CardHeader
-          title="URL Avatar"
-          subtitle="Subtitle"
-          avatar="http://lorempixel.com/100/100/nature/"
-        />
-        <CardMedia
-          overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-        >
-          <video ref="video" autoPlay></video>
-        </CardMedia>
-        <CardTitle title="Card title" subtitle="Card subtitle" />
-        <CardText>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-        </CardText>
         <CardActions>
-          <FlatButton label="Action1" />
-          <FlatButton label="Action2" />
+          <RaisedButton label="Start" 
+            ref="startButton"
+            onMouseDown={start.bind(this)}
+            primary={true} 
+            disabled={this.state.startButtonDisabled}
+          />
+          <RaisedButton label="Call" 
+            ref="callButton"
+            onMouseDown={call.bind(this)}
+            primary={true} 
+            disabled={this.state.callButtonDisabled}
+          />
+          <RaisedButton label="Hang Up" 
+            ref="hangupButton"
+            onMouseDown={hangup.bind(this)}
+            secondary={true} 
+            disabled={this.state.hangupButtonDisabled}
+          />
+          <RaisedButton label="Stop" 
+            ref="stopButton"
+            onMouseDown={stop.bind(this)}
+            secondary={true} 
+            disabled={this.state.stopButtonDisabled}
+          />
         </CardActions>
+        <CardMedia>
+          <div className="flex-container">
+            <video ref="localVideo"  autoPlay
+              className="flex-item"
+              style={styles.video}
+            />
+            <video ref="remoteVideo" autoPlay
+              className="flex-item"
+              style={styles.video}
+            />
+          </div>
+        </CardMedia>
       </Card>
     )
   }
-})
+});
