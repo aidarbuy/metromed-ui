@@ -1,3 +1,4 @@
+// src/app/components/layout/AppTabsIcon.jsx
 import React 
 	from 'react'
 import Tabs 

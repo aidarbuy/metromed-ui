@@ -52,6 +52,7 @@ var videoTracks;
 var audioTracks;
 var styles;
 
+
 // GET STREAM
 function start() {
   trace('Requesting local stream')
@@ -76,11 +77,13 @@ function start() {
 
 // MAKE A VIDEO CALL
 function call() {
+  console.debug('MAKE A VIDEO CALL')
+
   // disable call and hangup buttons
   this.setState({callButtonDisabled:true})
   this.setState({hangupButtonDisabled:false})
 
-  trace('Starting call');
+  trace('Starting call')
   startTime = window.performance.now();
 
   // print video and audio tracks
@@ -100,47 +103,48 @@ function call() {
       {url: "stun:stun.1.google.com:19302"},
     ]
   };
+
   pc1 = new RTCPeerConnection(config);
   trace('Created local peer connection object pc1');
-  pc1.onicecandidate = function(e) {
-    onIceCandidate(pc1, e);
-  };
+  pc1.onicecandidate = (e) => onIceCandidate(pc1, e);
+
   pc2 = new RTCPeerConnection(config);
   trace('Created remote peer connection object pc2');
-  pc2.onicecandidate = function(e) {
-    onIceCandidate(pc2, e);
-  };
-  pc1.oniceconnectionstatechange = function(e) {
-    onIceStateChange(pc1, e);
-  };
-  pc2.oniceconnectionstatechange = function(e) {
-    onIceStateChange(pc2, e);
-  };
+  pc2.onicecandidate = (e)=> onIceCandidate(pc2, e);
+
+  pc1.oniceconnectionstatechange = (e)=> onIceStateChange(pc1, e);
+  pc2.oniceconnectionstatechange = (e)=> onIceStateChange(pc2, e);
+
   pc2.onaddstream = gotRemoteStream;
 
   pc1.addStream(localStream);
   trace('Added local stream to pc1');
 
   trace('pc1 createOffer start');
-  pc1.createOffer(onCreateOfferSuccess, 
-    onCreateSessionDescriptionError, offerOptions);
+  pc1.createOffer(offerOptions)
+  .then((desc) => onCreateOfferSuccess(desc)) 
+  .catch((error) => onCreateSessionDescriptionError(error));
 }
 
 
 function onCreateOfferSuccess(desc) {
+  console.debug('Received offer from pc1')
   trace('Offer from pc1\n' + desc.sdp);
+
   trace('pc1 setLocalDescription start');
-
-  pc1.setLocalDescription(desc, function() {
+  pc1.setLocalDescription(desc)
+  .then(() => {
     onSetLocalSuccess(pc1);
-  }, onSetSessionDescriptionError);
+    console.debug(pc1.localDescription)
+  })
+  .catch((error) => onSetSessionDescriptionError);
+
   trace('pc2 setRemoteDescription start');
+  pc2.setRemoteDescription(desc)
+  .then(() => onSetRemoteSuccess(pc2))
+  .catch((error) => onSetSessionDescriptionError(error));
 
-  pc2.setRemoteDescription(desc, function() {
-    onSetRemoteSuccess(pc2);
-  }, onSetSessionDescriptionError);
   trace('pc2 createAnswer start');
-
   // Since the 'remote' side has no media stream we need
   // to pass in the right constraints in order for it to
   // accept the incoming offer of audio and video.
@@ -169,17 +173,21 @@ function gotRemoteStream(e) {
   trace('pc2 received remote stream');
 }
 
+
 function onCreateAnswerSuccess(desc) {
   trace('Answer from pc2:\n' + desc.sdp);
+
   trace('pc2 setLocalDescription start');
-  pc2.setLocalDescription(desc, function() {
-    onSetLocalSuccess(pc2);
-  }, onSetSessionDescriptionError);
+  pc2.setLocalDescription(desc)
+  .then(() => onSetLocalSuccess(pc2))
+  .catch((err) => onSetSessionDescriptionError(err));
+
   trace('pc1 setRemoteDescription start');
-  pc1.setRemoteDescription(desc, function() {
-    onSetRemoteSuccess(pc1);
-  }, onSetSessionDescriptionError);
+  pc1.setRemoteDescription(desc)
+  .then(() => onSetRemoteSuccess(pc1))
+  .catch((err) => onSetSessionDescriptionError(err));
 }
+
 
 function onIceCandidate(pc, event) {
   if (event.candidate) {
