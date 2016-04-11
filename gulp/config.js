@@ -12,6 +12,7 @@ module.exports = {
       baseDir: [dest, src],
       middleware: [ historyApiFallback() ]
     },
+    https: true,
     files: [
       dest + '/**'
     ],
@@ -25,8 +26,8 @@ module.exports = {
   browserify: {
     // Enable source maps
     debug: true,
-    // A separate bundle will be generated for each
-    // bundle config in the list below
+    // A separate bundle will be generated for 
+    // each bundle config in the list below
     bundleConfigs: [{
       entries: src + '/app/app.jsx',
       dest: dest,

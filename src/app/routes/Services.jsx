@@ -21,15 +21,18 @@ import ListItem from
   'material-ui/lib/lists/list-item'
 import ContentInbox from 
   'material-ui/lib/svg-icons/content/inbox'
-import { cyan700 } from 
+import * as Colors from 
   'material-ui/lib/styles/colors'
+import ListItemDivider from 
+  '../components/ui/ListItemDivider';
 
 import services from 
   '../data/services'
 
 module.exports = () => (
   <div>
-    <h1>Services</h1>
+
+    <h2>Services</h2>
 
     <div className="flex-container">
       {services.map((item, i) => (
@@ -38,47 +41,49 @@ module.exports = () => (
             margin:10,
             boxSizing:'border-box',
           }}>
-            {/*
-            <CardHeader
-              title={item.title}
-              subtitle="Subtitle"
-              avatar="http://lorempixel.com/100/100/nature/"
-            />
-            <CardMedia
-              overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-            >
-              <img src="http://lorempixel.com/600/337/nature/" />
-            </CardMedia>
-            */}
             <CardTitle 
               title={item.title} 
+              titleStyle={{
+                fontSize:35,
+              }}
+              titleColor={Colors.cyan700}
             />
-            <h2 style={{
+            <h1 style={{
               margin:0,
-              // background:'red',
               padding:0,
               lineHeight:1,
-              fontSize:125,
-              color:cyan700,
-            }}>{item.price}</h2>
+              // fontSize:125,
+              color:Colors.cyan700,
+            }}>${item.price}</h1>
             <CardText>
               <ul style={{
                 padding:0,
                 listStyleType:'none',
               }}>
-                {item.list.map((li, i) => (
-                  <ListItem key={i}
-                    primaryText={li} 
-                  />
+                {item.list.map((li, i, arr) => (
+                  <div key={i}>
+                    <ListItem
+                      primaryText={
+                        <span style={{
+                          // background:'green'
+                        }}>{li}</span>
+                      } 
+                      style={{
+                        // border:'1px solid red'
+                      }}
+                    ></ListItem>
+                    <ListItemDivider 
+                      index={i}
+                      length={arr.length}
+                      style={{
+                        marginLeft: 20,
+                        marginRight:20,
+                      }}
+                    />
+                  </div>
                 ))}
               </ul>
             </CardText>
-            {/*
-            <CardActions>
-              <FlatButton label="Action1" />
-              <FlatButton label="Action2" />
-            </CardActions>
-            */}
           </Card>
         </div>
       ))}

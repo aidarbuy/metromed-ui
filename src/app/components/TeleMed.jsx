@@ -50,11 +50,13 @@ var localVideo;
 var remoteVideo;
 var videoTracks;
 var audioTracks;
+var styles;
 
 // GET STREAM
 function start() {
   trace('Requesting local stream')
   this.setState({startButtonDisabled:true})
+
   navigator.mediaDevices.getUserMedia({
     audio: false,
     video: true
@@ -71,12 +73,17 @@ function start() {
   })
 }
 
+
 // MAKE A VIDEO CALL
 function call() {
+  // disable call and hangup buttons
   this.setState({callButtonDisabled:true})
   this.setState({hangupButtonDisabled:false})
+
   trace('Starting call');
   startTime = window.performance.now();
+
+  // print video and audio tracks
   videoTracks = localStream.getVideoTracks();
   audioTracks = localStream.getAudioTracks();
   if (videoTracks.length > 0) {
@@ -85,13 +92,20 @@ function call() {
   if (audioTracks.length > 0) {
     trace('Using audio device: ' + audioTracks[0].label);
   }
-  var servers = null;
-  pc1 = new RTCPeerConnection(servers);
+
+  var config = {
+    iceServers: [
+      {url: "stun:stun.l.google.com:19305"},
+      {url: "stun:23.21.150.121"},
+      {url: "stun:stun.1.google.com:19302"},
+    ]
+  };
+  pc1 = new RTCPeerConnection(config);
   trace('Created local peer connection object pc1');
   pc1.onicecandidate = function(e) {
     onIceCandidate(pc1, e);
   };
-  pc2 = new RTCPeerConnection(servers);
+  pc2 = new RTCPeerConnection(config);
   trace('Created remote peer connection object pc2');
   pc2.onicecandidate = function(e) {
     onIceCandidate(pc2, e);
@@ -112,22 +126,27 @@ function call() {
     onCreateSessionDescriptionError, offerOptions);
 }
 
+
 function onCreateOfferSuccess(desc) {
   trace('Offer from pc1\n' + desc.sdp);
   trace('pc1 setLocalDescription start');
+
   pc1.setLocalDescription(desc, function() {
     onSetLocalSuccess(pc1);
   }, onSetSessionDescriptionError);
   trace('pc2 setRemoteDescription start');
+
   pc2.setRemoteDescription(desc, function() {
     onSetRemoteSuccess(pc2);
   }, onSetSessionDescriptionError);
   trace('pc2 createAnswer start');
+
   // Since the 'remote' side has no media stream we need
   // to pass in the right constraints in order for it to
   // accept the incoming offer of audio and video.
   pc2.createAnswer(onCreateAnswerSuccess, onCreateSessionDescriptionError);
 }
+
 
 function onCreateSessionDescriptionError(error) {
   trace('Failed to create session description: ' + error.toString());
@@ -205,8 +224,9 @@ function hangup() {
   pc2.close();
   pc1 = null;
   pc2 = null;
-  hangupButton.disabled = true;
-  callButton.disabled = false;
+  this.setState({hangupButtonDisabled:true})
+  this.setState({callButtonDisabled:false})
+  remoteVideo.srcObject = null;
 }
 
 function stop() {
@@ -221,15 +241,6 @@ function stop() {
     localStream.stop() // idk what this does, left here for legacy reasons..?
   } else {
     localStream.getTracks().forEach(function(track) { track.stop() })
-  }
-}
-
-const styles = {
-  video : {
-    height:225,
-    margin:'0 0 20px 0',
-    verticalAlign:'top',
-    width:'calc(50% - 12px)',
   }
 }
 
@@ -302,12 +313,10 @@ export default React.createClass({
         </CardActions>
         <CardMedia>
           <div className="flex-container">
-            <video ref="localVideo"  autoPlay
-              className="flex-item"
+            <video ref="localVideo" autoPlay
               style={styles.video}
             />
             <video ref="remoteVideo" autoPlay
-              className="flex-item"
               style={styles.video}
             />
           </div>
@@ -316,3 +325,15 @@ export default React.createClass({
     )
   }
 });
+
+styles = {
+  video : {
+    width:'calc(50% - 12px)',
+    height:'auto',
+    // border:'1px dashed red',
+    boxSizing:'border-box',
+    margin:'0 0 20px 0',
+    verticalAlign:'top',
+    background:Colors.black,
+  }
+};

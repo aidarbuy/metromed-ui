@@ -24,7 +24,7 @@ export default React.createClass({
       var marker = new google.maps.Marker({
         map: map,
         position: options.center,
-        title: 'Hello World!',
+        title: 'Metromed Urgent Care',
         animation: google.maps.Animation.DROP
       })
     })

@@ -40,10 +40,10 @@ module.exports = () => (
     <TableBody displayRowCheckbox={false}>
       {arrPaired.map((item, i) => (
         <TableRow key={i}>
-          <TableRowColumn style={{fontSize:16}}>
+          <TableRowColumn style={{fontSize:18}}>
             {item[0]}
           </TableRowColumn>
-          <TableRowColumn style={{fontSize:16}}>
+          <TableRowColumn style={{fontSize:18}}>
             {item[1]}
           </TableRowColumn>
         </TableRow>

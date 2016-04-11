@@ -46,27 +46,26 @@ export default React.createClass({
   // invoked before initial rendering
   componentWillMount() {
     let newMuiTheme = muiTheme
+    // console.info(newMuiTheme)
     // prepare new appBar props
-    const appBar = {
+    // const cardText = {
       // color:Colors.yellow500,
       // textColor:Colors.green500,
       // height:56,
       // titleFontWeight:700,
       // padding:35,
-    }
+    // }
     // overwrite newMuiTheme.appBar
-    // newMuiTheme.appBar = appBar
+    // newMuiTheme.cardText = cardText
     // overwrite this.state.muiTheme
-    this.setState({
-      muiTheme:newMuiTheme,
-    });
+    // this.setState({
+    //   muiTheme:newMuiTheme,
+    // });
   },
   // state or props changed
   // update context of childs
   getChildContext() {
-    return {
-      muiTheme:muiTheme,
-    }
+    return {muiTheme}
   },
   // check this.props and this.state 
   // return a single child

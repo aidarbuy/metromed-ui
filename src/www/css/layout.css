@@ -34,6 +34,8 @@
 @media (min-width: 600px) and (max-width: 960px) {
   .flex-item {
     width: 50%;
+    border: 1px dashed red;
+    box-sizing: border-box;
   }
 }
 /* xs < 600 */
@@ -119,4 +121,14 @@
   .article-item {
     width: 100%;
   }
+}
+
+
+/**
+ * Telemed flex item
+ */
+.telemed-item {
+  width: 50%;
+  height: auto;
+  background: #00f;
 }
