@@ -1,30 +1,38 @@
 import React from 
-  'react'
+  'react';
 import Title from 
-  'react-title-component'
+  'react-title-component';
 import getMuiTheme from 
-  'material-ui/lib/styles/getMuiTheme'
+  'material-ui/lib/styles/getMuiTheme';
 import * as Colors from 
-  'material-ui/lib/styles/colors'
+  'material-ui/lib/styles/colors';
 import {blue500} from 
-  'material-ui/lib/styles/colors'
+  'material-ui/lib/styles/colors';
 import MuiThemeProvider from 
-  'material-ui/lib/MuiThemeProvider'
+  'material-ui/lib/MuiThemeProvider';
 import AppBar from 
-  './containers/AppBar'
+  './containers/AppBar';
 import AppLeftNav from 
-  './containers/AppLeftNav'
+  './containers/AppLeftNav';
 import AppTabsIcon from 
-  './components/layout/AppTabsIcon'
+  './components/layout/AppTabsIcon';
 import AppTabs from 
-  './components/layout/AppTabs'
+  './components/layout/AppTabs';
 import AppFooter from 
-  './components/layout/AppFooter'
+  './components/layout/AppFooter';
 
-import rawTheme from './themes/light'
+import rawTheme from './themes/light';
 // console.log(rawTheme.palette)
 const muiTheme = getMuiTheme(rawTheme)
 // console.info(muiTheme)
+
+const styles = {
+  container : {
+    background:rawTheme.palette.canvasColor,
+    textAlign:'center',
+    paddingTop:0,
+  },
+};
 
 export default React.createClass({
   // pass muiTheme down automatically
@@ -32,17 +40,8 @@ export default React.createClass({
     muiTheme: React.PropTypes.object,
   },
   // Invoked once before the component is mounted
-  getInitialState() {
-    return {
-      style : {
-        container: {
-          background:rawTheme.palette.canvasColor,
-          textAlign: 'center',
-          paddingTop: 0,
-        },
-      }
-    };
-  },
+  // getInitialState() {
+  // },
   // invoked before initial rendering
   componentWillMount() {
     let newMuiTheme = muiTheme
@@ -73,7 +72,7 @@ export default React.createClass({
     // childs will get muiTheme via context
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={this.state.style.container}>
+        <div style={styles.container}>
           {/*
           */}
           <AppBar />

@@ -17,7 +17,8 @@ import Doctors 	from './routes/Doctors'
 import Primary 	from './routes/Primary'
 import Map 			from './routes/Map'
 import Virtual  from './routes/Virtual'
-import Telemed 	from './routes/Telemed'
+import Telemed  from './routes/Telemed'
+import Articles from './routes/Articles'
 
 /**
  * Routes: https://github.com/rackt/react-router/blob/master/docs/api/components/Route.md
@@ -51,7 +52,10 @@ export default (
       component={Virtual}
     />
     <Route path="telemed" 
-    	component={Telemed}
+      component={Telemed}
+    />
+    <Route path="articles" 
+    	component={Articles}
     />
   </Route>
 )

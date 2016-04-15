@@ -76,6 +76,8 @@ module.exports = () => (
       >
         <RaisedButton 
           label="View All Articles" 
+          linkButton={true}
+          href="/articles"
         />
       </ToolbarGroup>
     </Toolbar>     

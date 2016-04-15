@@ -31,23 +31,23 @@ export default React.createClass({
           </IconButton>
         }
         title="Metromed Urgent Care"
-        iconElementRight={
-          <IconMenu 
-            iconButtonElement={
-              <IconButton><MoreVertIcon /></IconButton>
-            }
-            targetOrigin={{horizontal:'right', vertical:'top'}}
-            anchorOrigin={{horizontal:'right', vertical:'top'}}
-          >
-            <Link to="telemed">
-              <MenuItem primaryText="Telemed" />
-            </Link>
-            <MenuItem primaryText="Help" />
-            <MenuItem primaryText="Sign out" />
-          </IconMenu>
-        }
       >
       </AppBar>
     )
   }
 });
+        // iconElementRight={
+        //   <IconMenu 
+        //     iconButtonElement={
+        //       <IconButton><MoreVertIcon /></IconButton>
+        //     }
+        //     targetOrigin={{horizontal:'right', vertical:'top'}}
+        //     anchorOrigin={{horizontal:'right', vertical:'top'}}
+        //   >
+        //     <Link to="telemed">
+        //       <MenuItem primaryText="Telemed" />
+        //     </Link>
+        //     <MenuItem primaryText="Help" />
+        //     <MenuItem primaryText="Sign out" />
+        //   </IconMenu>
+        // }

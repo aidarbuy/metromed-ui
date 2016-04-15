@@ -21,7 +21,7 @@ import socialData
 
 const social = socialData.slice(0, 3);
 
-module.exports = () => (
+export default () => (
   <Toolbar style={{marginTop:10}}>
     <ToolbarGroup float="left" firstChild={true}>
       {social.map((item, index) => (
@@ -29,13 +29,14 @@ module.exports = () => (
           <IconButton tooltip={item.desc} 
             touch={true} 
             tooltipPosition="top-right"
-            style={{height:56}}
-          >
-              <IconComponent iconName={item.icon} 
-                styles={{color:'red',hover:'green'}} />
+            style={{height:56}}>
+            <IconComponent iconName={item.icon} 
+              styles={{color:'red',hover:'green'}}/>
           </IconButton>
         </a>
       ))}
+    </ToolbarGroup>
+    <ToolbarGroup>
     </ToolbarGroup>
     <ToolbarGroup float="right" lastChild={true}>
       <ToolbarTitle 
@@ -47,11 +48,12 @@ module.exports = () => (
 
 const IconComponent = React.createClass({
   render() {
-    if (this.props.iconName === 'IconFacebook')
+    const { iconName } = this.props;
+    if (iconName === 'IconFacebook')
       return <IconFacebook styles={this.props.styles} />;
-    if (this.props.iconName === 'IconInstagram')
+    if (iconName === 'IconInstagram')
       return <IconInstagram styles={this.props.styles} />;
-    if (this.props.iconName === 'IconGooglePlus')
+    if (iconName === 'IconGooglePlus')
       return <IconGooglePlus styles={this.props.styles} />;
   }
 });

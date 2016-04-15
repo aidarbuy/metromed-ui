@@ -1,9 +1,6 @@
+// src/app/routes/Doctors.jsx
 
-// Doctors.jsx
-
-import React from 
-  'react'
-
+import React from 'react'
 import Card from 
   'material-ui/lib/card/card'
 import CardActions from 
@@ -19,66 +16,52 @@ import FlatButton from
 import CardText from 
   'material-ui/lib/card/card-text'
 
-import doctors from 
-  '../data/doctors'
+import doctors from '../data/doctors'
 
-module.exports = () => (
+export default () => (
   <div>
 
     <h2>Doctors</h2>
 
     <div className="flex-container">
-      {doctors.map((doctor, i) => (
-        <div key={doctor.id}
-          className="flex-item"
-        >
-          <Card style={{
-            margin:10,
-            boxSizing:'border-box',
-          }}>
-            <CardHeader
-              title="URL Avatar"
-              subtitle="Subtitle"
-              avatar="http://lorempixel.com/100/100/nature/"
-            />
-
+      {doctors.map((doc, i) => (
+        <div key={doc.id} className="flex-item">
+          <Card style={{margin:5,boxSizing:'border-box'}}>
             <CardMedia 
               overlay={
                 <CardTitle 
-                  title={
-                    "Dr. " +
-                    doctor.firstname 
-                    + " " + 
-                    doctor.lastname
-                  } 
+                  title={"Dr. " + doc.firstname + " " + 
+                    doc.lastname}
                 />
               }
               overlayContentStyle={{
-                background:
-                  'rgba(0, 0, 0, 0.34)',
+                background:'rgba(0, 188, 212, 0.7)',
+                bottom:0,
+                margin:0,
+                padding:0,
               }}
+              style={{background:'red'}}
             >
-              <img src={
-                'images/doctors/' + doctor.img.big
-              }/>
+              <img src={'images/doctors/' + doc.img.big}
+                style={{
+                  background:'red',
+                  padding:0,
+                  margin:0,
+                }}/>
             </CardMedia>
 
             <CardTitle 
-              title={doctor.firstname} 
-              subtitle="Card subtitle" 
+              title={doc.speciality} 
+              subtitle={doc.title} 
             />
 
             <CardText style={{
               textAlign:'left',
               fontSize:16,
             }}>
-              {doctor.description[0]}
+              {doc.description[0]}
             </CardText>
 
-            <CardActions>
-              <FlatButton label="Action1" />
-              <FlatButton label="Action2" />
-            </CardActions>
           </Card>
         {/* flex-item */}
         </div>

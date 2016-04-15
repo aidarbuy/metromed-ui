@@ -25,3 +25,7 @@ strong {
 .active {
   color: #e91e63;
 }
+
+.grayscale-filter {
+	filter: saturate(0.03); 
+}

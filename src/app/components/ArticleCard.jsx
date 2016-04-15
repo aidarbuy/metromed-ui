@@ -85,7 +85,7 @@ export default React.createClass({
             icon={<LibraryBooks />}
             style={styles.button}
             linkButton={true}
-            href="/about"
+            href="/articles"
           />
         </CardActions>
       </Card>

@@ -2,6 +2,7 @@
   "name": "metromed-uc-app",
   "version": "0.1.0-alpha.1",
   "description": "Urgent Care app project that uses material-ui",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/aidarbuy/metromed-ui.git"
@@ -9,8 +10,8 @@
   "scripts": {
     "start": "gulp"
   },
-  "private": true,
   "dependencies": {
+    "express.io": "^1.1.13",
     "google-maps": "^3.2.1",
     "history": "^1.17.0",
     "marked": "^0.3.5",
@@ -22,7 +23,8 @@
     "react-router": "^2.0.1",
     "react-tap-event-plugin": "^0.2.1",
     "react-title-component": "^1.0.1",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "socket.io": "^1.4.5"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.6.5",

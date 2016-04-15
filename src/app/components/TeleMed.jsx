@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-
+import io from 'socket.io-client';
 import Card from 
   'material-ui/lib/card/card';
 import CardActions from 
@@ -25,33 +25,30 @@ import * as Colors from
  * Put variables in global scope to make 
  * them available to the browser console.
  */
-
-// Stream constraints
-var constraints = window.constraints = {
-  audio: false,
-  video: true
-};
 // Global vars
-var startTime;
-var localStream;
-var pc1;
-var pc2;
-var offerOptions = {
-  offerToReceiveAudio: 1,
-  offerToReceiveVideo: 1
-};
+var startTime, 
+  localStream,
+  pc1, pc2,
+  offerOptions = {
+    offerToReceiveAudio: 1,
+    offerToReceiveVideo: 1
+  },
+  styles;
 // Global vars for buttons
-var startButton;
-var callButton;
-var hangupButton;
-var stopButton;
+var startButton, callButton, hangupButton, stopButton;
 // Global vars for streams
-var localVideo;
-var remoteVideo;
-var videoTracks;
-var audioTracks;
-var styles;
+var localVideo, remoteVideo,
+  videoTracks, audioTracks;
 
+// io = io.connect();
+let socket = io('https://localhost:443');
+
+/*
+navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.msGetUserMedia; 
+*/
 
 // GET STREAM
 function start() {
@@ -60,11 +57,17 @@ function start() {
 
   navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: true
+    video: {
+      mandatory: {
+        minWidth: 640,
+        minHeight: 360,
+      }
+    }
   })
   .then((stream) => {
     trace('Received local stream')
     localVideo.srcObject = stream
+    this.setState({videoClassName:"grayscale-filter"})
     localStream = stream
     this.setState({callButtonDisabled:false})
     this.setState({stopButtonDisabled:false})
@@ -79,7 +82,7 @@ function start() {
 function call() {
   console.debug('MAKE A VIDEO CALL')
 
-  // disable call and hangup buttons
+  // switch call and hangup buttons
   this.setState({callButtonDisabled:true})
   this.setState({hangupButtonDisabled:false})
 
@@ -105,6 +108,7 @@ function call() {
   };
 
   pc1 = new RTCPeerConnection(config);
+  console.log(pc1)
   trace('Created local peer connection object pc1');
   pc1.onicecandidate = (e) => onIceCandidate(pc1, e);
 
@@ -191,14 +195,9 @@ function onCreateAnswerSuccess(desc) {
 
 function onIceCandidate(pc, event) {
   if (event.candidate) {
-    getOtherPc(pc).addIceCandidate(new RTCIceCandidate(event.candidate),
-        function() {
-          onAddIceCandidateSuccess(pc);
-        },
-        function(err) {
-          onAddIceCandidateError(pc, err);
-        }
-    );
+    getOtherPc(pc).addIceCandidate(new RTCIceCandidate(event.candidate))
+    .then(() => onAddIceCandidateSuccess(pc))
+    .catch((err) => onAddIceCandidateError(pc, err));
     trace(getName(pc) + ' ICE candidate: \n' + event.candidate.candidate);
   }
 }
@@ -206,11 +205,9 @@ function onIceCandidate(pc, event) {
 function onAddIceCandidateSuccess(pc) {
   trace(getName(pc) + ' addIceCandidate success');
 }
-
 function onAddIceCandidateError(pc, error) {
   trace(getName(pc) + ' failed to add ICE Candidate: ' + error.toString());
 }
-
 function onIceStateChange(pc, event) {
   if (pc) {
     trace(getName(pc) + ' ICE state: ' + pc.iceConnectionState);
@@ -221,7 +218,6 @@ function onIceStateChange(pc, event) {
 function getName(pc) {
   return (pc === pc1) ? 'pc1' : 'pc2'
 }
-
 function getOtherPc(pc) {
   return (pc === pc1) ? pc2 : pc1
 }
@@ -246,9 +242,10 @@ function stop() {
   this.setState({hangupButtonDisabled:true})
   this.setState({stopButtonDisabled:true})
   if (localStream.stop) {
-    localStream.stop() // idk what this does, left here for legacy reasons..?
+    // idk what this does, left here for legacy reasons..?
+    localStream.stop() 
   } else {
-    localStream.getTracks().forEach(function(track) { track.stop() })
+    localStream.getTracks().forEach((track) => track.stop())
   }
 }
 
@@ -259,6 +256,7 @@ export default React.createClass({
       callButtonDisabled:   true,
       hangupButtonDisabled: true,
       stopButtonDisabled:   true,
+      videoClassName: "",
     };
   },
   componentDidMount() {
@@ -321,7 +319,8 @@ export default React.createClass({
         </CardActions>
         <CardMedia>
           <div className="flex-container">
-            <video ref="localVideo" autoPlay
+            <video ref="localVideo" autoPlay 
+              className={this.state.videoClassName}
               style={styles.video}
             />
             <video ref="remoteVideo" autoPlay
@@ -338,7 +337,6 @@ styles = {
   video : {
     width:'calc(50% - 12px)',
     height:'auto',
-    // border:'1px dashed red',
     boxSizing:'border-box',
     margin:'0 0 20px 0',
     verticalAlign:'top',
