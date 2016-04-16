@@ -47,7 +47,7 @@ module.exports = () => (
       <CardTitle 
         title="Our X-Ray imaging system" 
         subtitle="We have laboratory and pharmacy as well" 
-      />
+      ></CardTitle>
     }>
       <img src="images/gallery/x-ray.jpg" />
     </CardMedia>

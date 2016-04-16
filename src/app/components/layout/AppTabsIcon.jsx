@@ -1,28 +1,27 @@
 // src/app/components/layout/AppTabsIcon.jsx
-import React 
-	from 'react';
+import React from 'react';
+import NavLink from 'react-router';
+
 import Tabs 
-	from 'material-ui/lib/tabs/tabs';
+  from 'material-ui/lib/tabs/tabs';
 import Tab
-	from 'material-ui/lib/tabs/tab';
+  from 'material-ui/lib/tabs/tab';
 import FontIcon 
-	from 'material-ui/lib/font-icon';
+  from 'material-ui/lib/font-icon';
 import HomeIcon 
-	from 'material-ui/lib/svg-icons/action/home';
+  from 'material-ui/lib/svg-icons/action/home';
 import AboutIcon 
-	from 'material-ui/lib/svg-icons/action/info';
+  from 'material-ui/lib/svg-icons/action/info';
 import ServicesIcon 
-	from 'material-ui/lib/svg-icons/maps/local-hospital';
+  from 'material-ui/lib/svg-icons/maps/local-hospital';
 import DoctorsIcon 
-	from 'material-ui/lib/svg-icons/action/face';
+  from 'material-ui/lib/svg-icons/action/face';
 import PrimaryCareIcon 
-	from 'material-ui/lib/svg-icons/action/description';
+  from 'material-ui/lib/svg-icons/action/description';
 import MapIcon 
-	from 'material-ui/lib/svg-icons/maps/place';
+  from 'material-ui/lib/svg-icons/maps/place';
 import VirtualIcon 
-	from 'material-ui/lib/svg-icons/action/three-d-rotation';
-import NavLink
-  from 'react-router';
+  from 'material-ui/lib/svg-icons/action/three-d-rotation';
 
 export default React.createClass({
   getInitialState(props) {

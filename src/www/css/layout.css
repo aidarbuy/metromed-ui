@@ -10,113 +10,83 @@
   display: -ms-flexbox;
   flex-flow: row wrap;
   justify-content: space-around;
-  /*border: 1px dashed red;*/
 }
-/* 1920 < xl */
-@media (min-width: 1920px) {
-  .flex-item {
-    width: 25%;
-  }
-}
-/* 1280 < lg < 1920 */
-@media (min-width: 1280px) and (max-width: 1920px) {
-  .flex-item {
-    width: 25%;
-  }
-}
-/* 960 < md < 1280 */
-@media (min-width: 960px) and (max-width: 1280px) {
-  .flex-item {
-    width: 25%;
-  }
-}
-/* 600 < sm < 960 */
-@media (min-width: 600px) and (max-width: 960px) {
-  .flex-item {
-    width: 50%;
-  }
-}
-/* xs < 600 */
-@media (max-width: 600px) {
-  .flex-item {
-    width: 100%;
-  }
-}
-
-
-/********************** 
-  Flex container half 
-**********************/
-
 .flex-container-half {
-  /*background: #00f;*/
   padding:20px;
   box-sizing: border-box;
 }
-
 /* 1920 < xl */
 @media (min-width: 1920px) {
+  .flex-item {
+    width: 25%;
+  }
   .flex-container-half {
     width: 50%;
   }
-}
-/* 1280 < lg < 1920 */
-@media (min-width: 1280px) and (max-width: 1920px) {
-  .flex-container-half {
-    width: 50%;
-  }
-}
-/* 960 < md < 1280 */
-@media (min-width: 960px) and (max-width: 1280px) {
-  .flex-container-half {
-    width: 50%;
-  }
-}
-/* 600 < sm < 960 */
-@media (min-width: 600px) and (max-width: 960px) {
-  .flex-container-half {
-    width: 100%;
-  }
-}
-/* xs < 600 */
-@media (max-width: 600px) {
-  .flex-container-half {
-    width: 100%;
-  }
-}
-
-
-/********************
-  Article flex item
-********************/
-
-/* 1920 < xl */
-@media (min-width: 1920px) {
   .article-item {
     width: 25%;
   }
 }
 /* 1280 < lg < 1920 */
 @media (min-width: 1280px) and (max-width: 1920px) {
+  .flex-item {
+    width: 25%;
+  }
+  .flex-container-half {
+    width: 50%;
+  }
   .article-item {
     width: 50%;
   }
 }
 /* 960 < md < 1280 */
 @media (min-width: 960px) and (max-width: 1280px) {
+  .flex-item {
+    width: 25%;
+  }
+  .flex-container-half {
+    width: 50%;
+  }
   .article-item {
     width: 50%;
   }
 }
 /* 600 < sm < 960 */
 @media (min-width: 600px) and (max-width: 960px) {
+  .flex-item {
+    width: 50%;
+  }
+  .flex-container-half {
+    width: 100%;
+  }
   .article-item {
     width: 50%;
   }
 }
+/* 600 < xl */
+@media (min-width: 600px) {
+  .conditions-lg-xs {
+    display: inline-table;
+  }
+  .conditions-xs {
+    display: none;
+  }
+}
 /* xs < 600 */
 @media (max-width: 600px) {
+  .flex-item {
+    width: 100%;
+  }
+  .flex-container-half {
+    width: 100%;
+  }
   .article-item {
     width: 100%;
+  }
+  .conditions-lg-xs {
+    display: none;
+  }
+  .conditions-xs {
+    display: inline;
   }
 }

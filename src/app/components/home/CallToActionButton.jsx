@@ -6,5 +6,6 @@ module.exports = () => (
   	label="Call Us Now" 
   	href="tel:1-703-687-4158" 
   	primary={true} 
+  	linkButton={true}
   />
 );
