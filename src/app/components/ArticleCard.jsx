@@ -85,11 +85,11 @@ export default React.createClass({
             icon={<LibraryBooks />}
             style={styles.button}
             linkButton={true}
-            href="/articles"
+            href={"/articles/" + props.img}
           />
         </CardActions>
       </Card>
     )
   }
 })
-            // icon={<FontIcon className="muidocs-icon-custom-github"/>}
+// icon={<FontIcon className="muidocs-icon-custom-github"/>}

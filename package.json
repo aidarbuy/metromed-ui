@@ -11,6 +11,7 @@
     "start": "gulp"
   },
   "dependencies": {
+    "browser-sync-spa": "^1.0.3",
     "express.io": "^1.1.13",
     "google-maps": "^3.2.1",
     "history": "^1.17.0",
