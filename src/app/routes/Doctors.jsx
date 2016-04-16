@@ -1,26 +1,28 @@
 // src/app/routes/Doctors.jsx
 
-import React from 'react'
-import Card from 
-  'material-ui/lib/card/card'
-import CardActions from 
-  'material-ui/lib/card/card-actions'
-import CardHeader from 
-  'material-ui/lib/card/card-header'
-import CardMedia from 
-  'material-ui/lib/card/card-media'
-import CardTitle from 
-  'material-ui/lib/card/card-title'
-import FlatButton from 
-  'material-ui/lib/flat-button'
-import CardText from 
-  'material-ui/lib/card/card-text'
+import React from "react";
 
-import doctors from '../data/doctors'
+import Card from
+  'material-ui/lib/card/card';
+import CardActions from 
+  "material-ui/lib/card/card-actions";
+import CardHeader from 
+  "material-ui/lib/card/card-header";
+import CardMedia from 
+  "material-ui/lib/card/card-media";
+import CardTitle from 
+  "material-ui/lib/card/card-title";
+import FlatButton from 
+  "material-ui/lib/flat-button";
+import CardText from 
+  "material-ui/lib/card/card-text";
+import RaisedButton from 
+  'material-ui/lib/raised-button';
+
+import doctors from "../data/doctors";
 
 export default () => (
   <div>
-
     <h2>Doctors</h2>
 
     <div className="flex-container">
@@ -62,6 +64,14 @@ export default () => (
               {doc.description[0]}
             </CardText>
 
+            <CardActions style={{textAlign:'right'}}>
+              <RaisedButton 
+                label="Read more"
+                secondary={true}
+                linkButton={true}
+                href={"/doctors/" + doc.id}
+              />
+            </CardActions>
           </Card>
         {/* flex-item */}
         </div>
