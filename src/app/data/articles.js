@@ -8,11 +8,17 @@ export default [{
   text: [
     "A migraine is a severe, debilitating headache.  It can be on one or both sides of the head.  It can involve visual changes.  It can involve nausea and vomiting.  Or it can involve none of these.  But it must be debilitating, or it isn't a migraine.  That is, it has to be so severe that it inhibits you from being able to perform some of your daily activities.",
     "Migraines are treated with <strong>lifestyle changes</strong> and <strong>medication</strong>.",
-    "The lifestyle changes for migraines are:<ol><li>Decrease the stress in your life (both physical and emotional).</li><li>Eat a migraine diet.</li></ol>"
+    "The <strong><u>lifestyle changes</u></strong> for migraines are:<ol><li>Decrease the stress in your life (both physical and emotional).</li><li>Eat a migraine diet.</li></ol>",
+    "The <strong><u>migraine diet</u></strong> consists of:<ol><li>Avoiding all of the following:<ul><li>Chocolate</li><li>Chinese food</li><li>Cheese</li><li>Alcohol</li></ul></li><li>Decreasing the following:<ul><li>Caffeine</li></ul></li></ol>",
+    "<strong><u>Medications for migraine</u></strong> fall into 3 categories:<ol><li>Preventive Medications</li><li>Abortifacients</li><li>Analgesics (pain medications)</li></ol>",
+    "<u><strong>Preventive medications</strong></u> for migraines are taken every day, and if they work they prevent you from getting migraines in the first place.  Some common preventive medications for migraines are:<ul><li>Propranolol</li><li>Nortriptyline</li><li>Topamax</li></ul>",
+    '<u><strong>Abortifacients</strong></u> are medications which stop a migraine in its tracks.  They are not pain medications.  These are the "triptans", such as:<ul><li>Relpax</li><li>Maxalt</li><li>Imitrex</li><li>Zomig</li></ul>',
+    "<u><strong>Analgesics</strong></u> (pain medications) cannot be used for migraines more than once or twice a month, because if they are used more frequently they can cause analgesic rebound headaches.  An analgesic rebound headache, also known as a transformed migraine, is a chronic daily headache which is even worse than a migraine, and never goes away.",
+    "If you suffer from migraines, see a doctor, because there are effective treatments available."
   ],
   img: {
     title: "pre&#8209;Diagnoses",
-    src: 'prediagnoses',
+    src: 'migraines',
     alt: "Photo of a doctor with a medical papers"
   }
 },{
