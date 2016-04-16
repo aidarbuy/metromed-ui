@@ -23,6 +23,16 @@ import MapIcon
 import VirtualIcon 
   from 'material-ui/lib/svg-icons/action/three-d-rotation';
 
+const styles = {
+  tabs : {
+    // border:'0px dashed red',
+  },
+  tab : {
+    // border:'1px dashed red',
+    // background:'green',
+  }
+};
+
 export default React.createClass({
   getInitialState(props) {
     var initIndex;
@@ -51,40 +61,50 @@ export default React.createClass({
     router: React.PropTypes.object
   },
   handleActive(event) {
-    this.context.router.push(event.props.route)
+    const route = event.props.route;
+    this.context.router.push(route);
   },
   render() {
     const index = this.state.initIndex
     return (
-      <Tabs className="app-tabs-icon"
-        initialSelectedIndex={index}>
+      <Tabs className="app-tabs-icon" 
+        initialSelectedIndex={index}
+        style={styles.tabs}
+      >
         <Tab route="/"
-          icon={<HomeIcon color='red'/>} 
+          icon={<HomeIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
+          style={styles.tab}
         />
         <Tab route="/about"
-          icon={<AboutIcon />} 
+          icon={<AboutIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
+          style={styles.tab}
         />
         <Tab route="/services"
-          icon={<ServicesIcon />} 
+          icon={<ServicesIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
+          style={styles.tab}
         />
         <Tab route="/doctors"
-          icon={<DoctorsIcon />} 
+          icon={<DoctorsIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
+          style={styles.tab}
         />
         <Tab route="/primary"
-          icon={<PrimaryCareIcon />} 
+          icon={<PrimaryCareIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
+          style={styles.tab}
         />
         <Tab route="/map"
-          icon={<MapIcon />} 
+          icon={<MapIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
+          style={styles.tab}
         />
         <Tab route="/virtual"
-          icon={<VirtualIcon />} 
+          icon={<VirtualIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
+          style={styles.tab}
         />
       </Tabs>
     )
