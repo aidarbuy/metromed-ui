@@ -41,7 +41,7 @@ export default () => (
     <ToolbarGroup float="right" lastChild={true}>
       <ToolbarTitle 
         text="&copy; 2016 Amygdala LLC" 
-        style={{fontSize:16}}/>
+        className="app-footer-title" />
     </ToolbarGroup>
   </Toolbar>
 )

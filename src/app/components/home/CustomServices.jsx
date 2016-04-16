@@ -48,13 +48,6 @@ const styles = {
     margin:0,
     padding:0,
   },
-  text: {
-    fontSize:17,
-    fontWeight:300,
-    lineHeight:1.4,
-    margin:0,
-    padding:0,
-  },
   p: {
     marginTop:0,
     padding:0,
@@ -74,7 +67,7 @@ module.exports = () => (
         <CardTitle title="Cardio Health" 
           titleStyle={styles.title} 
         />
-        <CardText style={styles.text}>
+        <CardText className="custom-services-card-text">
           <p style={styles.p}>
             Our clinic is equipped with{' '}
             <strong>EKG</strong>,{' '}
@@ -100,7 +93,7 @@ module.exports = () => (
         <CardTitle title="Medical Treatment" 
           titleStyle={styles.title} 
         />
-        <CardText style={styles.text}>
+        <CardText className="custom-services-card-text">
           <p style={styles.p}>
             We administer <strong>breathing{' '}
             treatments</strong>, repair{' '}
@@ -131,7 +124,7 @@ module.exports = () => (
           title="Photo Gallery" 
           titleStyle={styles.title} 
         />
-        <CardText style={styles.text}>
+        <CardText className="custom-services-card-text">
           <p style={styles.p}>
             Check out our pictures!
           </p>
@@ -153,7 +146,7 @@ module.exports = () => (
           title="Anti-aging Institute" 
           titleStyle={styles.title} 
         />
-        <CardText style={styles.text}>
+        <CardText className="custom-services-card-text">
           <p style={styles.p}>
             We organize regular meetings{' '}
             with clients who want to be{' '}

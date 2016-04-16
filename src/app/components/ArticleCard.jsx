@@ -67,12 +67,8 @@ export default React.createClass({
           subtitle="Card subtitle" 
         />
       	*/}
-        <CardText 
+        <CardText className="article-card-text"
         	dangerouslySetInnerHTML={html} 
-        	style={{
-        		fontSize:18,
-        		textAlign:'left',
-        	}} 
         />
         <CardActions style={{
           textAlign:'right',

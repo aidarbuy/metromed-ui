@@ -11,8 +11,6 @@ const styles = {
   table: {
     background: 'inherit',
   },
-  row: {
-  },
   left: {
     padding: 0,
     color: white,
@@ -42,7 +40,7 @@ const styles = {
 module.exports = () => (
   <Table style={styles.table}>
     <TableBody displayRowCheckbox={false}>
-      <TableRow style={styles.row}>
+      <TableRow>
         <TableHeaderColumn style={styles.left}>Sunday</TableHeaderColumn>
         <TableHeaderColumn style={styles.center}>:</TableHeaderColumn>
         <TableHeaderColumn style={styles.right}>closed</TableHeaderColumn>

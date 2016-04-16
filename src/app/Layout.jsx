@@ -1,7 +1,6 @@
-import React from 
-  'react';
-import Title from 
-  'react-title-component';
+import React from 'react';
+import Title from 'react-title-component';
+
 import getMuiTheme from 
   'material-ui/lib/styles/getMuiTheme';
 import * as Colors from 
@@ -10,6 +9,7 @@ import {blue500} from
   'material-ui/lib/styles/colors';
 import MuiThemeProvider from 
   'material-ui/lib/MuiThemeProvider';
+
 import AppBar from 
   './containers/AppBar';
 import AppLeftNav from 
@@ -22,9 +22,7 @@ import AppFooter from
   './components/layout/AppFooter';
 
 import rawTheme from './themes/light';
-// console.log(rawTheme.palette)
 const muiTheme = getMuiTheme(rawTheme)
-// console.info(muiTheme)
 
 const styles = {
   container : {
@@ -46,7 +44,7 @@ export default React.createClass({
   componentWillMount() {
     let newMuiTheme = muiTheme
     // console.info(newMuiTheme)
-    // prepare new appBar props
+    // prepare new appBar propNames
     // const cardText = {
       // color:Colors.yellow500,
       // textColor:Colors.green500,
@@ -61,20 +59,18 @@ export default React.createClass({
     //   muiTheme:newMuiTheme,
     // });
   },
-  // state or props changed
+  // state or propNames changed
   // update context of childs
   getChildContext() {
     return {muiTheme}
   },
-  // check this.props and this.state 
+  // check this.propNames and this.state 
   // return a single child
   render() {
     // childs will get muiTheme via context
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
-          {/*
-          */}
           <AppBar />
           <AppLeftNav />
           <AppTabs />
@@ -87,4 +83,4 @@ export default React.createClass({
       </MuiThemeProvider>
     )
   }
-})
+});

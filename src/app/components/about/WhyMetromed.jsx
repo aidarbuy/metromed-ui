@@ -31,13 +31,6 @@ import ContentSend from
 import Divider from 
   'material-ui/lib/divider'
 
-const styles = {
-  ListItem: {
-    // border:'1px dashed green',
-    fontSize:18,
-  },
-}
-
 module.exports = () => (
   <Card>
     <CardTitle title={<h3>
@@ -53,22 +46,21 @@ module.exports = () => (
     </CardMedia>
     <CardText>
       <List>
-        <ListItem style={styles.ListItem}>
+        <ListItem className="why-metromed-list-item">
           Experienced emergency room docs and personnel
         </ListItem>
         <Divider/>
-        <ListItem style={styles.ListItem}>
+        <ListItem className="why-metromed-list-item">
           Bed-side Ultrasound Screening
         </ListItem>
         <Divider/>
-        <ListItem style={styles.ListItem}>
+        <ListItem className="why-metromed-list-item">
           X-Ray
         </ListItem>
         <Divider/>
-        <ListItem style={styles.ListItem}>
+        <ListItem className="why-metromed-list-item">
           Skillfully done procedures, such as:
           <div style={{
-            // background:'red',
             maxWidth:350,
             marginLeft:'auto',
             marginRight:'auto',
@@ -85,19 +77,19 @@ module.exports = () => (
           </div>
         </ListItem>
         <Divider/>
-        <ListItem style={styles.ListItem}>
+        <ListItem className="why-metromed-list-item">
           Laboratory and Pharmacy
         </ListItem>
         <Divider/>
-        <ListItem style={styles.ListItem}>
+        <ListItem className="why-metromed-list-item">
           IV treatment and EKG
         </ListItem>
         <Divider/>
-        <ListItem style={styles.ListItem}>
+        <ListItem className="why-metromed-list-item">
           Location. Yes, we are right next to Wal-Mart
         </ListItem>
         <Divider/>
-        <ListItem style={styles.ListItem}>
+        <ListItem className="why-metromed-list-item">
           Clean, Quick and Pleasant
         </ListItem>
       </List>

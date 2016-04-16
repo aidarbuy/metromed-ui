@@ -4,6 +4,8 @@ import FlatButton from
   'material-ui/lib/flat-button'
 import LibraryBooks from 
   'material-ui/lib/svg-icons/av/library-books'
+import Paper from 
+  'material-ui/lib/Paper';
 
 import articles from '../data/articles';
 
@@ -16,6 +18,13 @@ const styles = {
     margin:20,
     // background:'red',
   },
+  buttonContainer : {
+    // border:'1px dashed red',
+    textAlign:'left',
+  },
+  button : {
+    // border:'1px dashed green'
+  }
 };
 
 function getArticleText(id) {
@@ -33,19 +42,23 @@ export default React.createClass({
 
     return (
       <div>
-        <FlatButton 
-          label="All Articles" 
-          labelPosition="after"
-          primary={true}
-          icon={<LibraryBooks />}
-          style={styles.button}
-          linkButton={true}
-          href="/articles"
-        />
+        <div style={styles.buttonContainer}>
+          <FlatButton 
+            label="All Articles" 
+            labelPosition="after"
+            primary={true}
+            icon={<LibraryBooks />}
+            style={styles.button}
+            linkButton={true}
+            href="/articles"
+          />
+        </div>
 
         <h3 style={styles.header}>{id}</h3>
 
-        <img width="100%" src={src}/>
+        <Paper>
+          <img width="100%" src={src}/>
+        </Paper>
 
         {getArticleText(id).map((p, i) => (
           <div key={i} style={styles.p} 

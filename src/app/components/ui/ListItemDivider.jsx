@@ -10,6 +10,7 @@ export default React.createClass({
       return (
         <Divider {...this.props} 
           inset={true}
+          style={{marginLeft:0}}
         />
       )
     } else {

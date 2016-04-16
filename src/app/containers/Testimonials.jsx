@@ -65,13 +65,7 @@ module.exports = () => (
             }
 
             primaryText={
-              <p className="primary-text" 
-                style={{
-                  fontSize:18,
-                  lineHeight:1.4,
-                  textAlign:'left',
-                  marginLeft:40,
-                }}>
+              <p className="testimonials-primary-text">
                   {item.text}
               </p>
             }

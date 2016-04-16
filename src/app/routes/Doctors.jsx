@@ -23,7 +23,7 @@ import doctors from "../data/doctors";
 
 export default () => (
   <div>
-    <h2>Doctors</h2>
+    <h3>Doctors</h3>
 
     <div className="flex-container">
       {doctors.map((doc, i) => (
@@ -57,10 +57,7 @@ export default () => (
               subtitle={doc.title} 
             />
 
-            <CardText style={{
-              textAlign:'left',
-              fontSize:16,
-            }}>
+            <CardText className="doctors-card-text">
               {doc.description[0]}
             </CardText>
 

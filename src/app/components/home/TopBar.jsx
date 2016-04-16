@@ -39,14 +39,6 @@ const style = {
     paddingBottom: 0,
     color: white,
   },
-  text: {
-    fontSize: 19,
-    fontWeight: 300,
-    lineHeight: 1.4,
-    verticalAlign: 'middle',
-    display: 'inline-block',
-    color: white,
-  },
   link: {
     color: white,
     textDecoration: 'none',
@@ -66,7 +58,7 @@ module.exports = () => (
             titleColor="white" 
             style={style.title} 
           />
-          <CardText style={style.text}>
+          <CardText className="top-bar-card-text">
             <p>
               <a 
                 href="tel:7036874158" 
@@ -115,7 +107,7 @@ module.exports = () => (
             titleColor="white" 
             style={style.title} 
           />
-          <CardText style={style.text}>
+          <CardText className="top-bar-card-text">
             <HoursOfOperation />
           </CardText>
         </Card>
@@ -131,7 +123,7 @@ module.exports = () => (
             titleColor="white" 
             style={style.title} 
           />
-          <CardText style={style.text}>
+          <CardText className="top-bar-card-text">
             <p>
               Our Emergency Medicine 
               doctors can diagnose 
@@ -155,7 +147,7 @@ module.exports = () => (
               // background:'yellow',
             }} 
           />
-          <CardText style={style.text}>
+          <CardText className="top-bar-card-text">
             <p>
               Major Holidays Observed
             </p>

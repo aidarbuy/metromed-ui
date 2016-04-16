@@ -32,12 +32,6 @@ const arr = [
   'Occupational Health', 'and many other...'
 ];
 
-const styles = {
-  tableRow : {
-    fontSize:18,
-  }
-};
-
 var arrPaired = [];
 
 (function() {
@@ -55,10 +49,10 @@ export default () => (
       <TableBody displayRowCheckbox={false} stripedRows={false}>
         {arrPaired.map((item, i) => (
           <TableRow key={i}>
-            <TableRowColumn style={styles.tableRow}>
+            <TableRowColumn className="conditions-tableRow">
               {item[0]}
             </TableRowColumn>
-            <TableRowColumn style={styles.tableRow}>
+            <TableRowColumn className="conditions-tableRow">
               {item[1]}
             </TableRowColumn>
           </TableRow>
@@ -69,7 +63,7 @@ export default () => (
     <List className="conditions-xs">
       {arr.map((item, i, arr) => (
         <div key={i}>
-          <ListItem style={{fontSize:18}}>
+          <ListItem className="conditions-tableRow">
             {item}
           </ListItem>
           <Divider/>
