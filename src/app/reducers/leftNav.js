@@ -1,15 +1,22 @@
-const leftNav = (state = false, action) => {
+export default (state = { open:false }, action) => {
+  var newState;
+
   switch (action.type) {
     case 'TOGGLE_LEFTNAV':
-    	const newState = {
-      	...state,
-      	open: !state.open
+      newState = {
+        ...state, 
+        open: !state.open
       }
-      return newState
+      return newState;
+
+    case 'CLOSE_LEFTNAV':
+      newState = {
+        ...state, 
+        open: false
+      }
+      return newState;
 
     default:
-      return state
+      return state;
   }
-}
-
-export default leftNav
+};

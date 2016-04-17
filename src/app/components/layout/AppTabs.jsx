@@ -1,45 +1,30 @@
-import React from 
-  'react';
+// src/app/components/layout/AppTabs.jsx
+import React from 'react';
+
 import Tabs from 
   'material-ui/lib/tabs/tabs';
 import Tab from 
   'material-ui/lib/tabs/tab';
-import { cyan500 } from 
+import * as Colors from 
   'material-ui/lib/styles/colors';
 
 export default React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object
-  },
   getInitialState() {
-    var initIndex;
-    const { isActive } = this.context.router;
-    if (isActive('/about')) {
-      initIndex = 1
-    } else if (isActive('/services')) {
-      initIndex = 2
-    } else if (isActive('/doctors')) {
-      initIndex = 3
-    } else if (isActive('/primary')) {
-      initIndex = 4
-    } else if (isActive('/map')) {
-      initIndex = 5
-    } else if (isActive('/virtual')) {
-      initIndex = 6
-    } else {
-      initIndex = 0
-    }
+    const pathname = this.props.location.pathname;
+    const initIndex = this.props.getInitIndex(pathname);
     return {initIndex};
   },
   handleActive(event) {
-    const route = event.props.route
-    // console.info("route property:", route)
-    this.context.router.push(route)
+    const { route } = event.props;
+    this.props.pushToRouter(route);
+    this.props.dispatchAction({type:"UPDATE_ROUTE", route});
+    const storeRoute = this.props.getStoreState().router.route;
+    console.log("AppTabs storeRoute:", storeRoute);
   },
   render() {
     const { initIndex } = this.state;
     return (
-      <div style={{background:cyan500}}>
+      <div style={{background:Colors.cyan500}}>
         <Tabs className="app-tabs"
           initialSelectedIndex={initIndex}
         >

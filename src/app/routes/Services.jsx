@@ -1,5 +1,7 @@
 // src/app/routes/Services.jsx
+
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import Card from 
   'material-ui/lib/card/card';
@@ -51,6 +53,8 @@ const styles = {
 
 module.exports = () => (
   <div>
+    <Helmet title="Services - Metromed UC"/>
+
     <h3>Services</h3>
 
     <div className="flex-container">

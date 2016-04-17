@@ -1,74 +1,40 @@
-import React from 
-  'react'
-import Card from 
-  'material-ui/lib/card/card'
-import CardActions from 
-  'material-ui/lib/card/card-actions'
-import CardHeader from 
-  'material-ui/lib/card/card-header'
-import CardMedia from 
-  'material-ui/lib/card/card-media'
-import CardTitle from 
-  'material-ui/lib/card/card-title'
-import RaisedButton from 
-  'material-ui/lib/raised-button'
-import CardText from 
-  'material-ui/lib/card/card-text'
-import LibraryBooks from 
-  'material-ui/lib/svg-icons/av/library-books'
-import FontIcon from 
-  'material-ui/lib/font-icon'
+// src/app/components/ArticleCard.jsx
+import React from 'react';
 
-const styles = {
-  button: {
-    margin: 12,
-  }
-}
+import Card from 
+  'material-ui/lib/card/card';
+import CardActions from 
+  'material-ui/lib/card/card-actions';
+import CardHeader from 
+  'material-ui/lib/card/card-header';
+import CardMedia from 
+  'material-ui/lib/card/card-media';
+import CardTitle from 
+  'material-ui/lib/card/card-title';
+import RaisedButton from 
+  'material-ui/lib/raised-button';
+import CardText from 
+  'material-ui/lib/card/card-text';
+import LibraryBooks from 
+  'material-ui/lib/svg-icons/av/library-books';
+import FontIcon from 
+  'material-ui/lib/font-icon';
 
 export default React.createClass({
-  // ask for 'props' from context
-  contextTypes: {
-    props: React.PropTypes.object
-  },
-
   render() {
-    const { props } = this
-    const imgSrc = 
-      'images/articles/' + 
-      props.img + 
-      '-600x300.jpg'
-    const html = {__html:props.teaser}
+    const { props } = this;
+    const img = props.img;
+    const src = "images/articles/" + img + "-600x300.jpg";
     return (
-
-      <Card style={{
-      	minHeight:400,
-      	// width:'98%',
-        margin:4,
-        // background:'red'
-      }}>
-      	{/*
-        <CardHeader
-          titl="URL Avatar"
-          subtitl="Subtitle"
-          avatar=avatarSrc
-        />
-      	*/}
+      <Card style={{minHeight:400, margin:4}}>
         <CardMedia
-          overlay={
-            <CardTitle title={props.title
-          } 
+          overlay={<CardTitle title={props.title} 
           subtitle={props.subtitle} />}
          >
-          <img src={imgSrc} />
+          <img src={src} />
         </CardMedia>
-        {/*
-        <CardTitle 
-          title="Card title" 
-          subtitle="Card subtitle" 
-        />
-      	*/}
         <CardText className="article-card-text"
-        	dangerouslySetInnerHTML={html} 
+        	dangerouslySetInnerHTML={{__html:props.teaser}}
         />
         <CardActions style={{
           textAlign:'right',
@@ -79,7 +45,7 @@ export default React.createClass({
             labelPosition="before"
             secondary={true}
             icon={<LibraryBooks />}
-            style={styles.button}
+            style={{margin:12}}
             linkButton={true}
             href={"/articles/" + props.img}
           />
@@ -88,4 +54,3 @@ export default React.createClass({
     )
   }
 })
-// icon={<FontIcon className="muidocs-icon-custom-github"/>}

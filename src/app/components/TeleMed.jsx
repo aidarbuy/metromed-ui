@@ -1,9 +1,8 @@
-/**
- * src/app/components/TeleMed.jsx
- */
-
+// src/app/components/TeleMed.jsx
 import React from 'react';
+import Helmet from "react-helmet";
 import io from 'socket.io-client';
+
 import Card from 
   'material-ui/lib/card/card';
 import CardActions from 
@@ -41,7 +40,7 @@ var localVideo, remoteVideo,
   videoTracks, audioTracks;
 
 // io = io.connect();
-let socket = io('https://localhost:443');
+// let socket = io('https://localhost:443');
 
 /*
 navigator.getUserMedia = navigator.getUserMedia ||
@@ -67,7 +66,6 @@ function start() {
   .then((stream) => {
     trace('Received local stream')
     localVideo.srcObject = stream
-    this.setState({videoClassName:"grayscale-filter"})
     localStream = stream
     this.setState({callButtonDisabled:false})
     this.setState({stopButtonDisabled:false})
@@ -290,7 +288,8 @@ export default React.createClass({
   },
   render() {
     return (
-      <Card> 
+      <Card>
+        <Helmet title="Telemed" />
         <CardActions>
           <RaisedButton label="Start" 
             ref="startButton"
@@ -320,11 +319,10 @@ export default React.createClass({
         <CardMedia>
           <div className="flex-container">
             <video ref="localVideo" autoPlay 
-              className={this.state.videoClassName}
-              style={styles.video}
+              className="telemed-video"
             />
             <video ref="remoteVideo" autoPlay
-              style={styles.video}
+              className="telemed-video"
             />
           </div>
         </CardMedia>
@@ -333,13 +331,24 @@ export default React.createClass({
   }
 });
 
-styles = {
-  video : {
-    width:'calc(50% - 12px)',
-    height:'auto',
-    boxSizing:'border-box',
-    margin:'0 0 20px 0',
-    verticalAlign:'top',
-    background:Colors.black,
-  }
-};
+// <Helmet
+//   htmlAttributes={{"lang": "en", "amp": undefined}} // amp takes no value
+//   title="My Title"
+//   titleTemplate="MySite.com - %s"
+//   defaultTitle="My Default Title"
+//   base={{"target": "_blank", "href": "http://mysite.com/"}}
+//   meta={[
+//       {"name": "description", "content": "Helmet application"},
+//       {"property": "og:type", "content": "article"}
+//   ]}
+//   link={[
+//       {"rel": "canonical", "href": "http://mysite.com/example"},
+//       {"rel": "apple-touch-icon", "href": "http://mysite.com/img/apple-touch-icon-57x57.png"},
+//       {"rel": "apple-touch-icon", "sizes": "72x72", "href": "http://mysite.com/img/apple-touch-icon-72x72.png"}
+//   ]}
+//   script={[
+//     {"src": "http://include.com/pathtojs.js", "type": "text/javascript"},
+//     {"type": "application/ld+json", innerHTML: `{ "@context": "http://schema.org" }`}
+//   ]}
+//   onChangeClientState={(newState) => console.log(newState)}
+// />

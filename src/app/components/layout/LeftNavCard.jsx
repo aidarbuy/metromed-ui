@@ -20,19 +20,28 @@ import * as Colors from
   'material-ui/lib/styles/Colors';
 
 export default () => (
-  <Card>
+  <Card style={{maxWidth:200}}>
     <CardHeader
       title="MetroMed"
       subtitle="Urgent Care"
-      avatar={<Avatar src="icons/logo.svg" 
-        backgroundColor={Colors.cyan500} 
-        style={{boxShadow:'1px 1px #0097A7'}}/>}
+      avatar={
+        <Avatar src="icons/logo.svg" 
+          color={Colors.cyan500}
+          backgroundColor={Colors.cyan500}
+          style={{boxShadow:'1px 1px #0097A7'}}
+        />
+      }
     />
     <CardMedia
+      overlayContentStyle={{
+        // backgroundColor:'red',
+        bottom: -1,
+      }} 
       overlay={<CardTitle 
         title="(703)-687-4158" 
-        subtitle='info@metromeduc.com' />}>
-      <img src="images/gallery/three-medics-thumb.jpg"/>
+        subtitle='info@metromeduc.com' 
+      />}>
+      <img src="images/gallery/three-medics-thumb.jpg" />
     </CardMedia>
   </Card>
 );

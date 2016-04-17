@@ -23,90 +23,54 @@ import MapIcon
 import VirtualIcon 
   from 'material-ui/lib/svg-icons/action/three-d-rotation';
 
-const styles = {
-  tabs : {
-    // border:'0px dashed red',
-  },
-  tab : {
-    // border:'1px dashed red',
-    // background:'green',
-  }
-};
 
 export default React.createClass({
-  getInitialState(props) {
-    var initIndex;
-    const { router } = this.context;
-    if (router.isActive('/')) {
-      initIndex = 0
-    } else if (router.isActive('/about')) {
-      initIndex = 1
-    } else if (router.isActive('/services')) {
-      initIndex = 2
-    } else if (router.isActive('/doctors')) {
-      initIndex = 3
-    } else if (router.isActive('/primary')) {
-      initIndex = 4
-    } else if (router.isActive('/map')) {
-      initIndex = 5
-    } else if (router.isActive('/virtual')) {
-      initIndex = 6
-    } else {
-      initIndex = -1
-    }
+  getInitialState() {
+    const pathname = this.props.location.pathname;
+    const initIndex = this.props.getInitIndex(pathname);
     return {initIndex};
   },
-  // ask for `router` from context
-  contextTypes: {
-    router: React.PropTypes.object
-  },
   handleActive(event) {
-    const route = event.props.route;
-    this.context.router.push(route);
+    const { route } = event.props;
+    this.props.pushToRouter(route);
+    this.props.dispatchAction({type:"UPDATE_ROUTE", route});
+    const storeState = this.props.getStoreState();
+    const storeRoute = storeState.router.route;
+    console.log("AppTabsIcon storeRoute:", storeRoute);
   },
   render() {
-    const index = this.state.initIndex
+    const index = this.state.initIndex;
     return (
-      <Tabs className="app-tabs-icon" 
-        initialSelectedIndex={index}
-        style={styles.tabs}
-      >
+      <Tabs className="app-tabs-icon" initialSelectedIndex={index}>
         <Tab route="/"
           icon={<HomeIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
-          style={styles.tab}
         />
         <Tab route="/about"
           icon={<AboutIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
-          style={styles.tab}
         />
         <Tab route="/services"
           icon={<ServicesIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
-          style={styles.tab}
         />
         <Tab route="/doctors"
           icon={<DoctorsIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
-          style={styles.tab}
         />
         <Tab route="/primary"
           icon={<PrimaryCareIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
-          style={styles.tab}
         />
         <Tab route="/map"
           icon={<MapIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
-          style={styles.tab}
         />
         <Tab route="/virtual"
           icon={<VirtualIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
-          style={styles.tab}
         />
       </Tabs>
     )
   }
-})
+});

@@ -21,10 +21,10 @@ import CallToAction from
   '../components/home/CallToAction'
 import CustomServices from 
   '../components/home/CustomServices'
-import Articles from 
-  '../containers/ArticlesCards'
+import ArticlesCards from 
+  '../components/ArticlesCards'
 import Testimonials from 
-  '../containers/Testimonials'
+  '../components/home/Testimonials'
 
 const styles = {
   flexContHalf: {
@@ -50,7 +50,7 @@ module.exports = () => (
         className='flex-container-half'
         style={styles.flexContHalf}
       >
-        <Articles/>
+        <ArticlesCards />
       </div>
       <div 
         className='flex-container-half'

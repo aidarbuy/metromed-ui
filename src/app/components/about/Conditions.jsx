@@ -1,3 +1,4 @@
+// src/app/components/about/Conditions.jsx
 import React from 'react';
 
 import Table from 
@@ -18,6 +19,7 @@ import ListItem from
   'material-ui/lib/lists/list-item';
 import Divider from 
   'material-ui/lib/divider';
+
 import ListItemDivider from 
   '../ui/ListItemDivider';
 
@@ -43,32 +45,45 @@ var arrPaired = [];
   }
 })();
 
-export default () => (
-  <div>
-    <Table className="conditions-lg-xs">
-      <TableBody displayRowCheckbox={false} stripedRows={false}>
-        {arrPaired.map((item, i) => (
-          <TableRow key={i}>
-            <TableRowColumn className="conditions-tableRow">
-              {item[0]}
-            </TableRowColumn>
-            <TableRowColumn className="conditions-tableRow">
-              {item[1]}
-            </TableRowColumn>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+export default React.createClass({
+  render() {
+    var rows = arrPaired.map((item, i) => {
+      return (
+        <TableRow key={item[0]}>
+          <TableRowColumn className="conditions-tableRow">
+            {item[0]}
+          </TableRowColumn>
+          <TableRowColumn className="conditions-tableRow">
+            {item[1]}
+          </TableRowColumn>
+        </TableRow>
+      );
+    })
 
-    <List className="conditions-xs">
-      {arr.map((item, i, arr) => (
+    var items = arr.map((item, i) => {
+      return (
         <div key={i}>
           <ListItem className="conditions-tableRow">
             {item}
           </ListItem>
           <Divider/>
         </div>
-      ))}
-    </List>
-  </div>
-);
+      );
+    });
+
+    return (
+      <div>
+        <Table className="conditions-lg-xs">
+          <TableBody displayRowCheckbox={false} 
+            stripedRows={false}
+          >{rows}
+          </TableBody>
+        </Table>
+
+        <List className="conditions-xs">
+          {items}
+        </List>
+      </div>
+    )
+  }
+});

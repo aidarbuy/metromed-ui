@@ -1,6 +1,7 @@
 // src/app/routes/Doctors.jsx
 
 import React from "react";
+import Helmet from 'react-helmet';
 
 import Card from
   'material-ui/lib/card/card';
@@ -23,6 +24,8 @@ import doctors from "../data/doctors";
 
 export default () => (
   <div>
+    <Helmet title="Doctors - Metromed UC"/>
+
     <h3>Doctors</h3>
 
     <div className="flex-container">

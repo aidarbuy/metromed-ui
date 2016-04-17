@@ -60,38 +60,22 @@ module.exports = () => (
           />
           <CardText className="top-bar-card-text">
             <p>
-              <a 
-                href="tel:7036874158" 
-                style={style.link}
-              >
+              <a href="tel:7036874158" style={style.link}>
                 (703) 687-4158
               </a>
             </p>
             <p>
-              <a 
-                href="#/map" 
-                style={style.link}
-              >
+              <a href="/map" style={style.link}>
                 952 Edwards Ferry Rd NE
               </a>
               <br/>
-              <a 
-                href="#/map" 
-                style={style.link}
-              >
+              <a href="#/map" style={style.link}>
                 Leesburg, VA 20176
               </a>
             </p>
             <p>
-              <a 
-                href="
-                  mailto:
-                  info@metromeduc.com
-                " 
-                style={style.link}
-              >
-                info@metromeduc.com
-              </a>
+              <a href="mailto:info@metromeduc.com" 
+                style={style.link}>info@metromeduc.com</a>
             </p>
           </CardText>
         </Card>

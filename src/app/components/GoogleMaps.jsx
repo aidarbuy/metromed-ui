@@ -1,10 +1,8 @@
-// src/app/components/SimpleMap.jsx 
+// src/app/components/GoogleMaps.jsx 
+import React from 'react';
+import GoogleMapsLoader from 'google-maps';
 
-import React from 'react'
-
-import GoogleMapsLoader from 'google-maps'
-
-GoogleMapsLoader.KEY = 'AIzaSyCevAQFOgvKGgw1Rz2xACa7zvsk7hs4W-Q'
+GoogleMapsLoader.KEY = 'AIzaSyCevAQFOgvKGgw1Rz2xACa7zvsk7hs4W-Q';
 
 const options = {
   center: {
@@ -12,10 +10,10 @@ const options = {
     lng:-77.539673
   },
   zoom: 11
-}
+};
 
-const scrHeight = window.screen.height
-const height = scrHeight - (scrHeight / 3) - 114
+const scrHeight = window.screen.height;
+const height = scrHeight - (scrHeight / 3) - 114;
       
 export default React.createClass({
   componentDidMount() {
@@ -36,4 +34,4 @@ export default React.createClass({
       </section>
     );
   }
-})
+});

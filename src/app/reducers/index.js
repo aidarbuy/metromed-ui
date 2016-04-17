@@ -1,11 +1,13 @@
-import { combineReducers } from 'redux'
-// import isLeftNavOpen from './isLeftNavOpen'
-import counter from './counter'
-import leftNav from './leftNav'
+// src/app/reducers/index.js
 
-const metromedApp = combineReducers({
+import { combineReducers } from 'redux';
+
+import counter from './counter';
+import leftNav from './leftNav';
+import router  from './router';
+
+export default combineReducers({
   counter,
   leftNav,
-})
-
-export default metromedApp
+  router,
+});

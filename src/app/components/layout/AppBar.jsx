@@ -1,6 +1,7 @@
 // src/app/containers/AppBar.jsx
-import React from 
-  'react'
+import React from 'react';
+import { Link } from 'react-router';
+
 import AppBar from 
   'material-ui/lib/app-bar'
 import IconButton from 
@@ -13,45 +14,38 @@ import MoreVertIcon from
   'material-ui/lib/svg-icons/navigation/more-vert'
 import MenuItem from 
   'material-ui/lib/menus/menu-item'
-import { Link } from 
-  'react-router'
 
 export default React.createClass({
-  contextTypes : {
-    store: React.PropTypes.object
-  },
   render() {
-    const { store } = this.context;
     return (
       <AppBar
-
         iconElementLeft={
           <IconButton onTouchTap={() => 
-            store.dispatch({type:'TOGGLE_LEFTNAV'})}>
+            this.props.dispatchAction({type:'TOGGLE_LEFTNAV'})}>
             <NavigationMenu/>
           </IconButton>
         }
-
         title="Metromed Urgent Care"
-
         iconElementRight={
           <IconMenu 
-            iconButtonElement={
-              <IconButton><MoreVertIcon /></IconButton>
-            }
+            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
             targetOrigin={{horizontal:'right', vertical:'top'}}
-            anchorOrigin={{horizontal:'right', vertical:'top'}}
-          >
+            anchorOrigin={{horizontal:'right', vertical:'top'}}>
             <Link to="telemed">
               <MenuItem primaryText="Telemed" />
             </Link>
-            <MenuItem primaryText="Help" />
-            <MenuItem primaryText="Sign out" />
+            <Link to="mui-theme">
+              <MenuItem primaryText="MUI Theme" />
+            </Link>
+            <Link to="router">
+              <MenuItem primaryText="Router" />
+            </Link>            
+            <Link to="context">
+              <MenuItem primaryText="Context" />
+            </Link>            
           </IconMenu>
         }
-      >
-
-      </AppBar>
+      />
     )
   }
 });

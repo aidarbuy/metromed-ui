@@ -8,7 +8,7 @@ import {
   NotFoundRoute,
 } from "react-router";
 
-import Layout   from "./Layout";
+import Layout   from "./containers/Layout";
 import Home     from "./routes/Home";
 import About    from "./routes/About";
 import Services from "./routes/Services";
@@ -21,6 +21,9 @@ import Telemed  from "./routes/Telemed";
 import Articles from "./routes/Articles";
 import Article  from "./routes/Article";
 import MuiTheme from "./routes/MuiTheme";
+import Router   from "./routes/Router";
+import Context  from "./routes/Context";
+import Test     from "./routes/Test";
 // import NotFound from "./routes/NotFound";
 
 /**
@@ -47,5 +50,8 @@ module.exports = (
     <Route path="/articles"     component={Articles} />
     <Route path="/articles/:id" component={Article}  />
     <Route path="/mui-theme"    component={MuiTheme} />
+    <Route path="/router"       component={Router}   />
+    <Route path="/context"      component={Context}  />
+    <Route path="/test"         component={Test}     />
   </Route>
 );

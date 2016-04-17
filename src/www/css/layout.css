@@ -90,3 +90,17 @@
     display: inline;
   }
 }
+
+.telemed-video {
+  width: calc(50% - 12px);
+  height: auto;
+  box-sizing: border-box;
+  margin: 0 0 20px 0;
+  vertical-align: top;
+  background: black;
+}
+
+.layout-container {
+  text-align: center;
+  padding-top: 0;
+}
