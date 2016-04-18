@@ -1,5 +1,6 @@
 // src/app/routes/Gallery.jsx
 import React from 'react';
+import Helmet from 'react-helmet';
 
 export default React.createClass({
 	componentDidMount() {
@@ -58,6 +59,8 @@ export default React.createClass({
 	render() {
 		return (
 			<div>
+				<Helmet title="MetromedUC photo gallery"/>
+
 				<h3>Photo Gallery</h3>
 
 				<div id="nanoGallery">

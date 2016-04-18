@@ -1,7 +1,6 @@
-
 // src/app/routes/Primary.jsx
-
 import React from 'react';
+import Helmet from 'react-helmet';
 
 const text = [
   "Every patient should have a primary care provider (PCP).",
@@ -11,35 +10,27 @@ const text = [
   "Thus, the PCP is <strong>the central hub of your health care​</strong>.",
   "If you do not have a Primary Care Provider, it is recommended that you obtain one.",
   "Having a Primary Care Provider is the only reliable way to ensure that you are getting <strong>the appropriate medical care for all aspects of your health and well being​</strong>."
-]
-
-const styles = {
-  p: {
-    textAlign:'left',
-  }
-}
+];
 
 export default React.createClass({
   render() {
+    const article = text.map((paragraph, i) => (
+      <p key={i}
+        style={{textAlign:'left'}}
+        dangerouslySetInnerHTML={{__html:paragraph}}
+      />
+    ));
+
     return (
       <div className="article">
+        <Helmet title="Primary Care - Metromed UC"/>
 
-        <h3>
-          What is a Primary Care Provider?
-        </h3>
+        <h3>What is a Primary Care Provider?</h3>
 
-        <img width="100%" 
-          src="images/primary/mbeckwith-white.jpg"
-        />
+        <img width="100%" src="images/primary/mbeckwith-white.jpg"/>
 
-        {text.map((paragraph, i) => (
-          <p key={i}
-            style={styles.p}
-            dangerouslySetInnerHTML={{__html:paragraph}}
-          />
-        ))}
-
+        {article}
       </div>
     )
   }
-})
+});

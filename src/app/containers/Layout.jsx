@@ -1,6 +1,5 @@
 // src/app/containers/Layout.jsx
 import React from 'react';
-import Helmet from 'react-helmet';
 
 import getMuiTheme from 
   'material-ui/lib/styles/getMuiTheme';
@@ -77,7 +76,6 @@ export default React.createClass({
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="layout-container">
-          <Helmet title="Metromed Urgent Care"/>
           <AppBar 
             dispatchAction  = {this.dispatchAction} 
           />

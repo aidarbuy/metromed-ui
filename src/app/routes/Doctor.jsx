@@ -1,7 +1,9 @@
+// src/app/routes/Doctor.jsx
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import FlatButton from 
-  'material-ui/lib/flat-button'
+  'material-ui/lib/flat-button';
 import DoctorsIcon 
 	from 'material-ui/lib/svg-icons/action/face';
 
@@ -9,12 +11,11 @@ import doctors from '../data/doctors';
 
 const styles = {
   header : {
-    textTransform:'capitalize',
+    textTransform: 'capitalize',
   },
   p : {
-    textAlign:'left',
-    margin:20,
-    // background:'red',
+    textAlign: 'left',
+    margin: 20,
   },
 };
 
@@ -34,6 +35,9 @@ export default React.createClass({
 
     return (
     	<div>
+        <Helmet 
+          title={"Doctor " + doctor.firstname + " " + doctor.lastname} 
+        />
         <FlatButton 
           label="All Doctors" 
           labelPosition="after"

@@ -36,7 +36,7 @@ export default React.createClass({
     this.props.dispatchAction({type:"UPDATE_ROUTE", route});
     const storeState = this.props.getStoreState();
     const storeRoute = storeState.router.route;
-    console.log("AppTabsIcon storeRoute:", storeRoute);
+    // console.log("AppTabsIcon storeRoute:", storeRoute);
   },
   render() {
     const index = this.state.initIndex;

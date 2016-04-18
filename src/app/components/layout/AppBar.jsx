@@ -1,4 +1,4 @@
-// src/app/containers/AppBar.jsx
+// src/app/components/layout/AppBar.jsx
 import React from 'react';
 import { Link } from 'react-router';
 

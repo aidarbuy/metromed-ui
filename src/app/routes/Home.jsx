@@ -1,30 +1,32 @@
-import React from 
-  'React'
+// src/app/routes/Home.jsx
+import React from 'react';
+import Helmet from 'react-helmet';
+
 import Toolbar from 
-  'material-ui/lib/toolbar/toolbar'
+  'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 
-  'material-ui/lib/toolbar/toolbar-group'
+  'material-ui/lib/toolbar/toolbar-group';
 import ToolbarSeparator from 
-  'material-ui/lib/toolbar/toolbar-separator'
+  'material-ui/lib/toolbar/toolbar-separator';
 import ToolbarTitle from 
-  'material-ui/lib/toolbar/toolbar-title'
+  'material-ui/lib/toolbar/toolbar-title';
 import FontIcon from 
-  'material-ui/lib/font-icon'
+  'material-ui/lib/font-icon';
 import RaisedButton from 
-  'material-ui/lib/raised-button'
+  'material-ui/lib/raised-button';
 
 import LayerSlider from 
-  '../components/home/LayerSlider'
+  '../components/home/LayerSlider';
 import TopBar from 
-  '../components/home/TopBar'
+  '../components/home/TopBar';
 import CallToAction from 
-  '../components/home/CallToAction'
+  '../components/home/CallToAction';
 import CustomServices from 
-  '../components/home/CustomServices'
+  '../components/home/CustomServices';
 import ArticlesCards from 
-  '../components/ArticlesCards'
+  '../components/ArticlesCards';
 import Testimonials from 
-  '../components/home/Testimonials'
+  '../components/home/Testimonials';
 
 const styles = {
   flexContHalf: {
@@ -39,8 +41,7 @@ const styles = {
 
 module.exports = () => (
   <div>
-    {/*
-    */}
+    <Helmet title="Metromed Urgent Care"/>
     <LayerSlider/>
     <TopBar/>
     <CallToAction/>

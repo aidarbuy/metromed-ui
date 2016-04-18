@@ -1,9 +1,11 @@
+// src/app/routes/Article.jsx
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import FlatButton from 
-  'material-ui/lib/flat-button'
+  'material-ui/lib/flat-button';
 import LibraryBooks from 
-  'material-ui/lib/svg-icons/av/library-books'
+  'material-ui/lib/svg-icons/av/library-books';
 import Paper from 
   'material-ui/lib/Paper';
 
@@ -16,10 +18,8 @@ const styles = {
   p : {
     textAlign:'left',
     margin:20,
-    // background:'red',
   },
   buttonContainer : {
-    // border:'1px dashed red',
     textAlign:'left',
   },
   button : {
@@ -27,21 +27,30 @@ const styles = {
   }
 };
 
-function getArticleText(id) {
-  for (var i = articles.length - 1; i >= 0; i--) {
+const getArticle = (id) => {
+  for (var i = 0; i <= articles.length - 1; i++) {
     if (articles[i].img.src === id)
-      return articles[i].text;
+      return articles[i];
   }
-}
+};
 
 export default React.createClass({
   render() {
     const { id } = this.props.params;
     const src = 'images/articles/' + 
       id + '-600x300.jpg';
+    const article = getArticle(id);
+    const articleText = article.text.map((p, i) => (
+      <div key={i} style={styles.p} 
+        dangerouslySetInnerHTML={{__html:p}}>
+      </div>
+    ));
 
     return (
       <div>
+        <Helmet title={
+          article.title + " - MetromedUC"
+        } />
         <div style={styles.buttonContainer}>
           <FlatButton 
             label="All Articles" 
@@ -54,17 +63,13 @@ export default React.createClass({
           />
         </div>
 
-        <h3 style={styles.header}>{id}</h3>
+        <h3 style={styles.header}>{article.title}</h3>
 
         <Paper>
           <img width="100%" src={src}/>
         </Paper>
 
-        {getArticleText(id).map((p, i) => (
-          <div key={i} style={styles.p} 
-            dangerouslySetInnerHTML={{__html:p}}>
-          </div>
-        ))}
+        {articleText}
       </div>
     )
   }
