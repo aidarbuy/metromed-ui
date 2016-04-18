@@ -22,8 +22,7 @@ export default class AppLeftNav extends Component {
     super(props);
     const storeState = this.props.getStoreState();
     this.state = {
-      // open:storeState.leftNav.open,
-      open:true
+      open:storeState.leftNav.open
     };
   }
 

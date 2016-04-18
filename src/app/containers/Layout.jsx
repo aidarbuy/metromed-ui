@@ -39,7 +39,7 @@ export default React.createClass({
     // const router = this.context.store.getState().router;
     let newMuiTheme = muiTheme;
     const toolbar = Object.assign({}, newMuiTheme.toolbar, {
-      // backgroundColor: Colors.yellow500,
+      // backgroundColor: Colors.grey700,
     });
     newMuiTheme.toolbar = toolbar;
     // overwrite this.state.muiTheme
@@ -77,30 +77,30 @@ export default React.createClass({
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="layout-container">
-          <Helmet title="Helmet title"/>
+          <Helmet title="Metromed Urgent Care"/>
           <AppBar 
-            dispatchAction={this.dispatchAction} 
+            dispatchAction  = {this.dispatchAction} 
           />
           <AppLeftNav 
             location={location}
-            dispatchAction={this.dispatchAction}
-            getStoreState={this.getStoreState}
-            getInitIndex={this.getInitIndex}
-            pushToRouter={this.pushToRouter}
+            dispatchAction = {this.dispatchAction}
+            getStoreState  = {this.getStoreState}
+            getInitIndex   = {this.getInitIndex}
+            pushToRouter   = {this.pushToRouter}
           />
           <AppTabs 
             location={location} 
-            dispatchAction={this.dispatchAction} 
-            getInitIndex={this.getInitIndex}
-            getStoreState={this.getStoreState}
-            pushToRouter={this.pushToRouter}
+            dispatchAction = {this.dispatchAction} 
+            getInitIndex   = {this.getInitIndex}
+            getStoreState  = {this.getStoreState}
+            pushToRouter   = {this.pushToRouter}
           />
           <AppTabsIcon 
             location={location} 
-            dispatchAction={this.dispatchAction} 
-            getInitIndex={this.getInitIndex}
-            getStoreState={this.getStoreState}
-            pushToRouter={this.pushToRouter}
+            dispatchAction = {this.dispatchAction} 
+            getInitIndex   = {this.getInitIndex}
+            getStoreState  = {this.getStoreState}
+            pushToRouter   = {this.pushToRouter}
           />
           <div style={{marginTop:20}}>
             {this.props.children}

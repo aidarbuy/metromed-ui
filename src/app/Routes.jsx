@@ -20,6 +20,7 @@ import Virtual  from "./routes/Virtual";
 import Telemed  from "./routes/Telemed";
 import Articles from "./routes/Articles";
 import Article  from "./routes/Article";
+import Gallery  from "./routes/Gallery";
 import MuiTheme from "./routes/MuiTheme";
 import Router   from "./routes/Router";
 import Context  from "./routes/Context";
@@ -49,6 +50,7 @@ module.exports = (
     <Route path="/telemed"      component={Telemed}  />
     <Route path="/articles"     component={Articles} />
     <Route path="/articles/:id" component={Article}  />
+    <Route path="/gallery"      component={Gallery}  />
     <Route path="/mui-theme"    component={MuiTheme} />
     <Route path="/router"       component={Router}   />
     <Route path="/context"      component={Context}  />

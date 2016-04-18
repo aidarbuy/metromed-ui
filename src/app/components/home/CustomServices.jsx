@@ -132,6 +132,8 @@ module.exports = () => (
         <CardActions>
           <RaisedButton 
             label="View photo gallery" 
+            linkButton={true}
+            href="/gallery"
           />
         </CardActions>
       </Card>
