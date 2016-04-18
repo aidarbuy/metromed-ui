@@ -11,13 +11,13 @@ import MuiThemeProvider from
   'material-ui/lib/MuiThemeProvider';
 
 import AppBar from 
-  '../components/layout/AppBar';
+  './AppBar';
 import AppLeftNav from 
-  '../containers/AppLeftNav';
-import AppTabsIcon from 
-  '../components/layout/AppTabsIcon';
+  './AppLeftNav';
 import AppTabs from 
   '../components/layout/AppTabs';
+import AppTabsIcon from 
+  '../components/layout/AppTabsIcon';
 import AppFooter from 
   '../components/layout/AppFooter';
 
@@ -66,7 +66,6 @@ export default React.createClass({
     this.context.router.push(route);
   },
   dispatchAction(action) {
-    // console.log("Layout: dispatching an action");
     this.context.store.dispatch(action);
   },
   getStoreState() {
@@ -78,6 +77,7 @@ export default React.createClass({
         <div className="layout-container">
           <AppBar 
             dispatchAction  = {this.dispatchAction} 
+            getStoreState  = {this.getStoreState}
           />
           <AppLeftNav 
             location={location}

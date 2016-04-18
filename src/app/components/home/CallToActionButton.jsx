@@ -1,11 +1,16 @@
-import React from 'react';
-import RaisedButton from 'material-ui/lib/raised-button';
+// src/app/components/home/CallToActionButton.jsx
 
-module.exports = () => (
+import React from 'react';
+
+import RaisedButton from 
+	'material-ui/lib/raised-button';
+
+export default () => (
   <RaisedButton 
   	label="Call Us Now" 
   	href="tel:1-703-687-4158" 
-  	primary={true} 
+  	primary={false} 
+  	secondary={true}
   	linkButton={true}
   />
 );

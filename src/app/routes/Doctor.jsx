@@ -2,20 +2,20 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import FlatButton from 
-  'material-ui/lib/flat-button';
+import Button from 
+  'material-ui/lib/raised-button';
 import DoctorsIcon 
-	from 'material-ui/lib/svg-icons/action/face';
+	from 'material-ui/lib/svg-icons/navigation/arrow-back';
 
 import doctors from '../data/doctors';
 
 const styles = {
   header : {
-    textTransform: 'capitalize',
+    textTransform:'capitalize',
   },
   p : {
-    textAlign: 'left',
-    margin: 20,
+    textAlign:'left',
+    margin:20,
   },
 };
 
@@ -38,15 +38,17 @@ export default React.createClass({
         <Helmet 
           title={"Doctor " + doctor.firstname + " " + doctor.lastname} 
         />
-        <FlatButton 
-          label="All Doctors" 
-          labelPosition="after"
-          primary={true}
-          icon={<DoctorsIcon />}
-          style={styles.button}
-          linkButton={true}
-          href="/doctors"
-        />
+        <div style={{textAlign:'left'}}>
+          <Button 
+            label="Back to All Doctors" 
+            labelPosition="after"
+            primary={true}
+            icon={<DoctorsIcon />}
+            style={styles.button}
+            linkButton={true}
+            href="/doctors"
+          />
+        </div>
 
         <h3 style={styles.header}>
         	Doctor {doctor.firstname} {doctor.lastname}

@@ -24,7 +24,7 @@ import CallToAction from
 import CustomServices from 
   '../components/home/CustomServices';
 import ArticlesCards from 
-  '../components/ArticlesCards';
+  '../components/home/ArticlesCards';
 import Testimonials from 
   '../components/home/Testimonials';
 

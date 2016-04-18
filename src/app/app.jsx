@@ -3,7 +3,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { 
+  Router, browserHistory 
+} from 'react-router';
 import { createStore } from 'redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 

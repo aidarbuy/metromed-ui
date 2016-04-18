@@ -15,7 +15,7 @@ import AboutIcon
 import ServicesIcon 
   from 'material-ui/lib/svg-icons/maps/local-hospital';
 import DoctorsIcon 
-  from 'material-ui/lib/svg-icons/action/face';
+  from 'material-ui/lib/svg-icons/social/people';
 import PrimaryCareIcon 
   from 'material-ui/lib/svg-icons/action/description';
 import MapIcon 

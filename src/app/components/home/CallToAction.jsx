@@ -1,11 +1,14 @@
-import React from 
-  'react';
+// src/app/components/home/CallToAction.jsx
+
+import React from 'react';
+
 import Paper from 
   'material-ui/lib/paper';
 import {pink500} from 
-  'material-ui/lib/styles/colors'
+  'material-ui/lib/styles/colors';
+
 import CallToActionButton from 
-  '../home/CallToActionButton'
+  '../home/CallToActionButton';
 
 const styles = {
   paper: {
@@ -22,7 +25,7 @@ const styles = {
   }
 };
 
-module.exports = () => (
+export default () => (
   <Paper style={styles.paper} zDepth={2}>
     <div style={styles.content}>
       <h4 style={{
@@ -34,10 +37,7 @@ module.exports = () => (
 
       <CallToActionButton />
 
-      <h5 style={{
-        marginTop:10,
-        color:'white'
-      }}>
+      <h5 style={{marginTop:10,color:'white'}}>
         We are passionate about caring 
         for your health and providing 
         exceptional urgent care

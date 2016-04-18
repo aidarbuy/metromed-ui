@@ -4,8 +4,8 @@ import Helmet from 'react-helmet';
 
 import FlatButton from 
   'material-ui/lib/flat-button';
-import LibraryBooks from 
-  'material-ui/lib/svg-icons/av/library-books';
+import ArrowBack from 
+  'material-ui/lib/svg-icons/navigation/arrow-back';
 import Paper from 
   'material-ui/lib/Paper';
 
@@ -56,7 +56,7 @@ export default React.createClass({
             label="All Articles" 
             labelPosition="after"
             primary={true}
-            icon={<LibraryBooks />}
+            icon={<ArrowBack />}
             style={styles.button}
             linkButton={true}
             href="/articles"

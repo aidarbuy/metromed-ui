@@ -30,9 +30,9 @@ import { grey50 } from
   'material-ui/lib/styles/colors'
 
 import articlesData from 
-  '../data/articles'
+  '../../data/articles'
 import ArticleCard from 
-  '../components/ArticleCard';
+  '../ArticleCard';
 
 const articles = articlesData.slice(0, 4);
 

@@ -17,8 +17,10 @@ import FlatButton from
   "material-ui/lib/flat-button";
 import CardText from 
   "material-ui/lib/card/card-text";
-import RaisedButton from 
+import Button from 
   'material-ui/lib/raised-button';
+import Icon from
+  'material-ui/lib/svg-icons/navigation/arrow-forward';
 
 import doctors from "../data/doctors";
 
@@ -31,7 +33,11 @@ export default () => (
     <div className="flex-container">
       {doctors.map((doc, i) => (
         <div key={doc.id} className="flex-item">
-          <Card style={{margin:5,boxSizing:'border-box'}}>
+          <Card style={{
+            margin:5,
+            boxSizing:'border-box',
+            minHeight:490
+          }}>
             <CardMedia 
               overlay={
                 <CardTitle 
@@ -65,9 +71,11 @@ export default () => (
             </CardText>
 
             <CardActions style={{textAlign:'right'}}>
-              <RaisedButton 
+              <Button 
                 label="Read more"
-                secondary={true}
+                icon={<Icon/>}
+                labelPosition="before"
+                primary={true}
                 linkButton={true}
                 href={"/doctors/" + doc.id}
               />
