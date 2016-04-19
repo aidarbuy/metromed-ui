@@ -35,31 +35,36 @@ export default React.createClass({
     muiTheme: React.PropTypes.object,
   },
   componentWillMount() {
-    // const router = this.context.store.getState().router;
     let newMuiTheme = muiTheme;
-    const toolbar = Object.assign({}, newMuiTheme.toolbar, {
-      // backgroundColor: Colors.grey700,
-    });
-    newMuiTheme.toolbar = toolbar;
+    const leftNav = { ...newMuiTheme.leftNav,
+      // color: Colors.cyan700,
+    };
+
+    newMuiTheme.leftNav = leftNav;
     // overwrite this.state.muiTheme
     // this.setState({
       // muiTheme: newMuiTheme,
     // });
   },
   getChildContext() {
-    // state or propNames changed, update context of childs
+    // state or propNames changed, 
+    // update context of childs
     return {muiTheme}
   },
   getInitIndex(pathname) {
     switch (pathname) {
-      case "/"         : return 0;
-      case "/about"    : return 1;
-      case "/services" : return 2;
-      case "/doctors"  : return 3;
-      case "/primary"  : return 4;
-      case "/map"      : return 5;
-      case "/virtual"  : return 6;
-      default          : return -1;
+      case "/"          : return 0;
+      case "/about"     : return 1;
+      case "/services"  : return 2;
+      case "/doctors"   : return 3;
+      case "/doctors/1" : return 3;
+      case "/doctors/2" : return 3;
+      case "/doctors/3" : return 3;
+      case "/doctors/4" : return 3;
+      case "/primary"   : return 4;
+      case "/location"  : return 5;
+      case "/virtual"   : return 6;
+      default           : return -1;
     }
   },
   pushToRouter(route) {
@@ -76,7 +81,7 @@ export default React.createClass({
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="layout-container">
           <AppBar 
-            dispatchAction  = {this.dispatchAction} 
+            dispatchAction = {this.dispatchAction} 
             getStoreState  = {this.getStoreState}
           />
           <AppLeftNav 
@@ -100,9 +105,7 @@ export default React.createClass({
             getStoreState  = {this.getStoreState}
             pushToRouter   = {this.pushToRouter}
           />
-          <div style={{marginTop:20}}>
-            {this.props.children}
-          </div>
+          {this.props.children}
           <AppFooter />
         </div>
       </MuiThemeProvider>

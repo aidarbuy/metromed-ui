@@ -1,4 +1,5 @@
-// src/app/routes/Map.jsx
+// src/app/routes/Location.jsx
+
 import React from 'react';
 import Helmet from 'react-helmet';
 import GoogleMaps from '../components/GoogleMaps';

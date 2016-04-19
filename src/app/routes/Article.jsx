@@ -47,7 +47,7 @@ export default React.createClass({
     ));
 
     return (
-      <div>
+      <article>
         <Helmet title={
           article.title + " - MetromedUC"
         } />
@@ -70,7 +70,7 @@ export default React.createClass({
         </Paper>
 
         {articleText}
-      </div>
+      </article>
     )
   }
 });

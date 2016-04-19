@@ -49,7 +49,7 @@ export default React.createClass({
             onActive={this.handleActive}
           />
           <Tab label="Map" 
-            route="/map" 
+            route="/location" 
             onActive={this.handleActive}
           />
           <Tab label="Virtual Tour" 

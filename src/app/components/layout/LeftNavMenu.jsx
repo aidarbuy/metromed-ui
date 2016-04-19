@@ -16,7 +16,7 @@ import AboutIcon from
 import ServicesIcon from 
   'material-ui/lib/svg-icons/maps/local-hospital';
 import DoctorsIcon from 
-  'material-ui/lib/svg-icons/action/face';
+  'material-ui/lib/svg-icons/social/people';
 import PrimaryCareIcon from 
   'material-ui/lib/svg-icons/action/description';
 import MapIcon from 
@@ -56,7 +56,7 @@ export default React.createClass({
           onTouchTap={this.handleTouchTap} 
           innerDivStyle={styles.innerDiv}
         />
-        <MenuItem primaryText="About" value="/about" route="/about"
+        <MenuItem primaryText="About Us" value="/about" route="/about"
           leftIcon={<AboutIcon style={styles.icon} />} 
           containerElement={<NavLink to="/about" />}
           onTouchTap={this.handleTouchTap} 
@@ -80,9 +80,9 @@ export default React.createClass({
           onTouchTap={this.handleTouchTap} 
           innerDivStyle={styles.innerDiv}
         />
-        <MenuItem primaryText="Map" 
+        <MenuItem primaryText="Location" 
           leftIcon={<MapIcon style={styles.icon} />} 
-          containerElement={<Link to="/map" />}
+          containerElement={<Link to="/location" />}
           onTouchTap={this.handleTouchTap} 
           innerDivStyle={styles.innerDiv}
         />
@@ -100,10 +100,10 @@ export default React.createClass({
 const styles = {
   innerDiv : {
     paddingLeft: 50,
-    color: Colors.cyan800,
+    color: Colors.cyanA700,
     textAlign:'left',
   },
   icon : {
-    fill: Colors.cyan600,
+    fill: Colors.cyanA700,
   }
 };

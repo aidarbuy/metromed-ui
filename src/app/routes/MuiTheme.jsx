@@ -15,6 +15,8 @@ import FlatButton from
   'material-ui/lib/flat-button';
 import CardText from 
   'material-ui/lib/card/card-text';
+import List from 
+  'material-ui/lib/lists/list';
 import ListItem from 
   'material-ui/lib/lists/list-item';
 
@@ -27,31 +29,35 @@ export default React.createClass({
   },
 
   getKeys(muiTheme) {
-    const keys = Object.keys(muiTheme).map((key, i) => {
-      const currObj = muiTheme[key];
-      console.log(currObj);
-      // const props = this.getProps(currObj);
-      return (
-        <div className="flex-item" key={key}>
-          <Card style={{margin:10,minHeight:250}}>
-            <CardTitle title={key}/>
-            <CardText style={{textAlign:'left'}}>
-            </CardText>
-          </Card>
-        </div>
-      )
+    var keys = Object.keys(muiTheme).map((key, i, mui) => {
+      var currentObject = muiTheme[key];
+      if (key === "leftNav") console.log(currentObject);
+      if (typeof currentObject === "object") {
+        var props = this.getPropsFrom(currentObject);
+        return (
+          <div className="flex-item" key={key}>
+            <Card style={{margin:10,minHeight:250}}>
+              <CardTitle title={key}/>
+              <CardText style={{textAlign:'left'}}>
+                <List>
+                  {props}
+                </List>
+              </CardText>
+            </Card>
+          </div>
+        )
+      }
     });
     return keys;
   },
   
-  getProps(currObj) {
-    var props = Object.keys(currObj).map((prop, i, obj) => {
+  getPropsFrom(object) {
+    var props = Object.keys(object).map((propName, i) => {
       return (
-        <div key={prop}>
+        <div key={propName}>
           <ListItem>
-            {prop + ": " + currObj[prop]}
+            {propName + ": " + object[propName]}
           </ListItem>
-          <ListItemDivider index={i} length={obj.length} />
         </div>
       );
     });

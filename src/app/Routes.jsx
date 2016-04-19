@@ -15,7 +15,7 @@ import Services from "./routes/Services";
 import Doctors  from "./routes/Doctors";
 import Doctor   from "./routes/Doctor";
 import Primary  from "./routes/Primary";
-import Map      from "./routes/Map";
+import Location from "./routes/Location";
 import Virtual  from "./routes/Virtual";
 import Telemed  from "./routes/Telemed";
 import Articles from "./routes/Articles";
@@ -39,13 +39,13 @@ import Test     from "./routes/Test";
  */
 module.exports = (
   <Route path="/" component={Layout}>
-    <IndexRoute component={Home}/>
+    <IndexRoute                 component={Home}     />
     <Route path="/about"        component={About}    />
     <Route path="/services"     component={Services} />
     <Route path="/doctors"      component={Doctors}  />
     <Route path="/doctors/:id"  component={Doctor}   />
     <Route path="/primary"      component={Primary}  />
-    <Route path="/map"          component={Map}      />
+    <Route path="/location"     component={Location} />
     <Route path="/virtual"      component={Virtual}  />
     <Route path="/telemed"      component={Telemed}  />
     <Route path="/articles"     component={Articles} />

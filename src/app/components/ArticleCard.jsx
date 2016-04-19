@@ -43,6 +43,7 @@ export default React.createClass({
           <RaisedButton 
             label="Read more" 
             labelPosition="before"
+            primary={false}
             secondary={true}
             icon={<LibraryBooks />}
             style={{margin:12}}

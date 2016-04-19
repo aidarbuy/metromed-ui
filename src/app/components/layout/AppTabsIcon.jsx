@@ -62,7 +62,7 @@ export default React.createClass({
           icon={<PrimaryCareIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
         />
-        <Tab route="/map"
+        <Tab route="/location"
           icon={<MapIcon className="AppTabsIcon-icon" />}
           onActive={this.handleActive}
         />

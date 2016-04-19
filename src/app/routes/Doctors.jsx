@@ -1,5 +1,4 @@
 // src/app/routes/Doctors.jsx
-
 import React from "react";
 import Helmet from 'react-helmet';
 
@@ -24,66 +23,77 @@ import Icon from
 
 import doctors from "../data/doctors";
 
-export default () => (
-  <div>
-    <Helmet title="Doctors - Metromed UC"/>
+export default React.createClass({
+  getFullName(doc) {
+    return doc.firstname + " " + doc.lastname;
+  },
+  getRouteName(doc) {
+    var routeName;
+    routeName = doc.firstname.toLowerCase() + "-" + doc.lastname.toLowerCase();
+    console.log(routeName);
+    return routeName;
+  },
+  render() {
+    return (
+      <div>
+        <Helmet title="Doctors - Metromed UC"/>
 
-    <h3>Doctors</h3>
+        <h3>Doctors</h3>
 
-    <div className="flex-container">
-      {doctors.map((doc, i) => (
-        <div key={doc.id} className="flex-item">
-          <Card style={{
-            margin:5,
-            boxSizing:'border-box',
-            minHeight:490
-          }}>
-            <CardMedia 
-              overlay={
-                <CardTitle 
-                  title={"Dr. " + doc.firstname + " " + 
-                    doc.lastname}
-                />
-              }
-              overlayContentStyle={{
-                background:'rgba(0, 188, 212, 0.7)',
-                bottom:0,
-                margin:0,
-                padding:0,
-              }}
-              style={{background:'red'}}
-            >
-              <img src={'images/doctors/' + doc.img.big}
-                style={{
-                  background:'red',
-                  padding:0,
-                  margin:0,
-                }}/>
-            </CardMedia>
+        <div className="flex-container">
+          {doctors.map((doc, i) => (
+            <div key={doc.id} className="flex-item">
+              <Card style={{
+                margin:5,
+                boxSizing:'border-box',
+                minHeight:490
+              }}>
+                <CardMedia 
+                  overlay={
+                    <CardTitle 
+                      title={"Dr. " + this.getFullName(doc)}
+                    />
+                  }
+                  overlayContentStyle={{
+                    background:'rgba(0, 188, 212, 0.7)',
+                    bottom:0,
+                    margin:0,
+                    padding:0,
+                  }}
+                  style={{background:'red'}}
+                >
+                  <img src={'images/doctors/' + doc.img.big}
+                    style={{
+                      background:'red',
+                      padding:0,
+                      margin:0,
+                    }}/>
+                </CardMedia>
 
-            <CardTitle 
-              title={doc.speciality} 
-              subtitle={doc.title} 
-            />
+                <CardTitle title={doc.speciality} subtitle={doc.title} />
 
-            <CardText className="doctors-card-text">
-              {doc.description[0]}
-            </CardText>
+                <CardText className="doctors-card-text">
+                  {doc.description[0]}
+                </CardText>
 
-            <CardActions style={{textAlign:'right'}}>
-              <Button 
-                label="Read more"
-                icon={<Icon/>}
-                labelPosition="before"
-                primary={true}
-                linkButton={true}
-                href={"/doctors/" + doc.id}
-              />
-            </CardActions>
-          </Card>
-        {/* flex-item */}
+                <CardActions style={{textAlign:'right'}}>
+                  <Button 
+                    label="Read more"
+                    icon={<Icon/>}
+                    labelPosition="before"
+                    secondary={true}
+                    linkButton={true}
+                    href={
+                      "/doctors/" + this.getRouteName(doc)
+                    }
+                  />
+                </CardActions>
+              </Card>
+            {/* flex-item */}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
-)
+      </div>
+    );
+  }
+});

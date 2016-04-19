@@ -3,7 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Button from 
-  'material-ui/lib/raised-button';
+  'material-ui/lib/flat-button';
 import DoctorsIcon 
 	from 'material-ui/lib/svg-icons/navigation/arrow-back';
 

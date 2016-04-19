@@ -65,11 +65,11 @@ module.exports = () => (
               </a>
             </p>
             <p>
-              <a href="/map" style={style.link}>
+              <a href="/location" style={style.link}>
                 952 Edwards Ferry Rd NE
               </a>
               <br/>
-              <a href="#/map" style={style.link}>
+              <a href="/location" style={style.link}>
                 Leesburg, VA 20176
               </a>
             </p>
