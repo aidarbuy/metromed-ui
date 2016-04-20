@@ -1,25 +1,14 @@
-// src/app/containers/Layout.jsx
 import React from 'react';
 
-import getMuiTheme from 
-  'material-ui/lib/styles/getMuiTheme';
-import * as Colors from 
-  'material-ui/lib/styles/colors';
-import {blue500} from 
-  'material-ui/lib/styles/colors';
-import MuiThemeProvider from 
-  'material-ui/lib/MuiThemeProvider';
+import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
+import * as Colors from 'material-ui/lib/styles/colors';
+import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
 
-import AppBar from 
-  './AppBar';
-import AppLeftNav from 
-  './AppLeftNav';
-import AppTabs from 
-  '../components/layout/AppTabs';
-import AppTabsIcon from 
-  './AppTabsIcon';
-import AppFooter from 
-  '../components/layout/AppFooter';
+import AppBar      from './AppBar';
+import AppLeftNav  from './AppLeftNav';
+import AppTabs     from './AppTabs';
+import AppTabsIcon from './AppTabsIcon';
+import AppFooter   from '../components/layout/AppFooter';
 
 import rawTheme from '../themes/light';
 // import rawTheme from '../themes/dark';
