@@ -65,16 +65,13 @@ module.exports = () => (
       ))}
     </div>
 
-    <Toolbar style={{
-      background:grey50
-    }}>
-      <ToolbarGroup 
-        style={{
-          marginLeft:'auto',
-          marginRight:'auto',
-        }}
+    <Toolbar style={{background:grey50}}>
+      <ToolbarGroup style={{width:'100%'}}
+        firstChild={true}
+        lastChild={true}
       >
         <RaisedButton 
+          fullWidth={true}
           label="View All Articles" 
           linkButton={true}
           href="/articles"
