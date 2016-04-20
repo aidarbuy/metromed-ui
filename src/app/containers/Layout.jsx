@@ -59,7 +59,7 @@ export default React.createClass({
     // update context of childs
     return {muiTheme}
   },
-  getRouteValue(index) {
+  getRouteName(index) {
     switch (index) {
       case 0  : return "/";
       case 1  : return "/about";
@@ -120,15 +120,12 @@ export default React.createClass({
             getInitIndex   = {this.getInitIndex}
             getStoreState  = {this.getStoreState}
             pushToRouter   = {this.pushToRouter}
-            getRouteValue  = {this.getRouteValue}
+            getRouteName   = {this.getRouteName}
           />
           <AppTabsIcon 
             location={location} 
-            dispatchAction = {this.dispatchAction} 
             getInitIndex   = {this.getInitIndex}
-            getStoreState  = {this.getStoreState}
-            pushToRouter   = {this.pushToRouter}
-            getRouteValue  = {this.getRouteValue}
+            getRouteName   = {this.getRouteName}
           />
           {this.props.children}
           <AppFooter />

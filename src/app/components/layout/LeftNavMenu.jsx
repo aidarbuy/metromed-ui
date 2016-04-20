@@ -20,11 +20,11 @@ import NavLink from './NavLink';
 export default React.createClass({
   getInitialState() {
     const pathname = this.props.location.pathname;
-    const initIndex = this.props.getInitIndex(pathname);
-    return {initIndex};
+    const index = this.props.getInitIndex(pathname);
+    return {index};
   },
   handleTouchTap(route, index) {
-    console.debug("route: " + route + ", index: " + index)
+    // console.debug("route: " + route + ", index: " + index)
     this.props.pushToRouter(route);
     // this.props.dispatchAction({type:"TOGGLE_LEFTNAV"});
     this.props.dispatchAction({type:"UPDATE_ROUTE", route});

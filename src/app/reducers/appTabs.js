@@ -1,12 +1,12 @@
-export default (state = {initIndex:0}, action) => {
+export default (state = {index:0}, action) => {
   // console.debug("appTabs state:", state);
   switch (action.type) {
     case 'UPDATE_INDEX':
       const newState = {
         ...state, 
-        initIndex: action.index,
+        index: action.index,
       }
-      console.debug("appTabs index:", newState.initIndex);
+      // console.debug("appTabs index:", newState.index);
       return newState;
 
     default:

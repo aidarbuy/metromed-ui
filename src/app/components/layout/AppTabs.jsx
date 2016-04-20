@@ -11,8 +11,8 @@ import * as Colors from
 export default React.createClass({
   getInitialState() {
     const pathname = this.props.location.pathname;
-    const initIndex = this.props.getInitIndex(pathname);
-    return {initIndex};
+    const index = this.props.getInitIndex(pathname);
+    return {index};
   },
   handleActive(event) {
     const { route } = event.props;
@@ -22,11 +22,11 @@ export default React.createClass({
     console.log("AppTabs storeRoute:", storeRoute);
   },
   render() {
-    const { initIndex } = this.state;
+    const { index } = this.state;
     return (
       <div style={{background:Colors.cyan500}}>
         <Tabs className="app-tabs"
-          initialSelectedIndex={initIndex}
+          initialSelectedIndex={index}
         >
           <Tab label="Home" 
             route="/" 

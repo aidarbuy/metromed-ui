@@ -1,63 +1,49 @@
-// src/app/components/layout/AppTabsIcon.jsx
-import React from 'react';
-import NavLink from 'react-router';
-
-import Tabs 
-  from 'material-ui/lib/tabs/tabs';
-import Tab
-  from 'material-ui/lib/tabs/tab';
-import FontIcon 
-  from 'material-ui/lib/font-icon';
-import HomeIcon 
-  from 'material-ui/lib/svg-icons/action/home';
-import AboutIcon 
-  from 'material-ui/lib/svg-icons/action/info';
-import ServicesIcon 
-  from 'material-ui/lib/svg-icons/maps/local-hospital';
-import DoctorsIcon 
-  from 'material-ui/lib/svg-icons/social/people';
-import PrimaryCareIcon 
-  from 'material-ui/lib/svg-icons/action/description';
-import MapIcon 
-  from 'material-ui/lib/svg-icons/maps/place';
-import VirtualIcon 
-  from 'material-ui/lib/svg-icons/action/three-d-rotation';
+import React        from 'react';
+import Tabs         from 'material-ui/lib/tabs/tabs';
+import Tab          from 'material-ui/lib/tabs/tab';
+import FontIcon     from 'material-ui/lib/font-icon';
+import HomeIcon     from 'material-ui/lib/svg-icons/action/home';
+import AboutIcon    from 'material-ui/lib/svg-icons/action/info';
+import ServicesIcon from 'material-ui/lib/svg-icons/maps/local-hospital';
+import DoctorsIcon  from 'material-ui/lib/svg-icons/social/people';
+import PrimaryIcon  from 'material-ui/lib/svg-icons/action/description';
+import MapIcon      from 'material-ui/lib/svg-icons/maps/place';
+import VirtualIcon  from 'material-ui/lib/svg-icons/action/three-d-rotation';
 
 export default React.createClass({
   contextTypes: {
-    store: React.PropTypes.object,
+    store:  React.PropTypes.object,
+    router: React.PropTypes.object,
   },
   getInitialState() {
     const { store } = this.context;
-    const state = store.getState().appTabs;
-    return { initIndex: state.initIndex };
+    const index = store.getState().appTabs.index;
+    return { index: index };
   },
   componentDidMount() {
     const { store } = this.context;
     this.unsubscribe = store.subscribe(() => {
-    });
-  },
-  componentWillReceiveProps: function(nextProps) {
-    const { store } = this.context;
-    const state = store.getState().appTabs;
-    this.setState({ initIndex: state.initIndex });
+      var index = store.getState().appTabs.index;
+      this.setState({ index });
+      trace(index);
+      console.log(this.state);
+    }).bind(this);
   },
   componentWillUnmount() {
     this.unsubscribe();
   },
-  handleChange(value) {
-    const route = this.props.getRouteValue(value);
-    this.props.pushToRouter(route);
+  handleChange(index) {
+    this.setState({ index });
+    const route = this.props.getRouteName(index);
+    this.context.router.push(route);
+    this.context.store.dispatch({type:"UPDATE_INDEX", index});
     this.context.store.dispatch({type:"UPDATE_ROUTE", route});
-    const storeState = this.context.store.getState();
-    this.setState({ initIndex: value });
   },
   render() {
-    const initIndex = this.state.initIndex;
     return (
       <Tabs className="app-tabs-icon"
-        initialSelectedIndex={initIndex}
-        value={this.state.tabsValue}
+        initialSelectedIndex={this.state.index}
+        value={this.state.index}
         onChange={this.handleChange}
       >
         <Tab value={0}
@@ -77,7 +63,7 @@ export default React.createClass({
             className="AppTabsIcon-icon" />}
         />
         <Tab value={4}
-          icon={<PrimaryCareIcon 
+          icon={<PrimaryIcon 
             className="AppTabsIcon-icon" />}
         />
         <Tab value={5}
