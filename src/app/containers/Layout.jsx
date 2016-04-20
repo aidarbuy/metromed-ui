@@ -17,7 +17,7 @@ import AppLeftNav from
 import AppTabs from 
   '../components/layout/AppTabs';
 import AppTabsIcon from 
-  '../components/layout/AppTabsIcon';
+  './AppTabsIcon';
 import AppFooter from 
   '../components/layout/AppFooter';
 
@@ -39,32 +39,55 @@ export default React.createClass({
     const leftNav = { ...newMuiTheme.leftNav,
       // color: Colors.cyan700,
     };
-
     newMuiTheme.leftNav = leftNav;
     // overwrite this.state.muiTheme
     // this.setState({
       // muiTheme: newMuiTheme,
     // });
   },
+  getInitialState() {
+    const route = "/" + this.props.location.pathname;
+    const index = this.getInitIndex(route);
+    this.context.store.dispatch({type:"UPDATE_ROUTE", route});
+    this.context.store.dispatch({type:"UPDATE_INDEX", index});
+    const storeState = this.context.store.getState();
+    console.debug(storeState);
+    return null;
+  },
   getChildContext() {
     // state or propNames changed, 
     // update context of childs
     return {muiTheme}
   },
+  getRouteValue(index) {
+    switch (index) {
+      case 0  : return "/";
+      case 1  : return "/about";
+      case 2  : return "/services";
+      case 3  : return "/doctors";
+      case 4  : return "/primary";
+      case 5  : return "/location";
+      case 6  : return "/virtual";
+      default : return "/";
+    }
+  },
   getInitIndex(pathname) {
     switch (pathname) {
+      case "/doctors/roshelle-beckwith" : return 3;
+      case "/doctors/matthew-beckwith"  : return 3;
+      case "/doctors/patricia-micozzi"  : return 3;
+      case "/doctors/brian-rader"       : return 3;
       case "/"          : return 0;
       case "/about"     : return 1;
       case "/services"  : return 2;
       case "/doctors"   : return 3;
-      case "/doctors/1" : return 3;
       case "/doctors/2" : return 3;
       case "/doctors/3" : return 3;
       case "/doctors/4" : return 3;
       case "/primary"   : return 4;
       case "/location"  : return 5;
       case "/virtual"   : return 6;
-      default           : return -1;
+      default           : return 0;
     }
   },
   pushToRouter(route) {
@@ -97,6 +120,7 @@ export default React.createClass({
             getInitIndex   = {this.getInitIndex}
             getStoreState  = {this.getStoreState}
             pushToRouter   = {this.pushToRouter}
+            getRouteValue  = {this.getRouteValue}
           />
           <AppTabsIcon 
             location={location} 
@@ -104,6 +128,7 @@ export default React.createClass({
             getInitIndex   = {this.getInitIndex}
             getStoreState  = {this.getStoreState}
             pushToRouter   = {this.pushToRouter}
+            getRouteValue  = {this.getRouteValue}
           />
           {this.props.children}
           <AppFooter />

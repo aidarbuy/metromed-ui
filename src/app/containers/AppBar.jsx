@@ -47,6 +47,9 @@ export default React.createClass({
     storeState = this.props.getStoreState();
     this.setState({ title: storeState.appBar.title });
   },
+  locationReload() {
+    location.reload();
+  },
   render() {
     // console.debug(this.context.store.getState());
     return (
@@ -67,13 +70,16 @@ export default React.createClass({
             targetOrigin={{horizontal:'right', vertical:'top'}}
             anchorOrigin={{horizontal:'right', vertical:'top'}}
           >
+            <MenuItem primaryText="Reload this page" 
+              onTouchTap={this.locationReload}
+            />
+            {/*
             <Link to="telemed">
               <MenuItem primaryText="Telemed" />
             </Link>
             <Link to="mui-theme">
               <MenuItem primaryText="UI Theme" />
             </Link>
-            {/*
             <Link to="router">
               <MenuItem primaryText="Router" />
             </Link>            

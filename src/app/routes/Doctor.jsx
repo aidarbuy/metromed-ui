@@ -1,11 +1,15 @@
 // src/app/routes/Doctor.jsx
+
 import React from 'react';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router';
 
 import Button from 
   'material-ui/lib/flat-button';
-import DoctorsIcon 
-	from 'material-ui/lib/svg-icons/navigation/arrow-back';
+import DoctorsIcon from 
+  'material-ui/lib/svg-icons/navigation/arrow-back';
+import * as Colors from 
+  'material-ui/lib/styles/colors';
 
 import doctors from '../data/doctors';
 
@@ -28,38 +32,49 @@ function getDoctor(id) {
 }
 
 export default React.createClass({
+  contextTypes: {
+    store:  React.PropTypes.object,
+    router: React.PropTypes.object,
+  },
+  handleTouchTap() {
+    const route = "/doctors", index = 3;
+    // this.context.router.push(route);
+    this.context.store.dispatch({type:"UPDATE_ROUTE", route});
+    this.context.store.dispatch({type:"UPDATE_INDEX", index});
+  },
   render() {
     const { id } = this.props.params;
     const doctor = getDoctor(id);
     const src = "images/doctors/" + doctor.img.big;
-
+    const description = doctor.description.map((p, i) => (
+      <div key={i} style={styles.p}
+      	dangerouslySetInnerHTML={{__html:p}}/>
+    ));
     return (
-    	<div>
+      <div>
         <Helmet 
           title={"Doctor " + doctor.firstname + " " + doctor.lastname} 
         />
         <div style={{textAlign:'left'}}>
           <Button 
-            label="Back to All Doctors" 
+            label="All Doctors" 
             labelPosition="after"
             primary={true}
             icon={<DoctorsIcon />}
-            style={styles.button}
+            style={{marginTop:20}}
             linkButton={true}
-            href="/doctors"
+            rippleColor={Colors.pink500}
+            containerElement={<Link to="/doctors" />}
+            onTouchTap={this.handleTouchTap}
           />
         </div>
 
-        <h3 style={styles.header}>
-        	Doctor {doctor.firstname} {doctor.lastname}
-        </h3>
+        <h4 style={styles.header}>
+          Doctor {doctor.firstname} {doctor.lastname}
+        </h4>
 
         <img width="100%" src={src}/>
-
-        {doctor.description.map((p, i)=>(
-        	<div key={i} style={styles.p}
-        		dangerouslySetInnerHTML={{__html:p}}/>
-        ))}
+        {description}
       </div>
     )
   }

@@ -36,60 +36,55 @@ export default React.createClass({
     const initIndex = this.props.getInitIndex(pathname);
     return {initIndex};
   },
-
-  handleTouchTap() {
-    const route = this.props.location.pathname;
-    // this.props.pushToRouter(route);
-    this.props.dispatchAction({type:"TOGGLE_LEFTNAV"});
+  handleTouchTap(route, index) {
+    this.props.pushToRouter(route);
+    // this.props.dispatchAction({type:"TOGGLE_LEFTNAV"});
     this.props.dispatchAction({type:"UPDATE_ROUTE", route});
-    const storeState = this.props.getStoreState();
-    const storeRoute = storeState.router.route;
-    console.log("LeftNavMenu storeRoute:", storeRoute);
+    this.props.dispatchAction({type:"UPDATE_INDEX", index});
   },
-
   render() {
     return (
       <Menu width={200}>
         <MenuItem primaryText="Home"
           leftIcon={<HomeIcon style={styles.icon} />} 
           containerElement={<Link to="/" />}
-          onTouchTap={this.handleTouchTap} 
+          onTouchTap={() => {this.handleTouchTap("/", 0)}} 
           innerDivStyle={styles.innerDiv}
         />
-        <MenuItem primaryText="About Us" value="/about" route="/about"
+        <MenuItem primaryText="About Us"
           leftIcon={<AboutIcon style={styles.icon} />} 
           containerElement={<NavLink to="/about" />}
-          onTouchTap={this.handleTouchTap} 
+          onTouchTap={() => {this.handleTouchTap("/about", 1)}} 
           innerDivStyle={styles.innerDiv}
         />
         <MenuItem primaryText="Services" 
           leftIcon={<ServicesIcon style={styles.icon} />} 
           containerElement={<Link to="/services" />}
-          onTouchTap={this.handleTouchTap} 
+          onTouchTap={() => {this.handleTouchTap("/services", 2)}}
           innerDivStyle={styles.innerDiv}
         />
         <MenuItem primaryText="Doctors" 
           leftIcon={<DoctorsIcon style={styles.icon} />} 
           containerElement={<Link to="/doctors" />}
-          onTouchTap={this.handleTouchTap} 
+          onTouchTap={() => {this.handleTouchTap("/doctors", 3)}}
           innerDivStyle={styles.innerDiv}
         />
         <MenuItem primaryText="Primary Care" 
           leftIcon={<PrimaryCareIcon style={styles.icon} />} 
           containerElement={<Link to="/primary" />}
-          onTouchTap={this.handleTouchTap} 
+          onTouchTap={() => {this.handleTouchTap("/primary", 4)}}
           innerDivStyle={styles.innerDiv}
         />
         <MenuItem primaryText="Location" 
           leftIcon={<MapIcon style={styles.icon} />} 
           containerElement={<Link to="/location" />}
-          onTouchTap={this.handleTouchTap} 
+          onTouchTap={() => {this.handleTouchTap("/location", 5)}}
           innerDivStyle={styles.innerDiv}
         />
         <MenuItem primaryText="Virtual Tour" 
           leftIcon={<VirtualIcon style={styles.icon} />} 
           containerElement={<Link to="/virtual" />}
-          onTouchTap={this.handleTouchTap} 
+          onTouchTap={() => {this.handleTouchTap("/virtual", 6)}}
           innerDivStyle={styles.innerDiv}
         />
       </Menu>
@@ -99,11 +94,15 @@ export default React.createClass({
 
 const styles = {
   innerDiv : {
-    paddingLeft: 50,
-    color: Colors.cyanA700,
+    width: 'auto',
+    paddingLeft: 45,
+    // color: Colors.blueGrey500,
+    color: Colors.cyan700,
     textAlign:'left',
   },
   icon : {
-    fill: Colors.cyanA700,
+    marginLeft: 10,
+    // fill: Colors.blueGrey500,
+    fill: Colors.cyan700,
   }
 };
