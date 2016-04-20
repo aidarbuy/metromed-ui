@@ -51,7 +51,7 @@ export default React.createClass({
     this.context.store.dispatch({type:"UPDATE_ROUTE", route});
     this.context.store.dispatch({type:"UPDATE_INDEX", index});
     const storeState = this.context.store.getState();
-    console.debug(storeState);
+    // console.debug(storeState);
     return null;
   },
   getChildContext() {

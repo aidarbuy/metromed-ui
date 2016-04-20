@@ -22,9 +22,6 @@ const styles = {
   buttonContainer : {
     textAlign:'left',
   },
-  button : {
-    // border:'1px dashed green'
-  }
 };
 
 const getArticle = (id) => {
@@ -52,12 +49,11 @@ export default React.createClass({
           article.title + " - MetromedUC"
         } />
         <div style={styles.buttonContainer}>
-          <FlatButton 
+          <FlatButton className="button-top-left"
             label="All Articles" 
             labelPosition="after"
             primary={true}
             icon={<ArrowBack />}
-            style={styles.button}
             linkButton={true}
             href="/articles"
           />

@@ -135,3 +135,7 @@ strong {
   font-size: 16px !important;
   text-align: left !important;
 }
+
+.button-top-left {
+  margin-top: 10px !important;
+}

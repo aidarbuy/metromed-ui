@@ -1,32 +1,19 @@
-// src/app/components/layout/AppLeftNavMenu.jsx
-import React from 'react';
+// src/app/components/layout/LeftNavMenu.jsx
+import React    from 'react';
+import { Link } from 'react-router';
 
-import Menu from 
-  'material-ui/lib/menus/menu';
-import MenuItem from 
-  'material-ui/lib/menus/menu-item';
-import { Link } from 
-  'react-router';
-import * as Colors from 
-  'material-ui/lib/styles/colors';
-import HomeIcon from 
-  'material-ui/lib/svg-icons/action/home';
-import AboutIcon from 
-  'material-ui/lib/svg-icons/action/info';
-import ServicesIcon from 
-  'material-ui/lib/svg-icons/maps/local-hospital';
-import DoctorsIcon from 
-  'material-ui/lib/svg-icons/social/people';
-import PrimaryCareIcon from 
-  'material-ui/lib/svg-icons/action/description';
-import MapIcon from 
-  'material-ui/lib/svg-icons/maps/place';
-import VirtualIcon from 
-  'material-ui/lib/svg-icons/action/three-d-rotation';
-import Divider from 
-  'material-ui/lib/divider';
-import AddressIcon from 
-  'material-ui/lib/svg-icons/action/room';
+import Menu         from 'material-ui/lib/menus/menu';
+import MenuItem     from 'material-ui/lib/menus/menu-item';
+import * as Colors  from 'material-ui/lib/styles/colors';
+import HomeIcon     from 'material-ui/lib/svg-icons/action/home';
+import AboutIcon    from 'material-ui/lib/svg-icons/action/info';
+import ServicesIcon from 'material-ui/lib/svg-icons/maps/local-hospital';
+import DoctorsIcon  from 'material-ui/lib/svg-icons/social/people';
+import PrimaryIcon  from 'material-ui/lib/svg-icons/action/description';
+import MapIcon      from 'material-ui/lib/svg-icons/maps/place';
+import VirtualIcon  from 'material-ui/lib/svg-icons/action/three-d-rotation';
+import Divider      from 'material-ui/lib/divider';
+import AddressIcon  from 'material-ui/lib/svg-icons/action/room';
 
 import NavLink from './NavLink';
 
@@ -37,6 +24,7 @@ export default React.createClass({
     return {initIndex};
   },
   handleTouchTap(route, index) {
+    console.debug("route: " + route + ", index: " + index)
     this.props.pushToRouter(route);
     // this.props.dispatchAction({type:"TOGGLE_LEFTNAV"});
     this.props.dispatchAction({type:"UPDATE_ROUTE", route});
@@ -70,7 +58,7 @@ export default React.createClass({
           innerDivStyle={styles.innerDiv}
         />
         <MenuItem primaryText="Primary Care" 
-          leftIcon={<PrimaryCareIcon style={styles.icon} />} 
+          leftIcon={<PrimaryIcon style={styles.icon} />} 
           containerElement={<Link to="/primary" />}
           onTouchTap={() => {this.handleTouchTap("/primary", 4)}}
           innerDivStyle={styles.innerDiv}
@@ -96,8 +84,8 @@ const styles = {
   innerDiv : {
     width: 'auto',
     paddingLeft: 45,
-    // color: Colors.blueGrey500,
-    color: Colors.cyan700,
+    color: Colors.blueGrey500,
+    // color: Colors.cyan700,
     textAlign:'left',
   },
   icon : {

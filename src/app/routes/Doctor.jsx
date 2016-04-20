@@ -56,12 +56,11 @@ export default React.createClass({
           title={"Doctor " + doctor.firstname + " " + doctor.lastname} 
         />
         <div style={{textAlign:'left'}}>
-          <Button 
+          <Button className="button-top-left"
             label="All Doctors" 
             labelPosition="after"
             primary={true}
             icon={<DoctorsIcon />}
-            style={{marginTop:20}}
             linkButton={true}
             rippleColor={Colors.pink500}
             containerElement={<Link to="/doctors" />}

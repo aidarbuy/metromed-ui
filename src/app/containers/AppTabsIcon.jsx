@@ -35,10 +35,12 @@ export default React.createClass({
   componentDidMount() {
     const { store } = this.context;
     this.unsubscribe = store.subscribe(() => {
-      const state = store.getState().appTabs;
-      this.setState({ initIndex: state.initIndex });
-      // this.render();
     });
+  },
+  componentWillReceiveProps: function(nextProps) {
+    const { store } = this.context;
+    const state = store.getState().appTabs;
+    this.setState({ initIndex: state.initIndex });
   },
   componentWillUnmount() {
     this.unsubscribe();
