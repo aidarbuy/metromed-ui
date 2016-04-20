@@ -87,6 +87,7 @@ export default React.createClass({
       case "/primary"   : return 4;
       case "/location"  : return 5;
       case "/virtual"   : return 6;
+      case "/gallery"   : return -1;
       default           : return 0;
     }
   },

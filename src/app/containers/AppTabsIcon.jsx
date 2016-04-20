@@ -25,8 +25,8 @@ export default React.createClass({
     this.unsubscribe = store.subscribe(() => {
       var index = store.getState().appTabs.index;
       this.setState({ index });
-      trace(index);
-      console.log(this.state);
+      // trace(index);
+      // console.log(this.state);
     }).bind(this);
   },
   componentWillUnmount() {
