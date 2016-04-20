@@ -26,7 +26,7 @@ export default React.createClass({
   handleTouchTap(route, index) {
     // console.debug("route: " + route + ", index: " + index)
     this.props.pushToRouter(route);
-    // this.props.dispatchAction({type:"TOGGLE_LEFTNAV"});
+    this.props.dispatchAction({type:"TOGGLE_LEFTNAV"});
     this.props.dispatchAction({type:"UPDATE_ROUTE", route});
     this.props.dispatchAction({type:"UPDATE_INDEX", index});
   },
