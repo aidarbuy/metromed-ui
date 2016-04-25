@@ -1,47 +1,31 @@
-// src/app/components/home/CallToAction.jsx
-
+import * as Colors from 'material-ui/lib/styles/colors';
+import Paper from 'material-ui/lib/paper';
+import RaisedButton from 'material-ui/lib/raised-button';
 import React from 'react';
 
-import Paper from 
-  'material-ui/lib/paper';
-import {pink500} from 
-  'material-ui/lib/styles/colors';
-
-import CallToActionButton from 
-  '../home/CallToActionButton';
-
-const styles = {
-  paper: {
-    marginTop:10,
-    minHeight:200,
-    background:pink500,
-  },
-  content: {
-    color:'white',
-    lineHeight:1.4,
-    // verticalAlign: 'middle',
-    // display: 'inline-block',
-    padding:20,
-  }
-};
-
 export default () => (
-  <Paper style={styles.paper} zDepth={2}>
-    <div style={styles.content}>
-      <h4 style={{
-        marginBottom:10,
-        color:'white'
-      }}>
-        If You Feel Sick You Should Not Wait!
-      </h4>
+  <Paper zDepth={2} style={{
+    margin:'20px 0',
+    padding:20,
+    minHeight:200,
+    background:Colors.pink500,
+    textAlign:'center',
+  }}>
 
-      <CallToActionButton />
+    <h4 style={{
+      margin:0,
+      // background:'green', 
+      color:'white',
+    }}>If You Feel Sick You Should Not Wait!</h4>
 
-      <h5 style={{marginTop:10,color:'white'}}>
-        We are passionate about caring 
-        for your health and providing 
-        exceptional urgent care
-      </h5>
-    </div>
+    <RaisedButton label="Call Us Now"
+      href="tel:1-703-687-4158" 
+      primary={false} 
+      secondary={true}
+      linkButton={true}
+      style={{margin:'20px 0'}}
+    />
+
+    <h5 style={{color:'white'}}>We are passionate about caring for your health and providing exceptional urgent care</h5>
   </Paper>
 );

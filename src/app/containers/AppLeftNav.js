@@ -1,18 +1,9 @@
-// src/app/containers/AppLeftNav.jsx
-
 import React, { Component } from 'react';
-
-import LeftNav from 
-  'material-ui/lib/left-nav';
-import MenuItem from 
-  'material-ui/lib/menus/menu-item';
-import RaisedButton from 
-  'material-ui/lib/raised-button';
-
-import LeftNavCard from 
-  '../components/layout/LeftNavCard';
-import LeftNavMenu from 
-  '../components/layout/LeftNavMenu';
+import LeftNav      from 'material-ui/lib/left-nav';
+import MenuItem     from 'material-ui/lib/menus/menu-item';
+import RaisedButton from 'material-ui/lib/raised-button';
+import LeftNavCard  from '../components/layout/LeftNavCard';
+import LeftNavMenu  from '../components/layout/LeftNavMenu';
 
 export default React.createClass({
   contextTypes: {
@@ -21,7 +12,8 @@ export default React.createClass({
   getInitialState() {
     const storeState = this.props.getStoreState();
     return {
-      open:storeState.leftNav.open
+      open: storeState.leftNav.open,
+      // open: true,
     };
   },
   componentDidMount() {
@@ -31,7 +23,6 @@ export default React.createClass({
         open: store.getState().leftNav.open 
       });
     });
-    // console.log(this.props.location.pathname);
   },
   componentWillUnmount() {
     this.unsubscribe();

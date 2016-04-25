@@ -1,4 +1,4 @@
-module.exports = [{ 
+export default [{ 
 	name: 'Facebook', 
 	icon: 'IconFacebook',
 	href: 'https://www.facebook.com/windingcrossofleesburg/',
@@ -10,7 +10,7 @@ module.exports = [{
 	desc: 'Visit our Instagram page',
 },{ 
 	name: 'Google+', 
-	icon: 'IconGooglePlus',
+	icon: 'IconGoogle',
 	href: 'https://plus.google.com/114492782868727824098/',
 	desc: 'Visit our Google+ page',
 },{ 

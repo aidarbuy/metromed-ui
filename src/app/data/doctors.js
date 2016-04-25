@@ -42,29 +42,29 @@ module.exports = [{
 	phone: "(703) 687-4158",
 	email: "mbeckwith@metromeduc.com"
 }, 
-{
-	id: "patricia-micozzi",
-	title: "PA",
-	doctor: "",
-	firstname: "Patricia",
-	lastname: "Micozzi",
-	speciality: "Emergency Medicine",
-	degree: "Master of PA Science",
-	education: "",
-	img: {
-		small: 'trisha-440x440.jpg',
-		big: 'trisha-820x465.jpg',
-		title: "",
-		alt: ""
-	},
-	description: [
-		"I developed an interest in medicine and compassionate care from my mother (who is a nurse). I obtained my Cellular/Molecular Biology degree from Washington & Jefferson College in Washington, PA in 2005.",
-		"In 2007 I earned my Master of Physician Assistant Science from Saint Francis University in Loretto, PA. I relocated to this area after graduation and practiced in a large Baltimore hospital before shifting to an Emergency Department, where I stayed until opening MetroMed Urgent Care in December of 2013.",
-		"I enjoy touring wineries, visiting historical landmarks, national parks, travel, and ice hockey. I am active in humanitarian efforts and providing services to those in need around the world."
-	],
-	phone: "(703) 687-4158",
-	email: "rosanna@metromeduc.com"
-}, 
+// {
+// 	id: "patricia-micozzi",
+// 	title: "PA",
+// 	doctor: "",
+// 	firstname: "Patricia",
+// 	lastname: "Micozzi",
+// 	speciality: "Emergency Medicine",
+// 	degree: "Master of PA Science",
+// 	education: "",
+// 	img: {
+// 		small: 'trisha-440x440.jpg',
+// 		big: 'trisha-820x465.jpg',
+// 		title: "",
+// 		alt: ""
+// 	},
+// 	description: [
+// 		"I developed an interest in medicine and compassionate care from my mother (who is a nurse). I obtained my Cellular/Molecular Biology degree from Washington & Jefferson College in Washington, PA in 2005.",
+// 		"In 2007 I earned my Master of Physician Assistant Science from Saint Francis University in Loretto, PA. I relocated to this area after graduation and practiced in a large Baltimore hospital before shifting to an Emergency Department, where I stayed until opening MetroMed Urgent Care in December of 2013.",
+// 		"I enjoy touring wineries, visiting historical landmarks, national parks, travel, and ice hockey. I am active in humanitarian efforts and providing services to those in need around the world."
+// 	],
+// 	phone: "(703) 687-4158",
+// 	email: "rosanna@metromeduc.com"
+// }, 
 {
 	id: "brian-rader",
 	title: "DO.",

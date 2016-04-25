@@ -1,120 +1,45 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html>
 <head>
-  <base href="/" />
+  <base href="/"/>
+  <title>Metromed Urgent Care</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Metromed Urgent Care</title>
-  <meta name="description" content="
-    Metromed Urgent Care of Leesburg
-  ">
-  <!-- Use minimum-scale=1 to enable GPU rasterization -->
-  <meta name="viewport" content="
-    width=device-width, 
-    initial-scale=1, 
-    user-scalable=0, 
-    maximum-scale=1, 
-    minimum-scale=1"
-  >
-
-  <meta itemprop="description" content="
-    Metromed Urgent Care of Leesburg
-  ">
-<!--   <meta itemprop="image" content="
-    ../../../images/webrtc-icon-192x192.png
-  ">
- -->  <meta itemprop="name" content="
-    Metromed Urgent Care of Leesburg
-  ">
+  <meta name="description" content="Metromed Urgent Care of Leesburg">
+  <meta itemprop="description" content="Metromed Urgent Care of Leesburg">
+  <!-- <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png"> -->
+  <meta itemprop="name" content="Metromed Urgent Care of Leesburg">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta id="theme-color" name="theme-color" content="#theme-color">
-  <!-- <meta name="theme-color" content="#00bcd4"> -->
-
-  <link type="text/css" rel="stylesheet" href="
-    css/index.css
-  ">
-  <!-- LayerSlider style -->
-  <link type="text/css" rel="stylesheet" href="
-    layerslider/css/layerslider.css
-  ">
-  <!-- nanoGallery styles -->
-  <link type="text/css" rel="stylesheet" href="
-    nanogallery/css/nanogallery.min.css
-  ">
-  <link type="text/css" rel="stylesheet" href="
-    nanogallery/css/nanogallery.woff.min.css
-  ">
-  <link type="text/css" rel="stylesheet" href="
-    nanogallery/css/themes/light/nanogallery_light.min.css
-  ">
-  <link type="text/css" rel="stylesheet" href="
-    nanogallery/css/themes/light/nanogallery_light.woff.min.css
-  ">
-  <link type="text/css" rel="stylesheet" href="
-    nanogallery/css/themes/clean/nanogallery_clean.min.css
-  ">
-  <link type="text/css" rel="stylesheet" href="
-    nanogallery/css/themes/clean/nanogallery_clean.woff.min.css
-  ">
+  <meta id="theme-color" name="theme-color" content="#00bcd4">
+  <!-- Use minimum-scale=1 to enable GPU rasterization -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+  <link type="text/css" rel="stylesheet" href="css/index.css">
+  <link type="text/css" rel="stylesheet" href="layerslider/css/layerslider.css">
+  <link type="text/css" rel="stylesheet" href="nanogallery/css/themes/light/nanogallery_light.min.css">
+  <link type="text/css" rel="stylesheet" href="nanogallery/css/themes/light/nanogallery_light.woff.min.css">
 </head>
-
 <body>
   <div id="app"></div>
-
-  <!-- <video id="gum-local" autoplay></video> -->
-
-  <!-- 
-    Adds the Roboto font to our project. 
-    For more detail go to this site:  
-    http://goo.gl/kdkT7V 
-  -->
-  <script>
-    var WebFontConfig = {
-      google : { 
-        families: [ 
-          'Roboto:400,300,500:latin'
-        ] 
-      }
-    };
-    // (function() {
-    //   var wf = document.createElement('script');
-    //   wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-    //   '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    //   wf.type = 'text/javascript';
-    //   wf.async = 'true';
-    //   var s = document.getElementsByTagName('script')[0];
-    //   s.parentNode.insertBefore(wf, s);
-    // })();
+  <script> // Adds the Roboto font. More detail: goo.gl/kdkT7V
+    var WebFontConfig = {google: {families: ['Roboto:400,300,500:latin']}};
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
   </script>
-
-  <!-- TweenMax -->
-  <script src="
-    https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js
-  "></script>
-
-  <!-- LayerSlider -->
-  <script type="text/javascript" src="
-    layerslider/js/jquery.js
-  "></script>
-  <script type="text/javascript" src="
-    layerslider/js/layerslider.transitions.js
-  "></script>
-  <script type="text/javascript" src="
-    layerslider/js/layerslider.kreaturamedia.jquery.js
-  "></script>
-
-  <!-- nanoGallery -->
-  <script type="text/javascript" src="
-    nanogallery/jquery.nanogallery.min.js
-  "></script>
-
-  <!-- WebRTC -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+  <script type="text/javascript" src="layerslider/js/jquery.js"></script>
+  <script type="text/javascript" src="layerslider/js/layerslider.transitions.js"></script>
+  <script type="text/javascript" src="layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
+  <script type="text/javascript" src="nanogallery/jquery.nanogallery.min.js"></script>
   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   <script src="js/common.js"></script>
-
-  <!-- src/app.js -->
   <script src="app.js"></script>
-
   <!-- Google Analytics -->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -125,5 +50,6 @@
     ga('require', 'linkid');
     ga('send', 'pageview');
   </script>
+  <!-- <script type="text/javascript" src="index.js"></script> -->
 </body>
 </html>

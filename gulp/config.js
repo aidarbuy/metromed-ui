@@ -1,7 +1,7 @@
 var 
   dest = './build',
   src = './src',
-  mui = './node_modules/material-ui/src',
+  // mui = './node_modules/material-ui/src',
   historyApiFallback = require('connect-history-api-fallback');
 
 module.exports = {

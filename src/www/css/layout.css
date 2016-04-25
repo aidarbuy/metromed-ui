@@ -1,5 +1,4 @@
 .flex-container {
-  top: 0;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -9,12 +8,33 @@
   display: -moz-box;
   display: -ms-flexbox;
   flex-flow: row wrap;
-  justify-content: space-around;
 }
 .flex-container-half {
-  padding:20px;
+  margin-top: 25px;
+  padding: 10px;
   box-sizing: border-box;
 }
+.flex-item, .article-item {
+  padding: 5px;
+  box-sizing: border-box;
+  /*border: 1px dashed yellow;*/
+}
+
+section, article {
+  padding: 10px;
+  padding-bottom: 20px;
+  /*background: #ee0;*/
+}
+
+.telemed-video {
+  width: calc(50% - 12px);
+  height: auto;
+  box-sizing: border-box;
+  margin: 0 0 20px 0;
+  vertical-align: top;
+  background: black;
+}
+
 /* 1920 < xl */
 @media (min-width: 1920px) {
   .flex-item {
@@ -89,18 +109,4 @@
   .conditions-xs {
     display: inline;
   }
-}
-
-.telemed-video {
-  width: calc(50% - 12px);
-  height: auto;
-  box-sizing: border-box;
-  margin: 0 0 20px 0;
-  vertical-align: top;
-  background: black;
-}
-
-.layout-container {
-  text-align: center;
-  padding-top: 0;
 }

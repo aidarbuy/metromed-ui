@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-margin-after: 0em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
+  text-align: center;
 }
 /* Display 4 */
 h1 {
@@ -139,4 +140,12 @@ strong {
 
 .button-top-left {
   margin-top: 10px !important;
+}
+
+.article-header {
+  text-transform: capitalize;
+}
+.article-text {
+  text-align: left;
+  margin: 20;
 }

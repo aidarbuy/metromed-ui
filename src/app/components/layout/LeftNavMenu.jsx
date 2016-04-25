@@ -1,7 +1,5 @@
-// src/app/components/layout/LeftNavMenu.jsx
 import React    from 'react';
 import { Link } from 'react-router';
-
 import Menu         from 'material-ui/lib/menus/menu';
 import MenuItem     from 'material-ui/lib/menus/menu-item';
 import * as Colors  from 'material-ui/lib/styles/colors';
@@ -9,12 +7,11 @@ import HomeIcon     from 'material-ui/lib/svg-icons/action/home';
 import AboutIcon    from 'material-ui/lib/svg-icons/action/info';
 import ServicesIcon from 'material-ui/lib/svg-icons/maps/local-hospital';
 import DoctorsIcon  from 'material-ui/lib/svg-icons/social/people';
-import PrimaryIcon  from 'material-ui/lib/svg-icons/action/description';
+import ArticlesIcon from 'material-ui/lib/svg-icons/av/library-books';
 import MapIcon      from 'material-ui/lib/svg-icons/maps/place';
 import VirtualIcon  from 'material-ui/lib/svg-icons/action/three-d-rotation';
 import Divider      from 'material-ui/lib/divider';
 import AddressIcon  from 'material-ui/lib/svg-icons/action/room';
-
 import NavLink from './NavLink';
 
 export default React.createClass({
@@ -57,9 +54,9 @@ export default React.createClass({
           onTouchTap={() => {this.handleTouchTap("/doctors", 3)}}
           innerDivStyle={styles.innerDiv}
         />
-        <MenuItem primaryText="Primary Care" 
-          leftIcon={<PrimaryIcon style={styles.icon} />} 
-          containerElement={<Link to="/primary" />}
+        <MenuItem primaryText="Articles"
+          leftIcon={<ArticlesIcon style={styles.icon} />} 
+          containerElement={<Link to="/articles" />}
           onTouchTap={() => {this.handleTouchTap("/primary", 4)}}
           innerDivStyle={styles.innerDiv}
         />
@@ -83,7 +80,7 @@ export default React.createClass({
 const styles = {
   innerDiv : {
     width: 'auto',
-    paddingLeft: 45,
+    paddingLeft: 47,
     color: Colors.blueGrey500,
     // color: Colors.cyan700,
     textAlign:'left',
