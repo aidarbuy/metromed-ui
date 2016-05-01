@@ -19,20 +19,17 @@
   box-sizing: border-box;
   /*border: 1px dashed yellow;*/
 }
+.flex-telemed-video {
+  width: 50%;
+  /*padding: 5px;*/
+  box-sizing: border-box;
+  border: 1px solid green;
+}
 
 section, article {
   padding: 10px;
   padding-bottom: 20px;
   /*background: #ee0;*/
-}
-
-.telemed-video {
-  width: calc(50% - 12px);
-  height: auto;
-  box-sizing: border-box;
-  margin: 0 0 20px 0;
-  vertical-align: top;
-  background: black;
 }
 
 /* 1920 < xl */
@@ -108,5 +105,8 @@ section, article {
   }
   .conditions-xs {
     display: inline;
+  }
+  .flex-telemed-video {
+    width: 100%;
   }
 }

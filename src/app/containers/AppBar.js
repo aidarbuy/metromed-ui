@@ -63,6 +63,10 @@ export default React.createClass({
               primaryText="Reload this page" 
               onTouchTap={()=>{location.reload()}}
             />
+            <MenuItem 
+              primaryText="Telemedicine" 
+              containerElement={<Link to="/telemed" />}
+            />
           {/*
             <MenuItem 
               primaryText="Visa 4 UK"

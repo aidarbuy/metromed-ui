@@ -1,6 +1,6 @@
-@import "layout.css";
-@import "colors.css";
-@import "typography.css";
 @import "app-tabs.css";
-@import "top-bar.css";
+@import "colors.css";
 @import "icons.css";
+@import "layout.css";
+@import "top-bar.css";
+@import "typography.css";

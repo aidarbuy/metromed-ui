@@ -1,9 +1,10 @@
-import React from 'react';
-import Helmet from 'react-helmet';
+import Checkbox from 'material-ui/lib/checkbox';
 import * as Colors from 'material-ui/lib/styles/colors';
+import Helmet from 'react-helmet';
+import React from 'react';
 import ReactTransitions from '../components/ReactTransitions';
+import ListItemDivider from '../components/ui/ListItemDivider';
 import { 
-	Divider, 
 	List, 
 	ListItem, 
 	Paper 
@@ -18,7 +19,7 @@ const docs = {
 	},
 	1: {
 		name: "Визовый сбор",
-		desc: "Распечатанная квитанция об оплате",
+		desc: "Распечатанная квитанция об оплате, email confirmation and https://www.visa4uk.fco.gov.uk/Finalise/CompleteApplication",
 	},
 	3: {
 		name: "Оригиналы документов",
@@ -33,10 +34,14 @@ const docs = {
 		desc: "Действующий паспорт со свободной страницей для визы",
 	},
 	6: {
+		name: "Справка",
+		desc: "Справка со школы",
+	},
+	7: {
 		name: "Другие документы",
 		desc: "Другие документы, которые посчитаете нужным отдать на рассмотрение",
 	},
-	7: {
+	8: {
 		name: "Перевод документов",
 		desc: "Для документов не на английском надо предоставить полный перевод. Каждый перевод с подписью переводчика с подтверждением, что он аккуратно отражает оригинальные документы. Подтверждение должно быть датировано в формате ДД/ММ/ГГГГ и включать в себя полное имя и контактные данные переводчика.",
 	},
@@ -48,47 +53,42 @@ class Visa extends React.Component {
 	}
 
 	render() {
-		const docsNodes = Object.keys(docs).map((key)=> {
+		const docsNodes = Object.keys(docs).map((key, index, arr)=> {
 			return (
-				<ListItem className="visa-list-item" key={key} style={{
-					paddingBottom:'0 !important',
-					// margin:0,
-					// border:'1px dashed grey',
-				}}>
-
-					<div className="visa-list-item-name" style={{fontSize:18,color:Colors.cyan700}}>
+				<ListItem key={key} leftCheckbox={<Checkbox />}>
+					<div style={{fontSize:18,color:Colors.cyan700}}>
 						{docs[key].name}
 					</div>
 
-					<div className="visa-list-item-desc" style={{
-						marginTop:10,
-						fontSize:16,
-						lineHeight:1.6,
-					}}>
+					<div style={{marginTop:10, fontSize:16, lineHeight:1.6}}>
 						{docs[key].desc}
 					</div>
-					<Divider style={{
-						transform:'translateY(16px)',
-					}}/>
+
+					<ListItemDivider index={index} length={arr.length}
+						style={{
+							transform:'translateY(16px)',
+							background:Colors.blueGrey500,
+							width:'100%',
+						}}
+					/>
+
 				</ListItem>
 			);
 		});
 		return (
-			<div style={{padding:20}}>
+			<section>
 				<Helmet title="Visa Info" />
 
 		  	<h3>Документы в визовый центр:</h3>
-
-		  	{/* <p dangerouslySetInnerHTML={{__html:html}} style={{textAlign:'left'}} /> */}
 
 		  	<List>
 		  		{docsNodes}
 		  	</List>
 
-		  	<Paper style={{margin:70, padding:'20px'}}>
+		  	<Paper style={{margin:70, padding:'20px', marginTop:50}}>
 			  	<em>Вы сами должны для себя определить, какие документы лучше удовлетворяют требованиям иммиграционного законодательства.</em>
 		  	</Paper>
-		  </div>
+		  </section>
 	  );
 	}
 }

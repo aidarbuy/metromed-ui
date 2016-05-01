@@ -20,7 +20,7 @@ export default React.createClass({
     const src = 'images/articles/' + id + '-600x300.jpg';
     const article = this.getArticle(id);
     const articleText = article.text.map((p, i) => (
-      <div key={i} dangerouslySetInnerHTML={{__html:p}}/>
+      <p key={i} dangerouslySetInnerHTML={{__html:p}} />
     ));
 
     return (
@@ -38,11 +38,9 @@ export default React.createClass({
 
         <h3 className="article-header">{article.title}</h3>
 
-        <Paper>
-          <img width="100%" src={src}/>
-        </Paper>
+        <img width="100%" src={src}/>
 
-        <p style={{marginTop:20}}>{articleText}</p>
+        <div style={{margin:50}}>{articleText}</div>
       </article>
     )
   }

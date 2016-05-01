@@ -1,53 +1,58 @@
-// src/app/components/TeleMed.jsx
-import React from 'react';
+import * as Colors from 'material-ui/lib/styles/Colors';
+import Card from 'material-ui/lib/card/card';
+import CardActions from 'material-ui/lib/card/card-actions';
+import CardHeader from 'material-ui/lib/card/card-header';
+import CardMedia from 'material-ui/lib/card/card-media';
+import CardText from 'material-ui/lib/card/card-text';
+import CardTitle from 'material-ui/lib/card/card-title';
 import Helmet from "react-helmet";
 import io from 'socket.io-client';
+import RaisedButton from 'material-ui/lib/raised-button';
+import React from 'react';
 
-import Card from 
-  'material-ui/lib/card/card';
-import CardActions from 
-  'material-ui/lib/card/card-actions';
-import CardHeader from 
-  'material-ui/lib/card/card-header';
-import CardMedia from 
-  'material-ui/lib/card/card-media';
-import CardTitle from 
-  'material-ui/lib/card/card-title';
-import RaisedButton from 
-  'material-ui/lib/raised-button';
-import CardText from 
-  'material-ui/lib/card/card-text';
-import * as Colors from 
-  'material-ui/lib/styles/Colors';
+var styles = {
+  video : {
+    // margin:10,
+    // width:'calc(100%)',
+    width:'100%',
+    height:'auto',
+    boxSizing:'border-box',
+    margin:0,
+    padding:0,
+    // verticalAlign:'top',
+    background:Colors.cyan500,
+    border:'1px solid' + Colors.pink500,
+  },
+};
 
 /**
  * Put variables in global scope to make 
  * them available to the browser console.
  */
+
 // Global vars
-var startTime, 
+var
+  startTime, 
   localStream,
   pc1, pc2,
   offerOptions = {
     offerToReceiveAudio: 1,
     offerToReceiveVideo: 1
-  },
-  styles;
+  };
+
 // Global vars for buttons
 var startButton, callButton, hangupButton, stopButton;
+
 // Global vars for streams
-var localVideo, remoteVideo,
-  videoTracks, audioTracks;
+var localVideo, remoteVideo, videoTracks, audioTracks;
 
 // io = io.connect();
 // let socket = io('https://localhost:443');
 
-/*
-navigator.getUserMedia = navigator.getUserMedia ||
+/* navigator.getUserMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia ||
-                         navigator.msGetUserMedia; 
-*/
+                         navigator.msGetUserMedia; */
 
 // GET STREAM
 function start() {
@@ -64,7 +69,8 @@ function start() {
     }
   })
   .then((stream) => {
-    trace('Received local stream')
+    trace('Received local stream');
+    console.debug(stream);
     localVideo.srcObject = stream
     localStream = stream
     this.setState({callButtonDisabled:false})
@@ -75,28 +81,22 @@ function start() {
   })
 }
 
-
-// MAKE A VIDEO CALL
+// create a video call
 function call() {
-  console.debug('MAKE A VIDEO CALL')
-
   // switch call and hangup buttons
-  this.setState({callButtonDisabled:true})
-  this.setState({hangupButtonDisabled:false})
+  this.setState({callButtonDisabled:true});
+  this.setState({hangupButtonDisabled:false});
 
-  trace('Starting call')
+  trace('Starting video call');
   startTime = window.performance.now();
 
-  // print video and audio tracks
+  // display video and audio tracks
   videoTracks = localStream.getVideoTracks();
   audioTracks = localStream.getAudioTracks();
-  if (videoTracks.length > 0) {
-    trace('Using video device: ' + videoTracks[0].label);
-  }
-  if (audioTracks.length > 0) {
-    trace('Using audio device: ' + audioTracks[0].label);
-  }
+  if (videoTracks.length > 0) trace('Using video device: ' + videoTracks[0].label);
+  if (audioTracks.length > 0) trace('Using audio device: ' + audioTracks[0].label);
 
+  // configuration object for RTCPeerConnection
   var config = {
     iceServers: [
       {url: "stun:stun.l.google.com:19305"},
@@ -105,9 +105,12 @@ function call() {
     ]
   };
 
+ /**
+  * Call RTCPeerConnection from adapter-latest.js
+  * and assign returned object to the global pc1.
+  */
   pc1 = new RTCPeerConnection(config);
-  console.log(pc1)
-  trace('Created local peer connection object pc1');
+  // trace('Created local peer connection object pc1');
   pc1.onicecandidate = (e) => onIceCandidate(pc1, e);
 
   pc2 = new RTCPeerConnection(config);
@@ -124,19 +127,17 @@ function call() {
 
   trace('pc1 createOffer start');
   pc1.createOffer(offerOptions)
-  .then((desc) => onCreateOfferSuccess(desc)) 
+  .then((desc) => onCreateOfferSuccess(desc))
   .catch((error) => onCreateSessionDescriptionError(error));
 }
 
 
 function onCreateOfferSuccess(desc) {
-  console.debug('Received offer from pc1')
-  trace('Offer from pc1\n' + desc.sdp);
-
   trace('pc1 setLocalDescription start');
   pc1.setLocalDescription(desc)
   .then(() => {
     onSetLocalSuccess(pc1);
+    trace('Offer from pc1 \n' + desc.sdp);
     console.debug(pc1.localDescription)
   })
   .catch((error) => onSetSessionDescriptionError);
@@ -177,7 +178,7 @@ function gotRemoteStream(e) {
 
 
 function onCreateAnswerSuccess(desc) {
-  trace('Answer from pc2:\n' + desc.sdp);
+  trace('Answer from :\n' + desc.sdp);
 
   trace('pc2 setLocalDescription start');
   pc2.setLocalDescription(desc)
@@ -190,8 +191,7 @@ function onCreateAnswerSuccess(desc) {
   .catch((err) => onSetSessionDescriptionError(err));
 }
 
-
-function onIceCandidate(pc, event) {
+const onIceCandidate = function(pc, event) {
   if (event.candidate) {
     getOtherPc(pc).addIceCandidate(new RTCIceCandidate(event.candidate))
     .then(() => onAddIceCandidateSuccess(pc))
@@ -200,36 +200,24 @@ function onIceCandidate(pc, event) {
   }
 }
 
-function onAddIceCandidateSuccess(pc) {
-  trace(getName(pc) + ' addIceCandidate success');
-}
-function onAddIceCandidateError(pc, error) {
-  trace(getName(pc) + ' failed to add ICE Candidate: ' + error.toString());
-}
-function onIceStateChange(pc, event) {
+const getName = (pc) => {(pc === pc1) ? 'pc1' : 'pc2'};
+const getOtherPc = (pc) => {return (pc === pc1) ? pc2 : pc1};
+const onAddIceCandidateSuccess = (pc) => {trace(getName(pc) + ' addIceCandidate success')};
+const onAddIceCandidateError = (pc, error) => {trace(getName(pc) + ' failed to add ICE Candidate: ' + error.toString())};
+const onIceStateChange = (pc, event) => {
   if (pc) {
     trace(getName(pc) + ' ICE state: ' + pc.iceConnectionState);
     console.log('ICE state change event: ', event);
   }
-}
+};
 
-function getName(pc) {
-  return (pc === pc1) ? 'pc1' : 'pc2'
-}
-function getOtherPc(pc) {
-  return (pc === pc1) ? pc2 : pc1
-}
-
-function hangup() {
+const hangup = () => {
   trace('Ending call');
-  pc1.close();
-  pc2.close();
-  pc1 = null;
-  pc2 = null;
-  this.setState({hangupButtonDisabled:true})
-  this.setState({callButtonDisabled:false})
+  pc1.close(); pc2.close(); pc1 = null; pc2 = null;
+  this.setState({hangupButtonDisabled:true});
+  this.setState({callButtonDisabled:false});
   remoteVideo.srcObject = null;
-}
+};
 
 function stop() {
   trace('Stopping everything')
@@ -300,13 +288,13 @@ export default React.createClass({
           <RaisedButton label="Call" 
             ref="callButton"
             onMouseDown={call.bind(this)}
-            primary={true} 
+            primary={true}
             disabled={this.state.callButtonDisabled}
           />
-          <RaisedButton label="Hang Up" 
+          <RaisedButton label="Hang Up"
             ref="hangupButton"
             onMouseDown={hangup.bind(this)}
-            secondary={true} 
+            secondary={true}
             disabled={this.state.hangupButtonDisabled}
           />
           <RaisedButton label="Stop" 
@@ -318,37 +306,15 @@ export default React.createClass({
         </CardActions>
         <CardMedia>
           <div className="flex-container">
-            <video ref="localVideo" autoPlay 
-              className="telemed-video"
-            />
-            <video ref="remoteVideo" autoPlay
-              className="telemed-video"
-            />
+            <div className="flex-telemed-video">
+              <video ref="localVideo" autoPlay style={styles.video} />
+            </div>
+            <div className="flex-telemed-video">
+              <video ref="remoteVideo" autoPlay style={styles.video} />
+            </div>
           </div>
         </CardMedia>
       </Card>
     )
   }
 });
-
-// <Helmet
-//   htmlAttributes={{"lang": "en", "amp": undefined}} // amp takes no value
-//   title="My Title"
-//   titleTemplate="MySite.com - %s"
-//   defaultTitle="My Default Title"
-//   base={{"target": "_blank", "href": "http://mysite.com/"}}
-//   meta={[
-//       {"name": "description", "content": "Helmet application"},
-//       {"property": "og:type", "content": "article"}
-//   ]}
-//   link={[
-//       {"rel": "canonical", "href": "http://mysite.com/example"},
-//       {"rel": "apple-touch-icon", "href": "http://mysite.com/img/apple-touch-icon-57x57.png"},
-//       {"rel": "apple-touch-icon", "sizes": "72x72", "href": "http://mysite.com/img/apple-touch-icon-72x72.png"}
-//   ]}
-//   script={[
-//     {"src": "http://include.com/pathtojs.js", "type": "text/javascript"},
-//     {"type": "application/ld+json", innerHTML: `{ "@context": "http://schema.org" }`}
-//   ]}
-//   onChangeClientState={(newState) => console.log(newState)}
-// />

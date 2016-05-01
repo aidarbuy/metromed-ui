@@ -17,19 +17,16 @@ export default React.createClass({
 
     return (
       <Card style={{minHeight:400}}>
-        <CardMedia
-          overlay={<CardTitle title={props.title} 
-          subtitle={props.subtitle} />}
-         >
+        <CardMedia overlay={<CardTitle title={props.title} subtitle={props.subtitle}/>}>
           <img src={src} />
         </CardMedia>
-        <CardText className="article-card-text"
-        	dangerouslySetInnerHTML={{__html:props.teaser}}
+
+        <CardText 
+          style={{fontSize:16, textAlign:'left'}}
+          dangerouslySetInnerHTML={{__html:props.teaser}}
         />
-        <CardActions style={{
-          textAlign:'right',
-          // background:'green'
-        }}>
+
+        <CardActions style={{textAlign:'right'}}>
           <RaisedButton 
             label="Read more" 
             labelPosition="before"
@@ -44,4 +41,4 @@ export default React.createClass({
       </Card>
     )
   }
-})
+});
