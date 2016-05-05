@@ -56,7 +56,7 @@ export default () => (
         <CardText className="top-bar-card-text">
           <p>Major Holidays Observed</p>
           <Divider />
-          <p>We are closed Monday May 30 th</p>
+          <p>We are closed Monday May 30th</p>
         </CardText>
       </Card>
     </div>

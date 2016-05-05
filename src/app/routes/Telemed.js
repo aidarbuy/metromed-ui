@@ -1,13 +1,11 @@
-// src/app/routes/Telemed.jsx
 import React from 'react';
-import TeleMed from '../components/TeleMed'
+import Helmet from 'react-helmet';
+import TeleMed from '../components/WebRTC';
 
 export default () => (
-  <div id="telemed">
-
-    <h3>Telemed</h3>
+  <section>
+  	<Helmet title="MetromedUC TeleMed" />
 
     <TeleMed/>
-
-  </div>
-)
+  </section>
+);

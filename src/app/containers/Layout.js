@@ -8,7 +8,7 @@ import AppTabs     from './AppTabs';
 import AppTabsIcon from './AppTabsIcon';
 import AppFooter   from '../components/layout/AppFooter';
 import rawTheme    from '../themes/light';
-// import rawTheme from '../themes/dark';
+// import rawTheme    from '../themes/dark';
 
 const muiTheme = getMuiTheme(rawTheme)
 

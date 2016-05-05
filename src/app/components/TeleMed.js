@@ -46,13 +46,16 @@ var startButton, callButton, hangupButton, stopButton;
 // Global vars for streams
 var localVideo, remoteVideo, videoTracks, audioTracks;
 
-// io = io.connect();
-// let socket = io('https://localhost:443');
+// Socket.io room constants
+var ROOM = "chat";
+var SIGNAL_ROOM = "signal_room";
 
-/* navigator.getUserMedia = navigator.getUserMedia ||
-                         navigator.webkitGetUserMedia ||
-                         navigator.mozGetUserMedia ||
-                         navigator.msGetUserMedia; */
+// let socket = io('https://metromed-rtc.herokuapp.com');
+let socket = io('https://localhost:4200');
+
+socket.emit('webrtc');
+
+// io.emit('ready', {"chat_room":ROOM, "signal_room":SIGNAL_ROOM});
 
 // GET STREAM
 function start() {
@@ -193,6 +196,7 @@ function onCreateAnswerSuccess(desc) {
 
 const onIceCandidate = function(pc, event) {
   if (event.candidate) {
+    io.emit()
     getOtherPc(pc).addIceCandidate(new RTCIceCandidate(event.candidate))
     .then(() => onAddIceCandidateSuccess(pc))
     .catch((err) => onAddIceCandidateError(pc, err));
@@ -278,12 +282,13 @@ export default React.createClass({
     return (
       <Card>
         <Helmet title="Telemed" />
+        <p>{JSON.stringify(io)}</p>
         <CardActions>
           <RaisedButton label="Start" 
             ref="startButton"
             onMouseDown={start.bind(this)}
-            primary={true} 
             disabled={this.state.startButtonDisabled}
+            primary={true} 
           />
           <RaisedButton label="Call" 
             ref="callButton"
