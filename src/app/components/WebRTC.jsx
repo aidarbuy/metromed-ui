@@ -1,7 +1,11 @@
 import io from 'socket.io-client';
 
+// $.get('https://metromed-rtc.herokuapp.com/socket.io/socket.io.js');
+
+
 // Подключение к веб-сокетам:
-var socket = io.connect('https://localhost:4200'); // URL сервера веб-сокетов
+// var socket = io.connect('https://localhost:4200'); // URL сервера веб-сокетов
+var socket = io.connect('https://metromed-rtc.herokuapp.com');
 socket.on('server event', function (data) {
 	console.log(data);
   socket.emit('client event', { 'test': 'works' });
